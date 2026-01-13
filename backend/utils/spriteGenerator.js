@@ -24,9 +24,6 @@ class SpriteGenerator {
    * @param {Array<Array<string|null>>} pixels
    */
   async generate(pixels) {
-    // never called?
-    console.log('this isnt');
-
     const height = pixels.length;
     const width = pixels[0].length;
 

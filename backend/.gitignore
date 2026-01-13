@@ -141,5 +141,5 @@ vite.config.ts.timestamp-*
 .vite/
 
 # Only for the contest
-sprites-generated/
+sprites/
 tmp/

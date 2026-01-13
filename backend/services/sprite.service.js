@@ -9,9 +9,7 @@ class SpriteService {
   });
 
   async getMainCharacter() {
-    console.log('This is called');
     const result = await this.spriteGenerator.generate(marioPixels);
-    console.log('Base64 length:', result.base64.length);
     return result;
   }
 
