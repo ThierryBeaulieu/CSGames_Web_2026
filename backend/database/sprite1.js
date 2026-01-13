@@ -1,0 +1,1 @@
+// Celui-là pourrait directement être une image à lire avec le FileStream directement.
