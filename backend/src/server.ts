@@ -1,0 +1,35 @@
+const cors = require('cors');
+const path = require('path');
+const express = require('express');
+import { Request, Response, NextFunction } from 'express';
+
+import spriteRoutes from './routes/spriteRoute';
+
+const app = express();
+const PORT = 5020;
+const SIZE_LIMIT = '10mb';
+const PUBLIC_PATH = path.resolve();
+
+// Enable CORS
+app.use(cors({ origin: '*' }));
+
+// Log all incoming HTTP requests
+app.use((request: Request, response: Response, next: NextFunction) => {
+  console.log(`New HTTP request: ${request.method} ${request.url}`);
+  next();
+});
+
+// Parse JSON and URL-encoded data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: SIZE_LIMIT }));
+
+// Serve static files
+app.use(express.static(PUBLIC_PATH));
+
+// Use sprite router
+app.use('/api/sprite', spriteRoutes);
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});

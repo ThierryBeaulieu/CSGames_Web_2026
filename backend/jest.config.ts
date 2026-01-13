@@ -1,0 +1,10 @@
+import { createDefaultPreset } from 'ts-jest';
+
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src'],
+  testMatch: ['**/test/**/*.test.ts'],
+  moduleFileExtensions: ['ts', 'js', 'json', 'node'],
+};

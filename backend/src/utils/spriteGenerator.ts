@@ -1,10 +1,31 @@
 const { createCanvas } = require('canvas');
-const fs = require('fs').promises;
+import { promises as fsPromises, existsSync, mkdirSync } from 'fs';
 const path = require('path');
 const crypto = require('crypto');
 
-class SpriteGenerator {
-  constructor({ pixelSize = 16, tmpDir = 'tmp', spriteDir = 'sprites' } = {}) {
+interface SpriteGeneratorOptions {
+  pixelSize?: number;
+  tmpDir?: string;
+  spriteDir?: string;
+}
+
+export interface SpriteResult {
+  id: string;
+  base64: string;
+  tmpPath: string;
+  spritePath: string;
+}
+
+export class SpriteGenerator {
+  private pixelSize: number;
+  private tmpDir: string;
+  private spriteDir: string;
+
+  constructor({
+    pixelSize = 16,
+    tmpDir = 'tmp',
+    spriteDir = 'sprites',
+  }: SpriteGeneratorOptions = {}) {
     this.pixelSize = pixelSize;
     this.tmpDir = tmpDir;
     this.spriteDir = spriteDir;
@@ -13,28 +34,28 @@ class SpriteGenerator {
     this.ensureDir(spriteDir);
   }
 
-  ensureDir(dir) {
-    const fsSync = require('fs');
-    if (!fsSync.existsSync(dir)) {
-      fsSync.mkdirSync(dir, { recursive: true });
+  private ensureDir(dir: string) {
+    if (!existsSync(dir)) {
+      mkdirSync(dir, { recursive: true });
     }
   }
 
   /**
-   * @param {Array<Array<string|null>>} pixels
+   * Generate a sprite from a 2D pixel array
+   * @param pixels 2D array of colors (strings like "#ff0000") or null
    */
-  async generate(pixels) {
+  async generate(pixels: (string | null)[][]): Promise<SpriteResult> {
     const height = pixels.length;
-    const width = pixels[0].length;
+    const width = pixels[0]!.length;
 
-    const canvas = createCanvas(width * this.pixelSize, height * this.pixelSize);
+    const canvas: any = createCanvas(width * this.pixelSize, height * this.pixelSize);
     const ctx = canvas.getContext('2d');
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
-        const color = pixels[y][x];
+        const color = pixels![y]![x];
         if (!color) continue;
 
         ctx.fillStyle = color;
@@ -53,10 +74,10 @@ class SpriteGenerator {
     const spritePath = path.join(this.spriteDir, fileName);
 
     // Async write to tmp
-    await fs.writeFile(tmpPath, buffer);
+    await fsPromises.writeFile(tmpPath, buffer);
 
     // Async copy to sprites
-    await fs.copyFile(tmpPath, spritePath);
+    await fsPromises.copyFile(tmpPath, spritePath);
 
     return {
       id,
@@ -66,5 +87,3 @@ class SpriteGenerator {
     };
   }
 }
-
-module.exports = SpriteGenerator;

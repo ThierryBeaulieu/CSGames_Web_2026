@@ -1,5 +1,5 @@
-const SpriteGenerator = require('../utils/spriteGenerator');
-const { marioPixels } = require('./sprite.service.helper');
+import { SpriteGenerator, SpriteResult } from '../utils/spriteGenerator';
+import marioPixels from './sprite.service.helper';
 
 class SpriteService {
   spriteGenerator = new SpriteGenerator({
@@ -9,7 +9,7 @@ class SpriteService {
   });
 
   async getMainCharacter() {
-    const result = await this.spriteGenerator.generate(marioPixels);
+    const result: SpriteResult = await this.spriteGenerator.generate(marioPixels);
     return result;
   }
 
@@ -22,4 +22,4 @@ class SpriteService {
   }
 }
 
-module.exports = { SpriteService };
+export default SpriteService;

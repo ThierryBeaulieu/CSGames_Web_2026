@@ -8,6 +8,4 @@ const HTTP_STATUS = {
   SERVER_ERROR: 500,
 };
 
-module.exports = {
-  HTTP_STATUS,
-};
+export default HTTP_STATUS;
