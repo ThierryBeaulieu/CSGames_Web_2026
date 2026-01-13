@@ -20,14 +20,15 @@ Pour la partie frontend, on s'attend à ce que les développeurs implémentent 3
 
 #### Acquisition des assets
 
-    Dans ce projet, aucun fichier statique *asset (sprite)* ne sera fourni. Pour obtenir vos assets, vous devrez faire des requêtes au serveur à partir de ses APIs REST.
+Dans ce projet, aucun fichier statique *asset (sprite)* ne sera fourni. Pour obtenir vos assets, vous devrez faire des requêtes au serveur à partir de ses APIs REST.
 
-    Par exemple, pour acquérir l'asset du personnage principal, vous devrez effectuer la requête suivante au serveur :
+Par exemple, pour acquérir l'asset du personnage principal, vous devrez effectuer la requête suivante au serveur :
+
     `GET /api/sprite/main-character`
     
-    Cette route devrait marcher par défaut et vous est offert à guide d'exemple.
+Cette route devrait marcher par défaut et vous est offert à guide d'exemple.
 
-    L'ensemble des routes suivantes vous permettrons d'avoir accès aux assets (sprite) présent sur le serveur.
+L'ensemble des routes suivantes vous permettrons d'avoir accès aux assets (sprite) présent sur le serveur.
 
     `GET /api/sprite/main-character`
 
