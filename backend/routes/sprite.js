@@ -13,11 +13,11 @@ router.get('/main-character', async (request, response) => {
 });
 
 router.get('/mystery-block', (request, response) => {
-  console.log('main character fetched');
+  console.log('mystery block fetched');
 });
 
 router.get('/background', (request, response) => {
-  console.log('main character fetched');
+  console.log('background fetched');
 });
 
 module.exports = { router };

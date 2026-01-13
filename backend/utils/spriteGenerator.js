@@ -1,31 +1,73 @@
+const { createCanvas } = require('canvas');
+const fs = require('fs').promises;
+const path = require('path');
+const crypto = require('crypto');
+
 class SpriteGenerator {
-  // accepts an array with the content (pixel[][]) and we define the pixel class
-  generate() {}
-}
+  constructor({ pixelSize = 16, tmpDir = 'tmp', spriteDir = 'sprites' } = {}) {
+    this.pixelSize = pixelSize;
+    this.tmpDir = tmpDir;
+    this.spriteDir = spriteDir;
 
-/*
-  const { createCanvas } = require('canvas');
+    this.ensureDir(tmpDir);
+    this.ensureDir(spriteDir);
+  }
 
-
-  const pixelSize = 20;
-  const width = marioPixels[0].length * pixelSize;
-  const height = marioPixels.length * pixelSize;
-
-  const canvas = createCanvas(width, height);
-  const ctx = canvas.getContext('2d');
-
-  // draw pixels
-  for (let y = 0; y < marioPixels.length; y++) {
-    for (let x = 0; x < marioPixels[y].length; x++) {
-      const color = marioPixels[y][x];
-      if (color) {
-        ctx.fillStyle = color;
-        ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-      }
+  ensureDir(dir) {
+    const fsSync = require('fs');
+    if (!fsSync.existsSync(dir)) {
+      fsSync.mkdirSync(dir, { recursive: true });
     }
   }
 
-  // send PNG response
-  res.setHeader('Content-Type', 'image/png');
-  canvas.createPNGStream().pipe(res);
-*/
+  /**
+   * @param {Array<Array<string|null>>} pixels
+   */
+  async generate(pixels) {
+    // never called?
+    console.log('this isnt');
+
+    const height = pixels.length;
+    const width = pixels[0].length;
+
+    const canvas = createCanvas(width * this.pixelSize, height * this.pixelSize);
+    const ctx = canvas.getContext('2d');
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const color = pixels[y][x];
+        if (!color) continue;
+
+        ctx.fillStyle = color;
+        ctx.fillRect(x * this.pixelSize, y * this.pixelSize, this.pixelSize, this.pixelSize);
+      }
+    }
+
+    const buffer = canvas.toBuffer('image/png');
+    const base64 = buffer.toString('base64');
+
+    // Unique sprite id
+    const id = crypto.randomUUID();
+    const fileName = `${id}.png`;
+
+    const tmpPath = path.join(this.tmpDir, fileName);
+    const spritePath = path.join(this.spriteDir, fileName);
+
+    // Async write to tmp
+    await fs.writeFile(tmpPath, buffer);
+
+    // Async copy to sprites
+    await fs.copyFile(tmpPath, spritePath);
+
+    return {
+      id,
+      base64: `data:image/png;base64,${base64}`,
+      tmpPath,
+      spritePath,
+    };
+  }
+}
+
+module.exports = SpriteGenerator;

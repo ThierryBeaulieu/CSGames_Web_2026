@@ -1,6 +1,18 @@
+const SpriteGenerator = require('../utils/spriteGenerator');
+const { marioPixels } = require('./sprite.service.helper');
+
 class SpriteService {
+  spriteGenerator = new SpriteGenerator({
+    pixelSize: 20,
+    tmpDir: 'tmp',
+    spriteDir: 'sprites',
+  });
+
   async getMainCharacter() {
-    return 'Hey, this test for the main character is working!';
+    console.log('This is called');
+    const result = await this.spriteGenerator.generate(marioPixels);
+    console.log('Base64 length:', result.base64.length);
+    return result;
   }
 
   async getBackground() {
