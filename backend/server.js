@@ -24,5 +24,3 @@ app.use(express.static(PUBLIC_PATH));
 app.use('/api/sprite', spriteRouter.router);
 
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
-
-module.exports = server;
