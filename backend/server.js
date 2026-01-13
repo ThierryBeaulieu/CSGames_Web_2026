@@ -1,5 +1,5 @@
 const express = require('express');
-//const cors = require('cors');
+const cors = require('cors');
 const path = require('path');
 
 const spriteRouter = require('./routes/sprite');
@@ -9,7 +9,7 @@ const PORT = 5020;
 const SIZE_LIMIT = '10mb';
 const PUBLIC_PATH = path.join(__dirname);
 
-//app.use(cors({ origin: '*' }));
+app.use(cors({ origin: '*' }));
 
 // Affichage de nouvelles requêtes dans la console
 app.use((request, response, next) => {
