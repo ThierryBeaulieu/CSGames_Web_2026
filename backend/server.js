@@ -1,31 +1,26 @@
 const express = require('express');
-const { createCanvas } = require('canvas');
+const cors = require('cors');
+const path = require('path');
+
+const spriteRouter = require('./routes/sprite');
 
 const app = express();
-const PORT = 3000;
+const PORT = 5020;
+const SIZE_LIMIT = '10mb';
+const PUBLIC_PATH = path.join(__dirname);
 
-app.get('/sprite', (req, res) => {
-  const pixelSize = 20;
-  const width = marioPixels[0].length * pixelSize;
-  const height = marioPixels.length * pixelSize;
+app.use(cors({ origin: '*' }));
 
-  const canvas = createCanvas(width, height);
-  const ctx = canvas.getContext('2d');
-
-  // draw pixels
-  for (let y = 0; y < marioPixels.length; y++) {
-    for (let x = 0; x < marioPixels[y].length; x++) {
-      const color = marioPixels[y][x];
-      if (color) {
-        ctx.fillStyle = color;
-        ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-      }
-    }
-  }
-
-  // send PNG response
-  res.setHeader('Content-Type', 'image/png');
-  canvas.createPNGStream().pipe(res);
+// Affichage de nouvelles requêtes dans la console
+app.use((request, response, next) => {
+  console.log(`New HTTP request: ${request.method} ${request.url}`);
+  next();
 });
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: SIZE_LIMIT }));
+app.use(express.static(PUBLIC_PATH));
+
+app.use('/api/sprite', spriteRouter.router);
 
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
