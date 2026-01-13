@@ -20,33 +20,33 @@ Pour la partie frontend, on s'attend à ce que les développeurs implémentent 3
 
 #### Acquisition des assets
 
-Dans ce projet, aucun fichier statique *asset (sprite)* ne sera fourni. Pour obtenir vos assets, vous devrez faire des requêtes au serveur à partir de ses APIs REST.
+Dans ce projet, aucun fichier statique *asset (sprite)* ne sera fourni. Pour obtenir vos assets, vous devrez faire des requêtes au serveur à partir de ces APIs REST.
 
 Par exemple, pour acquérir l'asset du personnage principal, vous devrez effectuer la requête suivante au serveur :
 
-    `GET /api/sprite/main-character`
+`GET /api/sprite/main-character`
     
-Cette route devrait marcher par défaut et vous est offert à guide d'exemple.
+Cette route devrait marcher par défaut et vous est offerte à guise d'exemple.
 
 L'ensemble des routes suivantes vous permettrons d'avoir accès aux assets (sprite) présent sur le serveur.
 
-    `GET /api/sprite/main-character`
+🧒 `GET /api/sprite/main-character`
 
-    `GET /api/sprite/main-character/using-mushroom`
+👨 `GET /api/sprite/main-character/bigger`
 
-    `GET /api/sprite/ground`
+🌳 `GET /api/sprite/ground` 
 
-    `GET /api/sprite/background`
+🏞️ `GET /api/sprite/background`
 
-    `GET /api/sprite/goomba`
+😈 `GET /api/sprite/goomba` 
 
-    `GET /api/sprite/mystery-box`
+🎁 `GET /api/sprite/mystery-box` 
 
-    `GET /api/sprite/fire-ball`
+☄️ `GET /api/sprite/fire-ball`
 
-    `GET /api/sprite/mushroom`
+🍄 `GET /api/sprite/mushroom`
 
-Note Importante : ces routes ne sont pas fonctionnelles par défaut. Elle devront être implémentés dans la section *serveur*.  
+    Note Importante 👉 Ces routes ne sont pas fonctionnelles par défaut (sauf main-character). Elle devront d'abord être implémentées dans la section serveur 🤷‍♂️  
 
 #### Mécaniques de jeux
 
