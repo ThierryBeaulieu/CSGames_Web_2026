@@ -1,14 +1,14 @@
 class SpriteService {
   async getMainCharacter() {
-    // todo
+    return 'getMainCharacter service is working';
   }
 
   async getBackground() {
-    // todo
+    return 'getBackground service is working';
   }
 
   async getMysteryBlock() {
-    // todo
+    return 'getMysteryBlock service is working';
   }
 }
 
