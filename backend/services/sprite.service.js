@@ -1,6 +1,6 @@
 class SpriteService {
   async getMainCharacter() {
-    return 'getMainCharacter service is working';
+    return 'Hey, this test for the main character is working!';
   }
 
   async getBackground() {
