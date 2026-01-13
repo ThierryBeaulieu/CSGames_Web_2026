@@ -4,8 +4,8 @@ import marioPixels from './sprite.service.helper';
 class SpriteService {
   spriteGenerator = new SpriteGenerator({
     pixelSize: 20,
-    tmpDir: 'tmp',
-    spriteDir: 'sprites',
+    tmpDir: 'src/tmp',
+    spriteDir: 'src/sprites',
   });
 
   async getMainCharacter() {
