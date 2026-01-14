@@ -1,10 +1,11 @@
 import './App.css';
+import AssetsLoaded from './AssetsLoaded';
 import Game from './Game';
 
 function App() {
   return (
     <>
-      <h1>Mario MVP</h1>
+      <AssetsLoaded />
       <Game />
     </>
   );

@@ -1,0 +1,26 @@
+.asset-image {
+  width: 128px;
+  height: 128px;
+  object-fit: pixelated;
+}
+
+.card-wrapper {
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 2px solid greenyellow;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-wrapper.error {
+  border-color: red;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+}

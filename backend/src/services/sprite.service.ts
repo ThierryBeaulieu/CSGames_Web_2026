@@ -12,6 +12,10 @@ class SpriteService {
     return await this.spriteGenerator.generate(marioPixels);
   }
 
+  async getGround() {
+    return 'getGround service is working';
+  }
+
   async getBackground() {
     return 'getBackground service is working';
   }
