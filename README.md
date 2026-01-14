@@ -7,9 +7,9 @@ CSGames_Web_2025
 
 Pour cette épreuve, vous aurez à compléter trois sections distinctes : le backend (APIs REST), le frontend (APIs REST & WebSockets) et le backend (WebSockets).
 
-Le but de cette épreuve est de concevoir un jeu rétro inspiré des premières version du jeu "Super Mario Bros" à l'intérieur de votre navigateur web. Le jeu est composé en deux sections : le frontend et le backend.
+Le but de cette épreuve est de concevoir un jeu rétro à l'intérieur de votre navigateur web. Le jeu est composé en deux sections : le frontend et le backend.
 
-La responsabilité du frontend est de s'occuper de la gestion des entrées utilisateurs. Une liste détaillée des mécaniques de jeu est fournie dans la section Backend.
+La responsabilité du frontend est de s'occuper de la gestion des entrées utilisateurs. Une liste détaillée des mécaniques de jeu est fournie dans la section Frontend.
 
 Le backend quant à lui possède deux responsabilités : la gestion des assets et la gestion de l'état de la partie. Une liste détaillée est fournie dans la section Backend.
 

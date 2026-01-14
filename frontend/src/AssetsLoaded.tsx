@@ -39,11 +39,10 @@ function AssetsLoaded() {
           alt='background not loaded'
           imgSrc='http://localhost:5020/api/sprite/background'
         />
-
         <AssetCard
-          name='ground'
-          alt='ground not loaded'
-          imgSrc='http://localhost:5020/api/sprite/ground'
+          name='mystery-block'
+          alt='mystery-block not loaded'
+          imgSrc='http://localhost:5020/api/sprite/mystery-block'
         />
         <AssetCard
           name='mystery-block'

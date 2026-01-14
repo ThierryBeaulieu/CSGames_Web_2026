@@ -1,5 +1,5 @@
 import { SpriteGenerator, SpriteResult } from '../utils/spriteGenerator';
-import marioPixels from '../database/sprite1';
+import playerPixels from '../database/sprite1';
 import { SpriteREader } from '../utils/spriteReader';
 
 class SpriteService {
@@ -12,7 +12,7 @@ class SpriteService {
   spriteReader = new SpriteREader();
 
   async getMainCharacter(): Promise<SpriteResult> {
-    return await this.spriteGenerator.generate(marioPixels);
+    return await this.spriteGenerator.generate(playerPixels);
   }
 
   async getBackground(): Promise<SpriteResult> {

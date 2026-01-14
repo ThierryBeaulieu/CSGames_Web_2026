@@ -1,7 +1,7 @@
 // Main Character
 
 // prettier-ignore
-const marioPixels = [
+const playerPixels = [
   [null,null,null,"#ff0000","#ff0000","#ff0000","#ff0000","#ff0000",null,null,null,null,null,null,null,null],
   [null,null,"#ff0000","#ff0000","#ff0000","#ff0000","#ff0000","#ff0000","#ff0000","#ff0000",null,null,null,null,null,null],
   [null,null,"#8b4513","#8b4513","#8b4513","#ffcc99","#ffcc99","#ffcc99","#000000","#ffcc99",null,null,null,null,null,null],
@@ -20,4 +20,4 @@ const marioPixels = [
   ["#8b4513","#8b4513","#8b4513","#8b4513",null,null,null,null,"#8b4513","#8b4513","#8b4513","#8b4513",null,null,null,null],
 ];
 
-export default marioPixels;
+export default playerPixels;
