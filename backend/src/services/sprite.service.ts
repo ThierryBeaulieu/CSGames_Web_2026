@@ -1,5 +1,5 @@
 import { SpriteGenerator, SpriteResult } from '../utils/spriteGenerator';
-import marioPixels from './sprite.service.helper';
+import marioPixels from '../database/sprite1';
 
 class SpriteService {
   spriteGenerator = new SpriteGenerator({
