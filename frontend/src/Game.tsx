@@ -59,40 +59,7 @@ const Game: React.FC = () => {
         ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
       }
 
-      // Draw sprite (flipped if going left)
-      if (player.current.sprite) {
-        ctx.save();
-
-        if (player.current.direction === 'left') {
-          ctx.scale(-1, 1);
-          ctx.drawImage(
-            player.current.sprite,
-            -player.current.x - player.current.width,
-            player.current.y,
-            player.current.width,
-            player.current.height,
-          );
-        } else {
-          ctx.drawImage(
-            player.current.sprite,
-            player.current.x,
-            player.current.y,
-            player.current.width,
-            player.current.height,
-          );
-        }
-
-        ctx.restore();
-      } else {
-        // Draw player
-        ctx.fillStyle = 'red';
-        ctx.fillRect(
-          player.current.x,
-          player.current.y,
-          player.current.width,
-          player.current.height,
-        );
-      }
+      player.current.render(ctx);
 
       requestAnimationFrame(gameLoop);
     };
@@ -121,8 +88,9 @@ interface GameAsset {
   y: number;
   width: number;
   height: number;
+
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void;
-  draw(ctx: CanvasRenderingContext2D): void;
+  render(ctx: CanvasRenderingContext2D): void;
 }
 
 class Player implements GameAsset {
@@ -182,8 +150,24 @@ class Player implements GameAsset {
     }
   }
 
-  draw(ctx: CanvasRenderingContext2D): void {
-    throw new Error('Method not implemented.');
+  render(ctx: CanvasRenderingContext2D): void {
+    if (this.sprite) {
+      ctx.save();
+
+      if (this.direction === 'left') {
+        ctx.scale(-1, 1);
+        ctx.drawImage(this.sprite, -this.x - this.width, this.y, this.width, this.height);
+      } else {
+        ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+      }
+
+      ctx.restore();
+      return;
+    }
+
+    // base case, we still want to display something
+    ctx.fillStyle = 'red';
+    ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
 
