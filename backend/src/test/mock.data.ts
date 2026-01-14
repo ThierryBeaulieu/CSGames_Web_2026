@@ -5,9 +5,7 @@ class MockData {
 
   constructor() {
     this.mainCharacter = {
-      id: 'something',
       buffer: Buffer.from('fake-png-data'),
-      spritePath: '',
     };
   }
 }

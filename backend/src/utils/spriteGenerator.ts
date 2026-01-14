@@ -1,7 +1,4 @@
 const { createCanvas } = require('canvas');
-import { promises as fsPromises, existsSync, mkdirSync } from 'fs';
-const path = require('path');
-const crypto = require('crypto');
 
 interface SpriteGeneratorOptions {
   pixelSize?: number;
@@ -10,31 +7,14 @@ interface SpriteGeneratorOptions {
 }
 
 export interface SpriteResult {
-  id: string;
   buffer: Buffer;
-  spritePath: string;
 }
 
 export class SpriteGenerator {
   private pixelSize: number;
-  private spriteDir: string;
 
-  constructor({
-    pixelSize = 16,
-    tmpDir = 'tmp',
-    spriteDir = 'sprites',
-  }: SpriteGeneratorOptions = {}) {
+  constructor({ pixelSize = 16 }: SpriteGeneratorOptions = {}) {
     this.pixelSize = pixelSize;
-    this.spriteDir = spriteDir;
-
-    this.ensureDir(tmpDir);
-    this.ensureDir(spriteDir);
-  }
-
-  private ensureDir(dir: string) {
-    if (!existsSync(dir)) {
-      mkdirSync(dir, { recursive: true });
-    }
   }
 
   /**
@@ -62,17 +42,8 @@ export class SpriteGenerator {
 
     const buffer = canvas.toBuffer('image/png');
 
-    const id = crypto.randomUUID();
-    const fileName = `${id}.png`;
-    const spritePath = path.join(this.spriteDir, fileName);
-
-    // Optional: save to disk
-    await fsPromises.writeFile(spritePath, buffer);
-
     return {
-      id,
       buffer,
-      spritePath,
     };
   }
 }
