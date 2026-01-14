@@ -107,6 +107,15 @@ const Game: React.FC = () => {
         }
 
         ctx.restore();
+      } else {
+        // Draw player
+        ctx.fillStyle = 'red';
+        ctx.fillRect(
+          player.current.x,
+          player.current.y,
+          player.current.width,
+          player.current.height,
+        );
       }
 
       requestAnimationFrame(gameLoop);
