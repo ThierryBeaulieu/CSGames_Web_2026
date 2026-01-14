@@ -1,5 +1,6 @@
 import { SpriteGenerator, SpriteResult } from '../utils/spriteGenerator';
 import marioPixels from '../database/sprite1';
+import { SpriteREader } from '../utils/spriteReader';
 
 class SpriteService {
   spriteGenerator = new SpriteGenerator({
@@ -8,16 +9,18 @@ class SpriteService {
     spriteDir: 'src/sprites',
   });
 
+  spriteReader = new SpriteREader();
+
   async getMainCharacter(): Promise<SpriteResult> {
     return await this.spriteGenerator.generate(marioPixels);
   }
 
-  async getGround() {
-    return 'getGround service is working';
+  async getBackground(): Promise<SpriteResult> {
+    return await this.spriteReader.readPNG('background');
   }
 
-  async getBackground() {
-    return 'getBackground service is working';
+  async getGround() {
+    return 'getGround service is working';
   }
 
   async getMysteryBlock() {
