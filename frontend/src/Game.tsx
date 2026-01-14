@@ -10,37 +10,18 @@ const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Player state
-  const player = useRef({
-    x: 50,
-    y: 0,
-    width: 30,
-    height: 50,
-    vy: 0,
-    onGround: false,
-    direction: 'right' as 'left' | 'right',
-  });
+  const player = useRef(new Player());
 
   const keys = useRef<Record<string, boolean>>({});
-  const playerImage = useRef<HTMLImageElement | null>(null);
   const backgroundImage = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
-    const ctx = canvas.getContext('2d')!;
+    const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
     ctx.imageSmoothingEnabled = false;
 
     const gravity = 0.5;
     const groundY = 340;
-
-    // Load player Image
-    const playerImg = new Image();
-    playerImg.src = MAIN_CHARACTER_SPRITE_URL;
-    playerImg.onload = () => {
-      const scale = 0.2;
-      player.current.width = playerImg.naturalWidth * scale;
-      player.current.height = playerImg.naturalHeight * scale;
-      playerImage.current = playerImg;
-    };
 
     // Load background Image
     const backgroundImg = new Image();
@@ -105,13 +86,13 @@ const Game: React.FC = () => {
       }
 
       // Draw sprite (flipped if going left)
-      if (playerImage.current) {
+      if (player.current.sprite) {
         ctx.save();
 
         if (player.current.direction === 'left') {
           ctx.scale(-1, 1);
           ctx.drawImage(
-            playerImage.current,
+            player.current.sprite,
             -player.current.x - player.current.width,
             player.current.y,
             player.current.width,
@@ -119,7 +100,7 @@ const Game: React.FC = () => {
           );
         } else {
           ctx.drawImage(
-            playerImage.current,
+            player.current.sprite,
             player.current.x,
             player.current.y,
             player.current.width,
@@ -160,4 +141,50 @@ const Game: React.FC = () => {
   );
 };
 
+interface GameAsset {
+  handleUserInput(): void;
+  draw(ctx: CanvasRenderingContext2D): void;
+}
+
+class Player implements GameAsset {
+  sprite: HTMLImageElement;
+  x: number = 50;
+  y: number = 0;
+  width: number = 30;
+  height: number = 50;
+  vy: number = 0;
+  onGround: boolean = false;
+  direction: string = 'right' as 'left' | 'right';
+
+  constructor() {
+    this.sprite = new Image();
+    this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
+    const scale = 0.2;
+    this.sprite.onload = () => {
+      this.width = this.sprite.naturalWidth * scale;
+      this.height = this.sprite.naturalHeight * scale;
+    };
+  }
+
+  handleUserInput(): void {
+    throw new Error('Method not implemented.');
+  }
+  draw(ctx: CanvasRenderingContext2D): void {
+    throw new Error('Method not implemented.');
+  }
+}
+
 export default Game;
+
+/*
+  // Load player Image
+    const playerImg = new Image();
+    playerImg.src = MAIN_CHARACTER_SPRITE_URL;
+    playerImg.onload = () => {
+      const scale = 0.2;
+      player.current.width = playerImg.naturalWidth * scale;
+      player.current.height = playerImg.naturalHeight * scale;
+      playerImage.current = playerImg;
+    };
+
+*/
