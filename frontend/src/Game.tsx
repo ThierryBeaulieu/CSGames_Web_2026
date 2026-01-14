@@ -13,6 +13,7 @@ const Game: React.FC = () => {
     height: 50,
     vy: 0,
     onGround: false,
+    direction: 'right' as 'left' | 'right',
   });
 
   const keys = useRef<Record<string, boolean>>({});
@@ -21,15 +22,19 @@ const Game: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
+    ctx.imageSmoothingEnabled = false;
+
     const gravity = 0.5;
     const groundY = 300;
 
+    // Load sprite
     const img = new Image();
     img.src = SPRITE_URL;
     img.onload = () => {
       spriteImage.current = img;
-      player.current.width = img.naturalWidth * 0.2;
-      player.current.height = img.naturalHeight * 0.2;
+      const scale = 0.2;
+      player.current.width = img.naturalWidth * scale;
+      player.current.height = img.naturalHeight * scale;
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -46,9 +51,18 @@ const Game: React.FC = () => {
     const gameLoop = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Movement
-      if (keys.current['ArrowLeft']) player.current.x -= 5;
-      if (keys.current['ArrowRight']) player.current.x += 5;
+      // Horizontal movement + direction
+      if (keys.current['ArrowLeft']) {
+        player.current.x -= 5;
+        player.current.direction = 'left';
+      }
+
+      if (keys.current['ArrowRight']) {
+        player.current.x += 5;
+        player.current.direction = 'right';
+      }
+
+      // Jump
       if (keys.current['ArrowUp'] && player.current.onGround) {
         player.current.vy = -12;
         player.current.onGround = false;
@@ -69,15 +83,30 @@ const Game: React.FC = () => {
       ctx.fillStyle = 'green';
       ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
 
-      // Draw player sprite
+      // Draw sprite (flipped if going left)
       if (spriteImage.current) {
-        ctx.drawImage(
-          spriteImage.current,
-          player.current.x,
-          player.current.y,
-          player.current.width,
-          player.current.height,
-        );
+        ctx.save();
+
+        if (player.current.direction === 'left') {
+          ctx.scale(-1, 1);
+          ctx.drawImage(
+            spriteImage.current,
+            -player.current.x - player.current.width,
+            player.current.y,
+            player.current.width,
+            player.current.height,
+          );
+        } else {
+          ctx.drawImage(
+            spriteImage.current,
+            player.current.x,
+            player.current.y,
+            player.current.width,
+            player.current.height,
+          );
+        }
+
+        ctx.restore();
       }
 
       requestAnimationFrame(gameLoop);
