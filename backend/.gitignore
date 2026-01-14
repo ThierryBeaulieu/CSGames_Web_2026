@@ -143,3 +143,6 @@ vite.config.ts.timestamp-*
 # Only for the contest
 sprites/
 tmp/
+
+# Mac Files
+.DS_Store

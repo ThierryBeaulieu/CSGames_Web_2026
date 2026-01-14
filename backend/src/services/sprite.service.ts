@@ -8,9 +8,8 @@ class SpriteService {
     spriteDir: 'src/sprites',
   });
 
-  async getMainCharacter() {
-    const result: SpriteResult = await this.spriteGenerator.generate(marioPixels);
-    return result;
+  async getMainCharacter(): Promise<SpriteResult> {
+    return await this.spriteGenerator.generate(marioPixels);
   }
 
   async getBackground() {

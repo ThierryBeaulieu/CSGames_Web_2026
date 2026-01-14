@@ -1,5 +1,15 @@
+import { SpriteResult } from '../utils/spriteGenerator';
+
 class MockData {
-  mainCharacter = 'Hey, this test for the main character is working!';
+  mainCharacter: SpriteResult;
+
+  constructor() {
+    this.mainCharacter = {
+      id: 'something',
+      buffer: Buffer.from('fake-png-data'),
+      spritePath: '',
+    };
+  }
 }
 
 export default MockData;

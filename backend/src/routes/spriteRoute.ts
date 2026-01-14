@@ -9,7 +9,8 @@ const spriteService = new SpriteService();
 router.get('/main-character', async (req: Request, res: Response) => {
   try {
     const mainCharacter = await spriteService.getMainCharacter();
-    res.status(HTTP_STATUS.SUCCESS).json(mainCharacter);
+    res.setHeader('Content-Type', 'image/png');
+    res.send(mainCharacter.buffer);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }
