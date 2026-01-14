@@ -6,22 +6,22 @@ const BACKGROUND_SPRITE_URL = 'http://localhost:5020/api/sprite/background';
 const DEFAULT_WIDTH = 800;
 const DEFAULT_HEIGHT = 400;
 
+const GRAVITY = 0.5;
+const GROUND_Y = 340;
+
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Player state
-  const player = useRef(new Player());
+  const player = useRef(new Player(GRAVITY, GROUND_Y));
 
-  const keys = useRef<Record<string, boolean>>({});
+  const keys: React.RefObject<Record<string, boolean>> = useRef<Record<string, boolean>>({});
   const backgroundImage = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
     ctx.imageSmoothingEnabled = false;
-
-    const gravity = 0.5;
-    const groundY = 340;
 
     // Load background Image
     const backgroundImg = new Image();
@@ -44,33 +44,7 @@ const Game: React.FC = () => {
     const gameLoop = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Horizontal movement + direction
-      if (keys.current['ArrowLeft']) {
-        player.current.x -= 5;
-        player.current.direction = 'left';
-      }
-
-      if (keys.current['ArrowRight']) {
-        player.current.x += 5;
-        player.current.direction = 'right';
-      }
-
-      // Jump
-      if (keys.current['ArrowUp'] && player.current.onGround) {
-        player.current.vy = -12;
-        player.current.onGround = false;
-      }
-
-      // Gravity
-      player.current.vy += gravity;
-      player.current.y += player.current.vy;
-
-      // Ground collision
-      if (player.current.y + player.current.height > groundY) {
-        player.current.y = groundY - player.current.height;
-        player.current.vy = 0;
-        player.current.onGround = true;
-      }
+      player.current.handleUserInput(keys);
 
       // Draw Background
       if (backgroundImage.current) {
@@ -82,7 +56,7 @@ const Game: React.FC = () => {
 
         // Ground
         ctx.fillStyle = '#cf510c';
-        ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+        ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
       }
 
       // Draw sprite (flipped if going left)
@@ -142,7 +116,12 @@ const Game: React.FC = () => {
 };
 
 interface GameAsset {
-  handleUserInput(): void;
+  sprite: HTMLImageElement;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  handleUserInput(keys: React.RefObject<Record<string, boolean>>): void;
   draw(ctx: CanvasRenderingContext2D): void;
 }
 
@@ -152,11 +131,18 @@ class Player implements GameAsset {
   y: number = 0;
   width: number = 30;
   height: number = 50;
+
   vy: number = 0;
   onGround: boolean = false;
   direction: string = 'right' as 'left' | 'right';
 
-  constructor() {
+  gravity: number;
+  groundY: number;
+
+  constructor(gravity: number, groundY: number) {
+    this.gravity = gravity;
+    this.groundY = groundY;
+
     this.sprite = new Image();
     this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
     const scale = 0.2;
@@ -166,25 +152,39 @@ class Player implements GameAsset {
     };
   }
 
-  handleUserInput(): void {
-    throw new Error('Method not implemented.');
+  handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
+    // Horizontal movement + direction
+    if (keys.current['ArrowLeft']) {
+      this.x -= 5;
+      this.direction = 'left';
+    }
+
+    if (keys.current['ArrowRight']) {
+      this.x += 5;
+      this.direction = 'right';
+    }
+
+    // Jump
+    if (keys.current['ArrowUp'] && this.onGround) {
+      this.vy = -12;
+      this.onGround = false;
+    }
+
+    // Gravity
+    this.vy += this.gravity;
+    this.y += this.vy;
+
+    // Ground collision
+    if (this.y + this.height > this.groundY) {
+      this.y = this.groundY - this.height;
+      this.vy = 0;
+      this.onGround = true;
+    }
   }
+
   draw(ctx: CanvasRenderingContext2D): void {
     throw new Error('Method not implemented.');
   }
 }
 
 export default Game;
-
-/*
-  // Load player Image
-    const playerImg = new Image();
-    playerImg.src = MAIN_CHARACTER_SPRITE_URL;
-    playerImg.onload = () => {
-      const scale = 0.2;
-      player.current.width = playerImg.naturalWidth * scale;
-      player.current.height = playerImg.naturalHeight * scale;
-      playerImage.current = playerImg;
-    };
-
-*/
