@@ -11,24 +11,18 @@ const GROUND_Y = 340;
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  // Player state
-  const player = useRef(new Player(GRAVITY, GROUND_Y));
-
   const keys: React.RefObject<Record<string, boolean>> = useRef<Record<string, boolean>>({});
-  const backgroundImage = useRef<HTMLImageElement | null>(null);
+
+  /*
+   * All game assets are declared here
+   */
+  const player = useRef(new Player(GRAVITY, GROUND_Y));
+  const background = useRef(new Background(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
 
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
     ctx.imageSmoothingEnabled = false;
-
-    // Load background Image
-    const backgroundImg = new Image();
-    backgroundImg.src = BACKGROUND_SPRITE_URL;
-    backgroundImg.onload = () => {
-      backgroundImage.current = backgroundImg;
-    };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       keys.current[e.key] = true;
@@ -42,23 +36,10 @@ const Game: React.FC = () => {
     window.addEventListener('keyup', handleKeyUp);
 
     const gameLoop = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       player.current.handleUserInput(keys);
 
-      // Draw Background
-      if (backgroundImage.current) {
-        ctx.drawImage(backgroundImage.current, 0, 0, canvas.width, canvas.height);
-      } else {
-        // Sky
-        ctx.fillStyle = '#5c94fc';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Ground
-        ctx.fillStyle = '#cf510c';
-        ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
-      }
-
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      background.current.render(ctx);
       player.current.render(ctx);
 
       requestAnimationFrame(gameLoop);
@@ -93,6 +74,54 @@ interface GameAsset {
   render(ctx: CanvasRenderingContext2D): void;
 }
 
+class Background implements GameAsset {
+  sprite: HTMLImageElement;
+  x: number = 0;
+  y: number = 0;
+  width: number;
+  height: number;
+
+  groundY: number;
+
+  constructor(width: number, height: number, groundY: number) {
+    this.groundY = groundY;
+    this.sprite = new Image();
+
+    this.width = width;
+    this.height = height;
+
+    this.sprite = new Image();
+    this.sprite.src = BACKGROUND_SPRITE_URL;
+
+    this.sprite.onload = () => {
+      this.width = this.sprite!.naturalWidth;
+      this.height = this.sprite!.naturalHeight;
+    };
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
+    // nothing to do, it's the background
+    return;
+  }
+
+  render(ctx: CanvasRenderingContext2D): void {
+    // Draw Background
+    try {
+      ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      // Sky
+      ctx.fillStyle = '#5c94fc';
+      ctx.fillRect(0, 0, this.width, this.height);
+
+      // Ground
+      ctx.fillStyle = '#cf510c';
+      ctx.fillRect(0, GROUND_Y, this.width, this.height - GROUND_Y);
+    }
+  }
+}
+
 class Player implements GameAsset {
   sprite: HTMLImageElement;
   x: number = 50;
@@ -115,8 +144,8 @@ class Player implements GameAsset {
     this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
     const scale = 0.2;
     this.sprite.onload = () => {
-      this.width = this.sprite.naturalWidth * scale;
-      this.height = this.sprite.naturalHeight * scale;
+      this.width = this.sprite!.naturalWidth * scale;
+      this.height = this.sprite!.naturalHeight * scale;
     };
   }
 
@@ -151,23 +180,23 @@ class Player implements GameAsset {
   }
 
   render(ctx: CanvasRenderingContext2D): void {
-    if (this.sprite) {
+    try {
       ctx.save();
 
       if (this.direction === 'left') {
         ctx.scale(-1, 1);
         ctx.drawImage(this.sprite, -this.x - this.width, this.y, this.width, this.height);
       } else {
+        //console.log(this.sprite);
         ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
       }
 
       ctx.restore();
-      return;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      ctx.fillStyle = 'red';
+      ctx.fillRect(this.x, this.y, this.width, this.height);
     }
-
-    // base case, we still want to display something
-    ctx.fillStyle = 'red';
-    ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
 
