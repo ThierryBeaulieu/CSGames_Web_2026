@@ -1,7 +1,6 @@
-import { GROUND_Y } from './Constants';
+import { GROUND_Y, BACKGROUND_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
 
-const BACKGROUND_SPRITE_URL = 'http://localhost:5020/api/sprite/background';
 
 export class Background implements GameAsset {
   sprite: HTMLImageElement;

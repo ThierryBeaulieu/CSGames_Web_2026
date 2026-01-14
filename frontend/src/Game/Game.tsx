@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Background } from './Background';
-import { GRAVITY, GROUND_Y } from './Constants';
+import { DEFAULT_HEIGHT, DEFAULT_WIDTH, GRAVITY, GROUND_Y } from './Constants';
 import { Player } from './Player';
-
-const DEFAULT_WIDTH = 800;
-const DEFAULT_HEIGHT = 400;
+import { MysteryBlock } from './MysteryBox';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,6 +13,7 @@ const Game: React.FC = () => {
    */
   const player = useRef(new Player(GRAVITY, GROUND_Y));
   const background = useRef(new Background(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
+  const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -34,9 +33,12 @@ const Game: React.FC = () => {
 
     const gameLoop = () => {
       player.current.handleUserInput(keys);
+      mysteryBlock.current.checkHitFromBelow(player.current);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
       background.current.render(ctx);
+      mysteryBlock.current.render(ctx);
       player.current.render(ctx);
 
       requestAnimationFrame(gameLoop);
