@@ -35,6 +35,8 @@ export class Bottles implements GameAsset {
     try {
       ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {}
+    } catch (error) {
+      /* empty */
+    }
   }
 }
