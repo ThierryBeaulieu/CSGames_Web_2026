@@ -9,6 +9,7 @@ export class Monster implements GameAsset {
   height: number = 40;
 
   speed: number = -1;
+  isAlive: boolean = true;
 
   constructor(x: number, y: number) {
     this.x = x;
@@ -18,22 +19,17 @@ export class Monster implements GameAsset {
     this.sprite.src = MONSTER_SPRITE_URL;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
-    return;
-  }
+  handleUserInput(): void {}
 
   render(ctx: CanvasRenderingContext2D): void {
+    if (!this.isAlive) return;
+
     this.x += this.speed;
 
     if (this.x <= 0 || this.x + this.width >= ctx.canvas.width) {
       this.speed = -this.speed;
     }
-    try {
-      ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
-    } catch {
-      ctx.fillStyle = 'brown';
-      ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
+
+    ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
   }
 }

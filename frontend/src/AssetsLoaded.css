@@ -23,4 +23,5 @@
   justify-content: center;
   gap: 30px;
   align-items: center;
+  max-width: 800px;
 }

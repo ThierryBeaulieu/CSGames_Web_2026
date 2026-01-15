@@ -1,4 +1,5 @@
 import type { GameAsset } from './GameAsset';
+import type { Monster } from './Monster';
 
 const MAIN_CHARACTER_SPRITE_URL = 'http://localhost:5020/api/sprite/main-character';
 
@@ -27,12 +28,12 @@ export class Player implements GameAsset {
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
     // Horizontal movement + direction
     if (keys.current['ArrowLeft']) {
-      this.x -= 5;
+      this.x -= 3;
       this.direction = 'left';
     }
 
     if (keys.current['ArrowRight']) {
-      this.x += 5;
+      this.x += 3;
       this.direction = 'right';
     }
 
@@ -51,6 +52,32 @@ export class Player implements GameAsset {
       this.y = this.groundY - this.height;
       this.vy = 0;
       this.onGround = true;
+    }
+  }
+
+  checkMonsterCollision(monster: Monster) {
+    if (!monster.isAlive) return;
+
+    if (
+      this.x < monster.x + monster.width &&
+      this.x + this.width > monster.x &&
+      this.y < monster.y + monster.height &&
+      this.y + this.height > monster.y
+    ) {
+      const playerBottom = this.y + this.height;
+      const monsterTop = monster.y;
+
+      const fallingOnMonster = this.vy > 0 && playerBottom - this.vy <= monsterTop + 5;
+
+      if (fallingOnMonster) {
+        // ✅ Jumped on monster
+        monster.isAlive = false;
+        this.vy = -10; // bounce
+        this.onGround = false;
+      } else {
+        // ❌ Side or bottom collision
+        console.log('dead');
+      }
     }
   }
 

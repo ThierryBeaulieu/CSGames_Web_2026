@@ -5,18 +5,18 @@ CSGames_Web_2025
 
 ## Mise en contexte
 
-Pour cette épreuve, vous aurez à compléter trois sections distinctes : le backend (APIs REST), le frontend (APIs REST & WebSockets) et le backend (WebSockets).
+Pour cette épreuve, vous aurez à compléter deux sections distinctes : le backend (APIs REST) et le frontend (APIs REST).
 
-Le but de cette épreuve est de concevoir un jeu rétro à l'intérieur de votre navigateur web. Le jeu est composé en deux sections : le frontend et le backend.
+Le but de cette épreuve est de concevoir un jeu rétro à l'intérieur de votre navigateur web.
 
-La responsabilité du frontend est de s'occuper de la gestion des entrées utilisateurs. Une liste détaillée des mécaniques de jeu est fournie dans la section Frontend.
+La responsabilité du frontend est de créer les différentes éléments du jeu en plus de faire la gestion des entrées utilisateurs. Une liste détaillée des mécaniques du jeu vous est fourni dans la section Frontend.
 
-Le backend quant à lui possède deux responsabilités : la gestion des assets et la gestion de l'état de la partie. Une liste détaillée est fournie dans la section Backend.
+Le backend quant à lui est responsable d'envoyer l'ensemble des assets au Frontend via un API REST.
 
 ## Résultat attendu
 
 ### Frontend
-Pour la partie frontend, on s'attend à ce que les développeurs implémentent 3 sections distinctes : l'intégrations des assets (APIs REST), les mécaniques de jeux, et l'envoie de l'état du jeu au serveur (Sockets).
+Dans cette parti vous allez implémenter différentes mécaniques de jeu. C'est à partir de l'ensemble des mécaniques de jeu que vous allez avoir implémenter que votre score sera comptabilisé. Une grille détaillée des mécaniques de jeux et des points donnés est fournie à la fin de cette section.
 
 #### Acquisition des assets
 
