@@ -1,7 +1,6 @@
 import { GROUND_Y, BACKGROUND_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
 
-
 export class Background implements GameAsset {
   sprite: HTMLImageElement;
   x: number = 0;
@@ -29,12 +28,10 @@ export class Background implements GameAsset {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
-    // nothing to do, it's the background
     return;
   }
 
   render(ctx: CanvasRenderingContext2D): void {
-    // Draw Background
     try {
       ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

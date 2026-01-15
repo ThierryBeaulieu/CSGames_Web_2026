@@ -24,10 +24,8 @@ export class Monster implements GameAsset {
   }
 
   render(ctx: CanvasRenderingContext2D): void {
-    // Move monster horizontally
     this.x += this.speed;
 
-    // Optional: bounce back if hits edges
     if (this.x <= 0 || this.x + this.width >= ctx.canvas.width) {
       this.speed = -this.speed;
     }

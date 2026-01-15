@@ -9,9 +9,9 @@ export class Mushroom implements GameAsset {
   width: number = 40;
   height: number = 40;
 
-  isVisible: boolean = false; // Only show after appearing
-  riseDistance: number = 20; // how far it rises when it pops out
-  riseSpeed: number = 1; // pixels per frame
+  isVisible: boolean = false;
+  riseDistance: number = 20;
+  riseSpeed: number = 1;
   private startY: number = 0;
 
   constructor(x: number, y: number) {
@@ -37,10 +37,10 @@ export class Mushroom implements GameAsset {
   render(ctx: CanvasRenderingContext2D): void {
     if (!this.isVisible) return;
 
-    // Animate rising
     if (this.y > this.startY - this.riseDistance) {
       this.y -= this.riseSpeed;
     }
+
     try {
       ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
