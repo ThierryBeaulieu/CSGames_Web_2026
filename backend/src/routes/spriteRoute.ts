@@ -26,9 +26,14 @@ router.get('/background', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/mystery-block', (req: Request, res: Response) => {
-  console.log('mystery block fetched');
-  res.sendStatus(HTTP_STATUS.SUCCESS);
+router.get('/mystery-block', async (req: Request, res: Response) => {
+  try {
+    const background = await spriteService.getMysteryBlock();
+    res.setHeader('Content-Type', 'image/gif');
+    res.send(background.buffer);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
 });
 
 router.get('/background', (req: Request, res: Response) => {

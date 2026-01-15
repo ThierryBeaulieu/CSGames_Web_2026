@@ -6,8 +6,8 @@ export class MysteryBlock implements GameAsset {
   sprite: HTMLImageElement;
   x: number;
   y: number;
-  width: number = 32;
-  height: number = 32;
+  width: number = 40;
+  height: number = 40;
 
   isHit: number = 0;
 
@@ -17,11 +17,6 @@ export class MysteryBlock implements GameAsset {
 
     this.sprite = new Image();
     this.sprite.src = MYSTERY_BLOCK_SPRITE_URL;
-
-    this.sprite.onload = () => {
-      this.width = this.sprite.naturalWidth;
-      this.height = this.sprite.naturalHeight;
-    };
   }
 
   // Mystery block doesn't react to input directly

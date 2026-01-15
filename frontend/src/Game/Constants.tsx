@@ -5,7 +5,7 @@ const DEFAULT_WIDTH = 800;
 const DEFAULT_HEIGHT = 400;
 
 const BACKGROUND_SPRITE_URL = 'http://localhost:5020/api/sprite/background';
-const MYSTERY_BLOCK_SPRITE_URL = 'http://localhost:5020/api/sprite/mystery-box';
+const MYSTERY_BLOCK_SPRITE_URL = 'http://localhost:5020/api/sprite/mystery-block';
 const MAIN_CHARACTER_SPRITE_URL = 'http://localhost:5020/api/sprite/main-character';
 
 export {

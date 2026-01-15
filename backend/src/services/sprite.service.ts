@@ -19,12 +19,8 @@ class SpriteService {
     return await this.spriteReader.readPNG('background');
   }
 
-  async getGround() {
-    return 'getGround service is working';
-  }
-
-  async getMysteryBlock() {
-    return 'getMysteryBlock service is working';
+  async getMysteryBlock(): Promise<SpriteResult> {
+    return await this.spriteReader.readGIF('mystery-block');
   }
 }
 

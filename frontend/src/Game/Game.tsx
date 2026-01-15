@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Background } from './Background';
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH, GRAVITY, GROUND_Y } from './Constants';
 import { Player } from './Player';
-import { MysteryBlock } from './MysteryBox';
+import { MysteryBlock } from './MysteryBlock';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

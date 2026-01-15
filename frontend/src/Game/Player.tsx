@@ -6,7 +6,7 @@ export class Player implements GameAsset {
   sprite: HTMLImageElement;
   x: number = 50;
   y: number = 0;
-  width: number = 30;
+  width: number = 40;
   height: number = 50;
 
   vy: number = 0;
@@ -22,11 +22,6 @@ export class Player implements GameAsset {
 
     this.sprite = new Image();
     this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
-    const scale = 0.2;
-    this.sprite.onload = () => {
-      this.width = this.sprite!.naturalWidth * scale;
-      this.height = this.sprite!.naturalHeight * scale;
-    };
   }
 
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {

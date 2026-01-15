@@ -10,4 +10,12 @@ export class SpriteREader {
       buffer: result,
     };
   }
+
+  async readGIF(fileName: string): Promise<SpriteResult> {
+    const imagePath = path.join(__dirname, '../database', `${fileName}.gif`);
+    const result = await readFile(imagePath);
+    return {
+      buffer: result,
+    };
+  }
 }
