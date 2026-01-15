@@ -35,10 +35,23 @@ function AssetsLoaded() {
           imgSrc='http://localhost:5020/api/sprite/main-character'
         />
         <AssetCard
-          name='background'
-          alt='background not loaded'
-          imgSrc='http://localhost:5020/api/sprite/background'
+          name='ground'
+          alt='ground not loaded'
+          imgSrc='http://localhost:5020/api/sprite/ground'
         />
+        <AssetCard
+          name='trees'
+          alt='trees not loaded'
+          imgSrc='http://localhost:5020/api/sprite/trees'
+        />
+
+        <AssetCard
+          name='bottles'
+          alt='bottles not loaded'
+          imgSrc='http://localhost:5020/api/sprite/bottles'
+        />
+
+        <AssetCard name='sky' alt='sky not loaded' imgSrc='http://localhost:5020/api/sprite/sky' />
         <AssetCard
           name='mystery-block'
           alt='mystery-block not loaded'
@@ -53,11 +66,6 @@ function AssetsLoaded() {
           name='monster'
           alt='monster not loaded'
           imgSrc='http://localhost:5020/api/sprite/monster'
-        />
-        <AssetCard
-          name='main character bigger'
-          alt='main character bigger not loaded'
-          imgSrc='http://localhost:5020/api/sprite/main-character/bigger'
         />
       </div>
     </>

@@ -5,7 +5,6 @@ import SpriteService from '../services/sprite.service';
 const router = Router();
 const spriteService = new SpriteService();
 
-// Main character route
 router.get('/main-character', async (req: Request, res: Response) => {
   try {
     const mainCharacter = await spriteService.getMainCharacter();
@@ -16,21 +15,40 @@ router.get('/main-character', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/main-character/bigger', async (req: Request, res: Response) => {
+router.get('/ground', async (req: Request, res: Response) => {
   try {
-    const background = await spriteService.getBigCharacter();
+    const ground = await spriteService.getGround();
     res.setHeader('Content-Type', 'image/png');
-    res.send(background.buffer);
+    res.send(ground.buffer);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }
 });
 
-router.get('/background', async (req: Request, res: Response) => {
+router.get('/bottles', async (req: Request, res: Response) => {
   try {
-    const background = await spriteService.getBackground();
+    const bottles = await spriteService.getBottles();
     res.setHeader('Content-Type', 'image/png');
-    res.send(background.buffer);
+    res.send(bottles.buffer);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
+});
+
+router.get('/sky', async (req: Request, res: Response) => {
+  try {
+    const sky = await spriteService.getSky();
+    res.setHeader('Content-Type', 'image/png');
+    res.send(sky.buffer);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
+});
+router.get('/trees', async (req: Request, res: Response) => {
+  try {
+    const trees = await spriteService.getTrees();
+    res.setHeader('Content-Type', 'image/png');
+    res.send(trees.buffer);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }
@@ -39,7 +57,7 @@ router.get('/background', async (req: Request, res: Response) => {
 router.get('/mystery-block', async (req: Request, res: Response) => {
   try {
     const background = await spriteService.getMysteryBlock();
-    res.setHeader('Content-Type', 'image/gif');
+    res.setHeader('Content-Type', 'image/png');
     res.send(background.buffer);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
@@ -48,9 +66,9 @@ router.get('/mystery-block', async (req: Request, res: Response) => {
 
 router.get('/mushroom', async (req: Request, res: Response) => {
   try {
-    const background = await spriteService.getMushroom();
+    const mushroom = await spriteService.getMushroom();
     res.setHeader('Content-Type', 'image/png');
-    res.send(background.buffer);
+    res.send(mushroom.buffer);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }
@@ -58,9 +76,9 @@ router.get('/mushroom', async (req: Request, res: Response) => {
 
 router.get('/monster', async (req: Request, res: Response) => {
   try {
-    const background = await spriteService.getMonster();
+    const monster = await spriteService.getMonster();
     res.setHeader('Content-Type', 'image/png');
-    res.send(background.buffer);
+    res.send(monster.buffer);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }

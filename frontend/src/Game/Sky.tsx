@@ -1,7 +1,7 @@
-import { GROUND_Y, BACKGROUND_SPRITE_URL } from './Constants';
+import { SKY_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
 
-export class Background implements GameAsset {
+export class Sky implements GameAsset {
   sprite: HTMLImageElement;
   x: number = 0;
   y: number = 0;
@@ -18,7 +18,7 @@ export class Background implements GameAsset {
     this.height = height;
 
     this.sprite = new Image();
-    this.sprite.src = BACKGROUND_SPRITE_URL;
+    this.sprite.src = SKY_SPRITE_URL;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;
@@ -36,13 +36,8 @@ export class Background implements GameAsset {
       ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      // Sky
       ctx.fillStyle = '#5c94fc';
       ctx.fillRect(0, 0, this.width, this.height);
-
-      // Ground
-      ctx.fillStyle = '#cf510c';
-      ctx.fillRect(0, GROUND_Y, this.width, this.height - GROUND_Y);
     }
   }
 }

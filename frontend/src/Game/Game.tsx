@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { Background } from './Background';
+import { Sky } from './Sky';
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH, GRAVITY, GROUND_Y } from './Constants';
 import { Player } from './Player';
 import { MysteryBlock } from './MysteryBlock';
 import { Mushroom } from './Mushroom';
 import { Monster } from './Monster';
+import { Ground } from './Ground';
+import { Trees } from './Trees';
+import { Bottles } from './Bottles';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -14,10 +17,13 @@ const Game: React.FC = () => {
    * All game assets are declared here
    */
   const player = useRef(new Player(GRAVITY, GROUND_Y));
-  const background = useRef(new Background(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
+  const sky = useRef(new Sky(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
+  const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
+  const trees = useRef(new Trees(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(300, GROUND_Y - 140));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
+  const bottles = useRef(new Bottles(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -37,19 +43,17 @@ const Game: React.FC = () => {
 
     const gameLoop = () => {
       player.current.handleUserInput(keys);
-      mysteryBlock.current.checkHitFromBelow(player.current);
-      mushroom.current.checkMysteryBoxState(mysteryBlock.current);
-      player.current.checkMonsterCollision(monster.current);
-      player.current.checkMysteryBoxCollision(mysteryBlock.current);
-      player.current.checkMushroomCollision(mushroom.current, mysteryBlock.current);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      background.current.render(ctx);
+      sky.current.render(ctx);
+      ground.current.render(ctx);
+      trees.current.render(ctx);
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);
       player.current.render(ctx);
       monster.current.render(ctx);
+      bottles.current.render(ctx);
 
       requestAnimationFrame(gameLoop);
     };

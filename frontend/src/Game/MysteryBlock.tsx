@@ -1,6 +1,5 @@
 import { MYSTERY_BLOCK_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
-import type { Player } from './Player';
 
 export class MysteryBlock implements GameAsset {
   sprite: HTMLImageElement;
@@ -22,26 +21,6 @@ export class MysteryBlock implements GameAsset {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
     return;
-  }
-
-  checkHitFromBelow(player: Player) {
-    const playerTop = player.y;
-    const playerBottom = player.y + player.height;
-    const playerLeft = player.x;
-    const playerRight = player.x + player.width;
-
-    const blockBottom = this.y + this.height;
-    const blockLeft = this.x;
-    const blockRight = this.x + this.width;
-
-    const horizontalOverlap = playerRight > blockLeft && playerLeft < blockRight;
-
-    const hitFromBelow =
-      horizontalOverlap && playerTop <= blockBottom && playerBottom > blockBottom && player.vy < 0;
-
-    if (hitFromBelow) {
-      this.isHit = true;
-    }
   }
 
   render(ctx: CanvasRenderingContext2D): void {

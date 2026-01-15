@@ -1,4 +1,4 @@
-import { SpriteResult } from '../utils/spriteGenerator';
+import { SpriteResult } from '../utils/spriteResult';
 
 class MockData {
   mainCharacter: SpriteResult;

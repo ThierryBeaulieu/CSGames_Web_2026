@@ -1,30 +1,31 @@
-import { SpriteGenerator, SpriteResult } from '../utils/spriteGenerator';
-import playerPixels from '../database/sprite1';
-import { SpriteREader } from '../utils/spriteReader';
+import { SpriteResult } from '../utils/spriteResult';
+import { SpriteReader } from '../utils/spriteReader';
 
 class SpriteService {
-  spriteGenerator = new SpriteGenerator({
-    pixelSize: 20,
-    tmpDir: 'src/tmp',
-    spriteDir: 'src/sprites',
-  });
-
-  spriteReader = new SpriteREader();
+  spriteReader = new SpriteReader();
 
   async getMainCharacter(): Promise<SpriteResult> {
-    return await this.spriteGenerator.generate(playerPixels);
+    return await this.spriteReader.readPNG('main-character');
   }
 
-  async getBigCharacter(): Promise<SpriteResult> {
-    return await this.spriteReader.readPNG('big-character');
+  async getGround(): Promise<SpriteResult> {
+    return await this.spriteReader.readPNG('ground');
   }
 
-  async getBackground(): Promise<SpriteResult> {
-    return await this.spriteReader.readPNG('background');
+  async getSky(): Promise<SpriteResult> {
+    return await this.spriteReader.readPNG('sky');
+  }
+
+  async getBottles(): Promise<SpriteResult> {
+    return await this.spriteReader.readPNG('bottles');
+  }
+
+  async getTrees(): Promise<SpriteResult> {
+    return await this.spriteReader.readPNG('trees');
   }
 
   async getMysteryBlock(): Promise<SpriteResult> {
-    return await this.spriteReader.readGIF('mystery-block');
+    return await this.spriteReader.readPNG('mystery-block');
   }
 
   async getMushroom(): Promise<SpriteResult> {
