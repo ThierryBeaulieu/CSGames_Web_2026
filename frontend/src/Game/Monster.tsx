@@ -1,3 +1,4 @@
+import { CollisionDetector } from './CollisionDetector';
 import { MONSTER_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
 
@@ -20,6 +21,13 @@ export class Monster implements GameAsset {
   }
 
   handleUserInput(): void {}
+
+  detectCollisionFromPlayer(player: GameAsset) {
+    const collision = CollisionDetector.collisionDetected(player, this);
+    if (collision) {
+      this.isAlive = false;
+    }
+  }
 
   render(ctx: CanvasRenderingContext2D): void {
     if (!this.isAlive) return;

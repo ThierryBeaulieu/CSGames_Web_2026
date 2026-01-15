@@ -11,14 +11,10 @@ export class Mushroom implements GameAsset {
   height: number = 40;
 
   isVisible: boolean = false;
-  riseDistance: number = 20;
-  riseSpeed: number = 1;
-  private startY: number = 0;
 
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
-    this.startY = y;
 
     this.sprite = new Image();
     this.sprite.src = MUSHROOM_SPRITE_URL;
@@ -35,19 +31,22 @@ export class Mushroom implements GameAsset {
     }
   }
 
-  detectCollision(mysteryBox: GameAsset, player: GameAsset) {
+  spawnMushroom(mysteryBox: GameAsset, player: GameAsset) {
     const collision = CollisionDetector.collisionDetected(player, mysteryBox);
     if (collision) {
       this.isVisible = true;
     }
   }
 
+  detectCollisionFromPlayer(player: GameAsset) {
+    const collision = CollisionDetector.collisionDetected(player, this);
+    if (collision) {
+      this.isVisible = false;
+    }
+  }
+
   render(ctx: CanvasRenderingContext2D): void {
     if (!this.isVisible) return;
-
-    if (this.y > this.startY - this.riseDistance) {
-      this.y -= this.riseSpeed;
-    }
 
     try {
       ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);

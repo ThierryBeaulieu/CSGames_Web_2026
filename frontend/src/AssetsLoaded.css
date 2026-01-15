@@ -1,6 +1,6 @@
 .asset-image {
-  width: 128px;
-  height: 128px;
+  width: auto;
+  height: 50px;
   object-fit: pixelated;
 }
 
@@ -10,7 +10,7 @@
   border: 2px solid greenyellow;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 

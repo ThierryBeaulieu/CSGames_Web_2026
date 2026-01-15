@@ -22,7 +22,6 @@ function AssetCard({ name, alt, imgSrc }: AssetCardProps) {
 
   return (
     <div className={`card-wrapper ${hasError ? 'error' : ''}`}>
-      <p>{name}</p>
       <img
         src={imgSrc}
         alt={alt}
@@ -30,6 +29,7 @@ function AssetCard({ name, alt, imgSrc }: AssetCardProps) {
         onError={() => setHasError(true)}
         onLoad={() => setHasError(false)}
       />
+      <p>{name}</p>
     </div>
   );
 }

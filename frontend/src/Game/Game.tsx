@@ -21,7 +21,7 @@ const Game: React.FC = () => {
   const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
   const trees = useRef(new Trees(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
-  const mushroom = useRef(new Mushroom(300, GROUND_Y - 140));
+  const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
   const bottles = useRef(new Bottles(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
 
@@ -46,7 +46,10 @@ const Game: React.FC = () => {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      mushroom.current.detectCollision(mysteryBlock.current, player.current);
+      mushroom.current.spawnMushroom(mysteryBlock.current, player.current);
+      mushroom.current.detectCollisionFromPlayer(player.current);
+
+      monster.current.detectCollisionFromPlayer(player.current);
 
       sky.current.render(ctx);
       ground.current.render(ctx);
