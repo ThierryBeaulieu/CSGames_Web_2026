@@ -5,9 +5,11 @@ CSGames_Web_2025
 
 ## Mise en contexte
 
-Pour cette épreuve, vous aurez à compléter deux sections distinctes : le backend (APIs REST) et le frontend (APIs REST).
+Pour cette épreuve, vous aurez à compléter deux sections distinctes : le backend et le frontend.
 
 Le but de cette épreuve est de concevoir un jeu rétro à l'intérieur de votre navigateur web.
+
+![Exemple du jeu qu'on souhaite obtenir](Documentation/enemy.gif)
 
 La responsabilité du frontend est de créer les différentes éléments du jeu en plus de faire la gestion des entrées utilisateurs. Une liste détaillée des mécaniques du jeu vous est fourni dans la section Frontend.
 

@@ -29,7 +29,7 @@ app.use(express.json({ limit: SIZE_LIMIT }));
 app.use(express.static(PUBLIC_PATH));
 
 app.use('/api/character', characterRoutes);
-//app.use('/api/background', backgroundRoutes);
+app.use('/api/background', backgroundRoutes);
 app.use('/api/scenery', sceneryRoutes);
 
 // Start server
