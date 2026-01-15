@@ -62,6 +62,6 @@ L'ensemble des routes suivantes vous permettrons d'avoir accès aux assets (spri
 
 ## Grille de correction
 
-Une grille de correction complète est disponible dans le fichier [CORRECTION.MD](./CORRECTION.MD).
+Une grille de correction complète est disponible dans le fichier [CORRECTION.md](./CORRECTION.md).
 
 
