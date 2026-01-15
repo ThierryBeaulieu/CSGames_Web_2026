@@ -44,7 +44,7 @@ Chacune de ces routes devrait retourner un PNG au serveur.
 
 ### Frontend
 
-Initialement, lorsque vous ouvrez l'application, vous devriez pouvoir utiliser le personnage principal. À ce stage, aucune image ne devrait être téléchargé. Vous devriez aussi être capable de pouvoir utiliser faire sauter le personnage.
+Initialement, lorsque vous ouvrez l'application, vous devriez pouvoir faire sauter le personnage principal. À ce stage, uniquement l'image du personnage principal devrait être fonctionnel.
 
 ![Résultat initial](Documentation/initial_state.png)
 
