@@ -46,6 +46,8 @@ const Game: React.FC = () => {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      mushroom.current.detectCollision(mysteryBlock.current, player.current);
+
       sky.current.render(ctx);
       ground.current.render(ctx);
       trees.current.render(ctx);

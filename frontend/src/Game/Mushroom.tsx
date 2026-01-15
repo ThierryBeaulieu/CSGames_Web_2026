@@ -1,3 +1,4 @@
+import { CollisionDetector } from './CollisionDetector';
 import { MUSHROOM_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
 import type { MysteryBlock } from './MysteryBlock';
@@ -30,6 +31,13 @@ export class Mushroom implements GameAsset {
 
   checkMysteryBoxState(mysteryBlock: MysteryBlock): void {
     if (mysteryBlock.isHit == true) {
+      this.isVisible = true;
+    }
+  }
+
+  detectCollision(mysteryBox: GameAsset, player: GameAsset) {
+    const collision = CollisionDetector.collisionDetected(player, mysteryBox);
+    if (collision) {
       this.isVisible = true;
     }
   }
