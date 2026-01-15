@@ -1,65 +1,52 @@
-# CSGames_Web_2025
-CSGames_Web_2025
-
 # Bienvenue à la compétition Web des CS Games 2025!
 
 ## Mise en contexte
 
 Pour cette épreuve, vous aurez à compléter deux sections distinctes : le backend et le frontend.
 
-Le but de cette épreuve est de concevoir un jeu rétro à l'intérieur de votre navigateur web.
+Le but de cette épreuve est de concevoir un jeu rétro à l'intérieur de votre navigateur web. Voici un exemple du résultat attendu.
 
-![Exemple du jeu qu'on souhaite obtenir](Documentation/enemy.gif)
+![Comportement d'un ennemie](Documentation/enemy.gif)
+![Mouvements du personnage principal](Documentation/mainCharacter.gif)
+![Utilisation de la boîte mystère](Documentation/mystery-box.gif)
 
-La responsabilité du frontend est de créer les différentes éléments du jeu en plus de faire la gestion des entrées utilisateurs. Une liste détaillée des mécaniques du jeu vous est fourni dans la section Frontend.
+![Getion des assets](Documentation/asset_state.png)
 
-Le backend quant à lui est responsable d'envoyer l'ensemble des assets au Frontend via un API REST.
-P
-## Résultat attendu
+
+### Backend
+
+La responsabilité du backend est de créer un ensemble de routes vous permettant d'avoir accès à l'ensemble des *assets* nécessaire à la création du jeu.
+
+L'ensemble des fichiers est présent dans le dossier `/database`.
+
+Voici l'ensemble de routes que vous devrez créer :
+
+Routes pour les personnages :
+
+- `GET /api/character/main-character`
+- `GET /api/character/monster`
+
+Routes pour les arrière-plans :
+- `GET /api/background/sky`
+- `GET /api/background/trees`
+- `GET /api/background/ground`
+
+Routes pour les paysages :
+- `GET /api/scenery/bottles`
+- `GET /api/scenery/mushroom`
+- `GET /api/scenery/mystery-block`
+
+
+Chacune de ces routes devrait retourner un PNG au serveur.
+
+    À noter : Il est techniquement possible d'utiliser directement les images dans le frontend. Si tel est le cas, aucun point de sera donné pour le backend.
+
 
 ### Frontend
-Dans cette parti vous allez implémenter différentes mécaniques de jeu. C'est à partir de l'ensemble des mécaniques de jeu que vous allez avoir implémenter que votre score sera comptabilisé. Une grille détaillée des mécaniques de jeux et des points donnés est fournie à la fin de cette section.
 
-#### Acquisition des assets
+Initialement, lorsque vous ouvrez l'application, vous devriez pouvoir utiliser le personnage principal. À ce stage, aucune image ne devrait être téléchargé. Vous devriez aussi être capable de pouvoir utiliser faire sauter le personnage.
 
-Dans ce projet, aucun fichier statique *asset (sprite)* ne sera fourni. Pour obtenir vos assets, vous devrez faire des requêtes au serveur à partir de ces APIs REST.
-
-Par exemple, pour acquérir l'asset du personnage principal, vous devrez effectuer la requête suivante au serveur :
-
-`GET /api/sprite/main-character`
-    
-Cette route devrait marcher par défaut et vous est offerte à guise d'exemple.
-
-L'ensemble des routes suivantes vous permettrons d'avoir accès aux assets (sprite) présent sur le serveur.
-
-🧒 `GET /api/sprite/main-character`
-
-👨 `GET /api/sprite/main-character/bigger`
-
-🌳 `GET /api/sprite/ground` 
-
-🏞️ `GET /api/sprite/background`
-
-😈 `GET /api/sprite/goomba` 
-
-🎁 `GET /api/sprite/mystery-box` 
-
-☄️ `GET /api/sprite/fire-ball`
-
-🍄 `GET /api/sprite/mushroom`
-
-    Note Importante 👉 Ces routes ne sont pas fonctionnelles par défaut (sauf main-character). Elle devront d'abord être implémentées dans la section serveur 🤷‍♂️  
-
-#### Mécaniques de jeux
-
-* Flèche de gauche ⬅️ et touche (A) : le personnage devrait aller à gauche
-* Flèche de droite ➡️ et touche (D) : le personnage devrait aller à droite
-* Flèche du haut ⬆️ et touche (W) : le personnage devrait sauter
-* Flèche du bas ⬇️ et touche (S) : le personnage devrait s'accroupir
-* Touche (F) : le personnage devrait lancer une boule de feu 🔥
-
-
-## Vue d'ensemble de l'architecture de l'application web
+![Résultat initial](Documentation/initial_state.png)
 
 
 ## Grille de correction
