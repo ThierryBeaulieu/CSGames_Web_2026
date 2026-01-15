@@ -12,7 +12,7 @@ Le but de cette épreuve est de concevoir un jeu rétro à l'intérieur de votre
 La responsabilité du frontend est de créer les différentes éléments du jeu en plus de faire la gestion des entrées utilisateurs. Une liste détaillée des mécaniques du jeu vous est fourni dans la section Frontend.
 
 Le backend quant à lui est responsable d'envoyer l'ensemble des assets au Frontend via un API REST.
-
+P
 ## Résultat attendu
 
 ### Frontend
@@ -57,9 +57,11 @@ L'ensemble des routes suivantes vous permettrons d'avoir accès aux assets (spri
 * Touche (F) : le personnage devrait lancer une boule de feu 🔥
 
 
-### Backend
-
-
 ## Vue d'ensemble de l'architecture de l'application web
+
+
+## Grille de correction
+
+Une grille de correction complète est disponible dans le fichier [CORRECTION.MD](./CORRECTION.MD).
 
 
