@@ -1,6 +1,9 @@
 import path from 'node:path';
-import { SpriteResult } from './spriteResult';
 import { readFile } from 'node:fs/promises';
+
+export interface SpriteResult {
+  buffer: Buffer;
+}
 
 export class SpriteReader {
   async readPNG(fileName: string): Promise<SpriteResult> {
