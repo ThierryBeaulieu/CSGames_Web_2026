@@ -1,4 +1,4 @@
-import { MAIN_CHARACTER_SPRITE_URL } from './Constants';
+import { GROUND_Y, MAIN_CHARACTER_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
 
 export class Player implements GameAsset {
@@ -14,13 +14,11 @@ export class Player implements GameAsset {
   direction: string = 'right' as 'left' | 'right';
 
   gravity: number;
-  groundY: number;
 
   isBigger: boolean = false;
 
-  constructor(gravity: number, groundY: number) {
+  constructor(gravity: number) {
     this.gravity = gravity;
-    this.groundY = groundY;
 
     this.sprite = new Image();
     this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
@@ -49,8 +47,8 @@ export class Player implements GameAsset {
     this.y += this.vy;
 
     // Ground collision
-    if (this.y + this.height > this.groundY) {
-      this.y = this.groundY - this.height;
+    if (this.y + this.height > GROUND_Y) {
+      this.y = GROUND_Y - this.height;
       this.vy = 0;
       this.onGround = true;
     }

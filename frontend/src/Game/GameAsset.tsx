@@ -1,5 +1,5 @@
 export interface GameAsset {
-  sprite: HTMLImageElement;
+  sprite: HTMLImageElement | null;
   x: number;
   y: number;
   width: number;
