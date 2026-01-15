@@ -22,6 +22,10 @@ class SpriteService {
   async getMysteryBlock(): Promise<SpriteResult> {
     return await this.spriteReader.readGIF('mystery-block');
   }
+
+  async getMushroom(): Promise<SpriteResult> {
+    return await this.spriteReader.readPNG('mushroom');
+  }
 }
 
 export default SpriteService;

@@ -45,9 +45,9 @@ function AssetsLoaded() {
           imgSrc='http://localhost:5020/api/sprite/mystery-block'
         />
         <AssetCard
-          name='enemy'
-          alt='enemy not loaded'
-          imgSrc='http://localhost:5020/api/sprite/enemy'
+          name='mushroom'
+          alt='mushroom not loaded'
+          imgSrc='http://localhost:5020/api/sprite/mushroom'
         />
       </div>
     </>

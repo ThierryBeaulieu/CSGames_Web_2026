@@ -7,12 +7,14 @@ const DEFAULT_HEIGHT = 400;
 const BACKGROUND_SPRITE_URL = 'http://localhost:5020/api/sprite/background';
 const MYSTERY_BLOCK_SPRITE_URL = 'http://localhost:5020/api/sprite/mystery-block';
 const MAIN_CHARACTER_SPRITE_URL = 'http://localhost:5020/api/sprite/main-character';
+const MUSHROOM_SPRITE_URL = 'http://localhost:5020/api/sprite/mushroom';
 
 export {
   GRAVITY,
   GROUND_Y,
   DEFAULT_WIDTH,
   DEFAULT_HEIGHT,
+  MUSHROOM_SPRITE_URL,
   BACKGROUND_SPRITE_URL,
   MYSTERY_BLOCK_SPRITE_URL,
   MAIN_CHARACTER_SPRITE_URL,
