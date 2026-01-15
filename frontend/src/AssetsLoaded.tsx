@@ -49,6 +49,11 @@ function AssetsLoaded() {
           alt='mushroom not loaded'
           imgSrc='http://localhost:5020/api/sprite/mushroom'
         />
+        <AssetCard
+          name='monster'
+          alt='monster not loaded'
+          imgSrc='http://localhost:5020/api/sprite/monster'
+        />
       </div>
     </>
   );

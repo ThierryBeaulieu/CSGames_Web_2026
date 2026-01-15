@@ -19,7 +19,6 @@ export class MysteryBlock implements GameAsset {
     this.sprite.src = MYSTERY_BLOCK_SPRITE_URL;
   }
 
-  // Mystery block doesn't react to input directly
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
     return;
@@ -41,9 +40,6 @@ export class MysteryBlock implements GameAsset {
       horizontalOverlap && playerTop <= blockBottom && playerBottom > blockBottom && player.vy < 0;
 
     if (hitFromBelow) {
-      if (this.isHit == 0) {
-        console.log('Mushroom');
-      }
       player.vy = 2;
       this.isHit++;
       console.log('Mystery block hit!');

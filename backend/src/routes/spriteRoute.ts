@@ -46,4 +46,14 @@ router.get('/mushroom', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/monster', async (req: Request, res: Response) => {
+  try {
+    const background = await spriteService.getMonster();
+    res.setHeader('Content-Type', 'image/png');
+    res.send(background.buffer);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
+});
+
 export default router;

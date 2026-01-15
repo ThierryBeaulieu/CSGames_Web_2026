@@ -4,6 +4,7 @@ import { DEFAULT_HEIGHT, DEFAULT_WIDTH, GRAVITY, GROUND_Y } from './Constants';
 import { Player } from './Player';
 import { MysteryBlock } from './MysteryBlock';
 import { Mushroom } from './Mushroom';
+import { Monster } from './Monster';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -16,6 +17,7 @@ const Game: React.FC = () => {
   const background = useRef(new Background(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(300, GROUND_Y - 140));
+  const monster = useRef(new Monster(700, GROUND_Y - 40));
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -44,6 +46,7 @@ const Game: React.FC = () => {
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);
       player.current.render(ctx);
+      monster.current.render(ctx);
 
       requestAnimationFrame(gameLoop);
     };
