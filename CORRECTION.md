@@ -2,32 +2,32 @@
 
 
 ## Frontend
-| **Item**        | **Description**                                                                                          | **Points** |
-| --------------- | -------------------------------------------------------------------------------------------------------- | :--------: |
-| **Characters**  |                                                                                                          |            |
-| Main Character  | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
-|                 | Move the character to the right using the right arrow ➡️                                                  |     1      |
-|                 | Move the character to the left using the left arrow ⬅️                                                    |     1      |
-|                 | Make the character jump using the up arrow ⬆️                                                             |     1      |
-|                 | Flip the sprite according to the direction that the character looks at                                   |     1      |
-| Monster         | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
-|                 | When the player collides with the monster, the monster should disappear                                  |     1      |
-|                 | The monster should walk back and forth on the ground                                                     |     1      |
-| **Background**  |                                                                                                          |            |
-| Sky             | Use the sprite from the server instead of the placeholders                                               |     1      |
-| Ground          | Use the sprite from the server instead of the placeholders                                               |     1      |
-| Trees           | Use the sprite from the server instead of the placeholders                                               |     1      |
-| **Scenery**     |                                                                                                          |            |
-| Bottles         | Insert the sprites of the bottles in the game. The bottles should appear in front of the character.      |     1      |
-| Mystery Box     | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
-|                 | When the character collides with the mystery box, a mushroom should appear on screen. It can be anywhere |     1      |
-| Mushroom        | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
-|                 | When the player collides with the mushroom, it should disappear                                          |     1      |
-| **Asset State** |                                                                                                          |            |
-|                 | Create a section to display the assets correctly loaded and the ones that are not loaded                 |     1      |
-|                 | For each asset, have the asset being displayed and the name of the asset                                 |     1      |
-|                 | When an asset is not loaded, display a red border. Otherwise display a green border.                     |     1      |
-| **Total**       | **0**                                                                                                    |   **19**   |
+| **Item**             | **Description**                                                                                          | **Points** |
+| -------------------- | -------------------------------------------------------------------------------------------------------- | :--------: |
+| **Characters**       |                                                                                                          |            |
+| Main Character       | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
+|                      | Move the character to the right using the right arrow ➡️                                                  |     1      |
+|                      | Move the character to the left using the left arrow ⬅️                                                    |     1      |
+|                      | Make the character jump using the up arrow ⬆️                                                             |     1      |
+|                      | Flip the sprite according to the direction that the character looks at                                   |     1      |
+| Monster              | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
+|                      | When the player collides with the monster, the monster should disappear                                  |     1      |
+|                      | The monster should walk back and forth on the ground                                                     |     1      |
+| **Background**       |                                                                                                          |            |
+| Sky                  | Use the sprite from the server instead of the placeholders                                               |     1      |
+| Ground               | Use the sprite from the server instead of the placeholders                                               |     1      |
+| Trees                | Use the sprite from the server instead of the placeholders                                               |     1      |
+| **Scenery**          |                                                                                                          |            |
+| Bottles              | Insert the sprites of the bottles in the game. The bottles should appear in front of the character.      |     1      |
+| Mystery Box          | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
+|                      | When the character collides with the mystery box, a mushroom should appear on screen. It can be anywhere |     1      |
+| Mushroom             | Use the sprite from the server instead of the placeholder rectangle                                      |     1      |
+|                      | When the player collides with the mushroom, it should disappear                                          |     1      |
+| **Asset Management** |                                                                                                          |            |
+|                      | Create a section to display the assets correctly loaded and the ones that are not loaded                 |     1      |
+|                      | For each asset, have the asset being displayed and the name of the asset                                 |     1      |
+|                      | When an asset is not loaded, display a red border. Otherwise display a green border.                     |     1      |
+| **Total**            | **0**                                                                                                    |   **19**   |
 
 ## Backend
 | **Item**       | **Description**                                                        | **Points** |
