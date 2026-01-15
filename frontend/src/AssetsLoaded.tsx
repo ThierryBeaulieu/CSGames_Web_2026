@@ -1,5 +1,15 @@
 import { useState } from 'react';
 import './AssetsLoaded.css';
+import {
+  BOTTLES_SPRITE_URL,
+  GROUND_SPRITE_URL,
+  MAIN_CHARACTER_SPRITE_URL,
+  MONSTER_SPRITE_URL,
+  MUSHROOM_SPRITE_URL,
+  MYSTERY_BLOCK_SPRITE_URL,
+  SKY_SPRITE_URL,
+  TREES_SPRITE_URL,
+} from './Game/Constants';
 
 type AssetCardProps = {
   name: string;
@@ -32,41 +42,19 @@ function AssetsLoaded() {
         <AssetCard
           name='main-character'
           alt='main-character not loaded'
-          imgSrc='http://localhost:5020/api/sprite/main-character'
+          imgSrc={MAIN_CHARACTER_SPRITE_URL}
         />
-        <AssetCard
-          name='ground'
-          alt='ground not loaded'
-          imgSrc='http://localhost:5020/api/sprite/ground'
-        />
-        <AssetCard
-          name='trees'
-          alt='trees not loaded'
-          imgSrc='http://localhost:5020/api/sprite/trees'
-        />
-
-        <AssetCard
-          name='bottles'
-          alt='bottles not loaded'
-          imgSrc='http://localhost:5020/api/sprite/bottles'
-        />
-
-        <AssetCard name='sky' alt='sky not loaded' imgSrc='http://localhost:5020/api/sprite/sky' />
+        <AssetCard name='ground' alt='ground not loaded' imgSrc={GROUND_SPRITE_URL} />
+        <AssetCard name='trees' alt='trees not loaded' imgSrc={TREES_SPRITE_URL} />
+        <AssetCard name='bottles' alt='bottles not loaded' imgSrc={BOTTLES_SPRITE_URL} />
+        <AssetCard name='sky' alt='sky not loaded' imgSrc={SKY_SPRITE_URL} />
         <AssetCard
           name='mystery-block'
           alt='mystery-block not loaded'
-          imgSrc='http://localhost:5020/api/sprite/mystery-block'
+          imgSrc={MYSTERY_BLOCK_SPRITE_URL}
         />
-        <AssetCard
-          name='mushroom'
-          alt='mushroom not loaded'
-          imgSrc='http://localhost:5020/api/sprite/mushroom'
-        />
-        <AssetCard
-          name='monster'
-          alt='monster not loaded'
-          imgSrc='http://localhost:5020/api/sprite/monster'
-        />
+        <AssetCard name='mushroom' alt='mushroom not loaded' imgSrc={MUSHROOM_SPRITE_URL} />
+        <AssetCard name='monster' alt='monster not loaded' imgSrc={MONSTER_SPRITE_URL} />
       </div>
     </>
   );

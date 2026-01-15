@@ -4,14 +4,16 @@ const GROUND_Y = 340;
 const DEFAULT_WIDTH = 800;
 const DEFAULT_HEIGHT = 400;
 
-const SKY_SPRITE_URL = 'http://localhost:5020/api/sprite/sky';
-const TREES_SPRITE_URL = 'http://localhost:5020/api/sprite/trees';
-const GROUND_SPRITE_URL = 'http://localhost:5020/api/sprite/ground';
-const BOTTLES_SPRITE_URL = 'http://localhost:5020/api/sprite/bottles';
-const MONSTER_SPRITE_URL = 'http://localhost:5020/api/sprite/monster';
-const MUSHROOM_SPRITE_URL = 'http://localhost:5020/api/sprite/mushroom';
-const MYSTERY_BLOCK_SPRITE_URL = 'http://localhost:5020/api/sprite/mystery-block';
-const MAIN_CHARACTER_SPRITE_URL = 'http://localhost:5020/api/sprite/main-character';
+const SKY_SPRITE_URL            = 'http://localhost:5020/api/background/sky';
+const TREES_SPRITE_URL          = 'http://localhost:5020/api/background/trees';
+const GROUND_SPRITE_URL         = 'http://localhost:5020/api/background/ground';
+
+const MAIN_CHARACTER_SPRITE_URL = 'http://localhost:5020/api/character/main-character';
+const MONSTER_SPRITE_URL        = 'http://localhost:5020/api/character/monster';
+
+const BOTTLES_SPRITE_URL        = 'http://localhost:5020/api/scenery/bottles';
+const MUSHROOM_SPRITE_URL       = 'http://localhost:5020/api/scenery/mushroom';
+const MYSTERY_BLOCK_SPRITE_URL  = 'http://localhost:5020/api/scenery/mystery-block';
 
 export {
   GRAVITY,
