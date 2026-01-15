@@ -11,7 +11,6 @@ export class Player implements GameAsset {
 
   vy: number = 0;
   onGround: boolean = false;
-  direction: string = 'right' as 'left' | 'right';
 
   gravity: number;
 
@@ -25,17 +24,6 @@ export class Player implements GameAsset {
   }
 
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
-    // Horizontal movement + direction
-    if (keys.current['ArrowLeft']) {
-      this.x -= 3;
-      this.direction = 'left';
-    }
-
-    if (keys.current['ArrowRight']) {
-      this.x += 3;
-      this.direction = 'right';
-    }
-
     // Jump
     if (keys.current['ArrowUp'] && this.onGround) {
       this.vy = -12;
@@ -56,19 +44,8 @@ export class Player implements GameAsset {
 
   render(ctx: CanvasRenderingContext2D): void {
     try {
-      ctx.save();
-
-      if (this.direction === 'left') {
-        ctx.scale(-1, 1);
-        ctx.drawImage(this.sprite, -this.x - this.width, this.y, this.width, this.height);
-      } else {
-        //console.log(this.sprite);
-        ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
-      }
-
-      ctx.restore();
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
+      ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+    } catch {
       ctx.fillStyle = 'red';
       ctx.fillRect(this.x, this.y, this.width, this.height);
     }
