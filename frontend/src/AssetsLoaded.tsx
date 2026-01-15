@@ -54,6 +54,11 @@ function AssetsLoaded() {
           alt='monster not loaded'
           imgSrc='http://localhost:5020/api/sprite/monster'
         />
+        <AssetCard
+          name='main character bigger'
+          alt='main character bigger not loaded'
+          imgSrc='http://localhost:5020/api/sprite/main-character/bigger'
+        />
       </div>
     </>
   );

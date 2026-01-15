@@ -16,6 +16,16 @@ router.get('/main-character', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/main-character/bigger', async (req: Request, res: Response) => {
+  try {
+    const background = await spriteService.getBigCharacter();
+    res.setHeader('Content-Type', 'image/png');
+    res.send(background.buffer);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
+});
+
 router.get('/background', async (req: Request, res: Response) => {
   try {
     const background = await spriteService.getBackground();

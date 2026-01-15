@@ -40,6 +40,8 @@ const Game: React.FC = () => {
       mysteryBlock.current.checkHitFromBelow(player.current);
       mushroom.current.checkMysteryBoxState(mysteryBlock.current);
       player.current.checkMonsterCollision(monster.current);
+      player.current.checkMysteryBoxCollision(mysteryBlock.current);
+      player.current.checkMushroomCollision(mushroom.current, mysteryBlock.current);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 

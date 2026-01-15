@@ -29,7 +29,7 @@ export class Mushroom implements GameAsset {
   }
 
   checkMysteryBoxState(mysteryBlock: MysteryBlock): void {
-    if (mysteryBlock.isHit >= 1) {
+    if (mysteryBlock.isHit == true) {
       this.isVisible = true;
     }
   }

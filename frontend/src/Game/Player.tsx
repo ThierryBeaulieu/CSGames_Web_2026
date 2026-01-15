@@ -1,10 +1,14 @@
+import { MAIN_CHARACTER_BIGGER_SPRITE_URL, MAIN_CHARACTER_SPRITE_URL } from './Constants';
 import type { GameAsset } from './GameAsset';
 import type { Monster } from './Monster';
-
-const MAIN_CHARACTER_SPRITE_URL = 'http://localhost:5020/api/sprite/main-character';
+import type { Mushroom } from './Mushroom';
+import type { MysteryBlock } from './MysteryBlock';
 
 export class Player implements GameAsset {
   sprite: HTMLImageElement;
+  biggerSprite: HTMLImageElement;
+  smallerSprite: HTMLImageElement;
+
   x: number = 50;
   y: number = 0;
   width: number = 40;
@@ -17,12 +21,20 @@ export class Player implements GameAsset {
   gravity: number;
   groundY: number;
 
+  isBigger: boolean = false;
+
   constructor(gravity: number, groundY: number) {
     this.gravity = gravity;
     this.groundY = groundY;
 
     this.sprite = new Image();
     this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
+
+    this.smallerSprite = new Image();
+    this.smallerSprite.src = MAIN_CHARACTER_SPRITE_URL;
+
+    this.biggerSprite = new Image();
+    this.biggerSprite.src = MAIN_CHARACTER_BIGGER_SPRITE_URL;
   }
 
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
@@ -76,8 +88,66 @@ export class Player implements GameAsset {
         this.onGround = false;
       } else {
         // ❌ Side or bottom collision
-        console.log('dead');
+        this.sprite.src = this.smallerSprite.src;
+        this.width = 40;
+        this.height = 50;
       }
+    }
+  }
+
+  checkMysteryBoxCollision(box: GameAsset) {
+    // AABB collision
+    if (
+      this.x < box.x + box.width &&
+      this.x + this.width > box.x &&
+      this.y < box.y + box.height &&
+      this.y + this.height > box.y
+    ) {
+      const playerBottom = this.y + this.height;
+      const boxTop = box.y;
+
+      const fallingOnBox = this.vy > 0 && playerBottom - this.vy <= boxTop + 5;
+
+      if (fallingOnBox) {
+        // ✅ Stand on top of the box
+        this.y = boxTop - this.height;
+        this.vy = 0;
+        this.onGround = true;
+      } else {
+        // ❌ Hit from side or bottom → block movement
+        if (this.vy < 0) {
+          // head hit (Mario-style)
+          this.vy = 0;
+          this.y = box.y + box.height;
+        } else {
+          // side collision
+          if (this.x < box.x) {
+            this.x = box.x - this.width;
+          } else {
+            this.x = box.x + box.width;
+          }
+        }
+      }
+    }
+  }
+
+  checkMushroomCollision(mushroom: Mushroom, mysteryBlock: MysteryBlock) {
+    if (!mushroom.isVisible) return;
+
+    if (
+      this.x < mushroom.x + mushroom.width &&
+      this.x + this.width > mushroom.x &&
+      this.y < mushroom.y + mushroom.height &&
+      this.y + this.height > mushroom.y
+    ) {
+      mushroom.isVisible = false;
+      mysteryBlock.isHit = false;
+
+      const oldHeight = this.height;
+      this.sprite.src = this.biggerSprite.src;
+      this.width = 40;
+      this.height = 80;
+      this.y -= this.height - oldHeight;
     }
   }
 

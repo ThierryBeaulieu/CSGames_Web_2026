@@ -6,9 +6,11 @@ const DEFAULT_HEIGHT = 400;
 
 const MONSTER_SPRITE_URL = 'http://localhost:5020/api/sprite/monster';
 const MUSHROOM_SPRITE_URL = 'http://localhost:5020/api/sprite/mushroom';
+const FIREBALL_SPRITE_URL = 'http://localhost:5020/api/sprite/fireball';
 const BACKGROUND_SPRITE_URL = 'http://localhost:5020/api/sprite/background';
 const MYSTERY_BLOCK_SPRITE_URL = 'http://localhost:5020/api/sprite/mystery-block';
 const MAIN_CHARACTER_SPRITE_URL = 'http://localhost:5020/api/sprite/main-character';
+const MAIN_CHARACTER_BIGGER_SPRITE_URL = 'http://localhost:5020/api/sprite/main-character/bigger';
 
 export {
   GRAVITY,
@@ -16,8 +18,10 @@ export {
   DEFAULT_WIDTH,
   DEFAULT_HEIGHT,
   MONSTER_SPRITE_URL,
+  FIREBALL_SPRITE_URL,
   MUSHROOM_SPRITE_URL,
   BACKGROUND_SPRITE_URL,
   MYSTERY_BLOCK_SPRITE_URL,
   MAIN_CHARACTER_SPRITE_URL,
+  MAIN_CHARACTER_BIGGER_SPRITE_URL,
 };

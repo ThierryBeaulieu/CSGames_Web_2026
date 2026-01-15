@@ -9,7 +9,7 @@ export class MysteryBlock implements GameAsset {
   width: number = 40;
   height: number = 40;
 
-  isHit: number = 0;
+  isHit: boolean = false;
 
   constructor(x: number, y: number) {
     this.x = x;
@@ -40,9 +40,7 @@ export class MysteryBlock implements GameAsset {
       horizontalOverlap && playerTop <= blockBottom && playerBottom > blockBottom && player.vy < 0;
 
     if (hitFromBelow) {
-      player.vy = 2;
-      this.isHit++;
-      console.log('Mystery block hit!');
+      this.isHit = true;
     }
   }
 

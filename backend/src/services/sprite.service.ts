@@ -15,6 +15,10 @@ class SpriteService {
     return await this.spriteGenerator.generate(playerPixels);
   }
 
+  async getBigCharacter(): Promise<SpriteResult> {
+    return await this.spriteReader.readPNG('big-character');
+  }
+
   async getBackground(): Promise<SpriteResult> {
     return await this.spriteReader.readPNG('background');
   }
