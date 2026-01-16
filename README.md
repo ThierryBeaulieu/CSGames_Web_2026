@@ -1,5 +1,7 @@
 # Bienvenue à la compétition Web des CS Games 2025!
 
+The english version of the README is available [here](./README_EN.md).
+
 ## Mise en contexte
 
 Pour cette épreuve, vous aurez à compléter deux sections distinctes : le backend et le frontend.
@@ -46,7 +48,7 @@ Initialement, lorsque vous ouvrez l'application, vous devriez pouvoir faire saut
 
 Pour la suite, vous devrez implémenter un ensemble de mécanique de jeu.
 
-Une grille de correction complète est disponible dans le fichier [CORRECTION.md](./CORRECTION.md).
+Une grille de correction complète est disponible dans le fichier [CORRECTION_FR.md](./CORRECTION_FR.md).
 
 Le frontend se divise en 4 sections : les personnages, les arrière-plans, les paysages et les fonctionnalités de gestion des assets. La section suivante décrit chaque fonctionnalité à implémenter.
 
@@ -77,7 +79,7 @@ Lorsque le personnage entre en collision avec le champignon, celui-ci devrait di
 
 #### Asset Management
 
-Vous devez dans cette section créer des composants permettant à un utilisateur du jeu de voir quels sont les assets qui ont pu être téléchargés par le serveur et les assets qui n'ont pas pu l'être. (Voir grille de correction pour plus de détails [CORRECTION.md](./CORRECTION.md).)
+Vous devez dans cette section créer des composants permettant à un utilisateur du jeu de voir quels sont les assets qui ont pu être téléchargés par le serveur et les assets qui n'ont pas pu l'être. (Voir grille de correction pour plus de détails [CORRECTION_FR.md](./CORRECTION_FR.md).)
 
 Voici un exemple :
 
@@ -86,4 +88,4 @@ Voici un exemple :
 
 ## Grille de correction
 
-Une grille de correction complète est disponible dans le fichier [CORRECTION.md](./CORRECTION.md).
+Une grille de correction complète est disponible dans le fichier [CORRECTION_FR.md](./CORRECTION_FR.md).
