@@ -1,15 +1,15 @@
 import { Router, Request, Response } from 'express';
 import HTTP_STATUS from '../utils/http';
-import SpriteService from '../services/sprite.service';
+import AssetService from '../services/asset.service';
 
 const router = Router();
-const spriteService = new SpriteService();
+const spriteService = new AssetService();
 
 router.get('/bottles', async (req: Request, res: Response) => {
   try {
     const bottles = await spriteService.getBottles();
     res.setHeader('Content-Type', 'image/png');
-    res.send(bottles.buffer);
+    res.send(bottles);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }
@@ -19,7 +19,7 @@ router.get('/mystery-block', async (req: Request, res: Response) => {
   try {
     const background = await spriteService.getMysteryBlock();
     res.setHeader('Content-Type', 'image/png');
-    res.send(background.buffer);
+    res.send(background);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }
@@ -29,7 +29,7 @@ router.get('/mushroom', async (req: Request, res: Response) => {
   try {
     const mushroom = await spriteService.getMushroom();
     res.setHeader('Content-Type', 'image/png');
-    res.send(mushroom.buffer);
+    res.send(mushroom);
   } catch (error) {
     res.status(HTTP_STATUS.SERVER_ERROR).json(error);
   }

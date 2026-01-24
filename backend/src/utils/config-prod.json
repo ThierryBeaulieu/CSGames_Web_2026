@@ -1,0 +1,7 @@
+{
+  "DeployedInProd": true,
+  "MongoDB": {
+    "username": "thierryabeaulieu_db_user",
+    "password": "ejTFDunSpdsBfKcm"
+  }
+}
