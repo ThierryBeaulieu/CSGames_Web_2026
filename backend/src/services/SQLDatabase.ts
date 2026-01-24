@@ -1,25 +1,23 @@
 import { neon } from '@neondatabase/serverless';
-import fs from 'fs/promises';
 import IDatabase from './IDatabase';
 import Compressor from '../utils/Compressor';
 import config from '../utils/config';
 import { FileSystemDatabase } from './FileSystemDatabase';
 
-export class NeonSQLDatabase implements IDatabase {
-  private static instance: NeonSQLDatabase;
+export class SQLDatabase implements IDatabase {
+  private static instance: SQLDatabase;
   private sql = neon(config.PostgreSQL);
 
   private constructor() {}
 
-  static getInstance(): NeonSQLDatabase {
-    if (!NeonSQLDatabase.instance) {
-      NeonSQLDatabase.instance = new NeonSQLDatabase();
+  static getInstance(): SQLDatabase {
+    if (!SQLDatabase.instance) {
+      SQLDatabase.instance = new SQLDatabase();
     }
-    return NeonSQLDatabase.instance;
+    return SQLDatabase.instance;
   }
 
   private async populateDB() {
-    console.log('populate DB called');
     await this.sql`
       CREATE TABLE IF NOT EXISTS assets (
         id SERIAL PRIMARY KEY,
@@ -53,7 +51,7 @@ export class NeonSQLDatabase implements IDatabase {
   }
 
   async getAsset(fileName: string): Promise<Buffer> {
-    await this.connect();
+    //await this.connect();
     const result = await this.sql`SELECT * FROM assets WHERE name = ${fileName} LIMIT 1`;
 
     if (!result[0]) throw new Error(`Asset not found: ${fileName}`);

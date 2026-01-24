@@ -1,7 +1,7 @@
 import { FileSystemDatabase } from './FileSystemDatabase';
 import IDatabase from './IDatabase';
 import { MongoDBDatabase } from './MongoDBDatabase';
-import { NeonSQLDatabase } from './NeonSQLDatabase';
+import { SQLDatabase } from './SQLDatabase';
 
 export interface Databases {
   [details: string]: IDatabase;
@@ -13,7 +13,7 @@ class AssetService {
   constructor() {
     this.database['FileSystem'] = new FileSystemDatabase();
     this.database['MongoDB'] = MongoDBDatabase.getInstance();
-    this.database['PostgreSQL'] = NeonSQLDatabase.getInstance();
+    this.database['PostgreSQL'] = SQLDatabase.getInstance();
   }
 
   // Characters
