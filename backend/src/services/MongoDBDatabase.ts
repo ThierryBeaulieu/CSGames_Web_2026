@@ -89,8 +89,6 @@ export class MongoDBDatabase implements IDatabase {
       throw new Error(`Asset ${fileName} not found`);
     }
 
-    console.log('Fetched Data correctly from mongoDB');
-
     return Compressor.decompress(asset.data);
   }
 

@@ -5,6 +5,8 @@ import AssetService from '../services/asset.service';
 const router = Router();
 const spriteService = new AssetService();
 
+// Character Router
+
 router.get('/main-character', async (req: Request, res: Response) => {
   try {
     const mainCharacter = await spriteService.getMainCharacter();

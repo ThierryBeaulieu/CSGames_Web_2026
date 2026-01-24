@@ -3,21 +3,13 @@ import HTTP_STATUS from '../utils/http';
 import AssetService from '../services/asset.service';
 
 const router = Router();
-const spriteService = new AssetService();
+const assetService = new AssetService();
 
-router.get('/bottles', async (req: Request, res: Response) => {
-  try {
-    const bottles = await spriteService.getBottles();
-    res.setHeader('Content-Type', 'image/png');
-    res.send(bottles);
-  } catch (error) {
-    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
-  }
-});
+// Scenery Router
 
 router.get('/mystery-block', async (req: Request, res: Response) => {
   try {
-    const background = await spriteService.getMysteryBlock();
+    const background = await assetService.getMysteryBlock();
     res.setHeader('Content-Type', 'image/png');
     res.send(background);
   } catch (error) {
@@ -27,7 +19,7 @@ router.get('/mystery-block', async (req: Request, res: Response) => {
 
 router.get('/mushroom', async (req: Request, res: Response) => {
   try {
-    const mushroom = await spriteService.getMushroom();
+    const mushroom = await assetService.getMushroom();
     res.setHeader('Content-Type', 'image/png');
     res.send(mushroom);
   } catch (error) {

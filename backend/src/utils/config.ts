@@ -9,6 +9,7 @@ export interface MongoDBConfig {
 export interface Config {
   DeployedInProd: boolean;
   MongoDB: MongoDBConfig;
+  PostgreSQL: string;
 }
 
 const raw = readFileSync(join(__dirname, 'config-prod.json'), 'utf-8');
