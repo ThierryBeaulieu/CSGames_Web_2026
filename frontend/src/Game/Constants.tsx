@@ -1,6 +1,8 @@
 const GRAVITY = 0.5;
 const GROUND_Y = 340;
 
+const MAP_WIDTH = 1600;
+
 const DEFAULT_WIDTH = 800;
 const DEFAULT_HEIGHT = 400;
 
@@ -24,6 +26,7 @@ const MYSTERY_BLOCK_SPRITE_URL = 'http://localhost:5020/api/scenery/mystery-bloc
 export {
   GRAVITY,
   GROUND_Y,
+  MAP_WIDTH,
   DEFAULT_WIDTH,
   DEFAULT_HEIGHT,
   TREES_SPRITE_URL,

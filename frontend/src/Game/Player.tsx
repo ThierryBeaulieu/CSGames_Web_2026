@@ -19,7 +19,6 @@ export class Player implements GameAsset {
   gravity: number;
   isBigger: boolean = false;
 
-  // 👇 constructor is private
   private constructor(gravity: number) {
     this.gravity = gravity;
 
@@ -29,7 +28,6 @@ export class Player implements GameAsset {
     this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
   }
 
-  // 👇 public access point
   static getInstance(gravity: number = 0.8): Player {
     if (!Player.instance) {
       Player.instance = new Player(gravity);
