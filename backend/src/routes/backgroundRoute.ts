@@ -17,9 +17,29 @@ router.get('/ground', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/sky', async (req: Request, res: Response) => {
+router.get('/light-sky', async (req: Request, res: Response) => {
   try {
-    const sky = await assetService.getSky();
+    const sky = await assetService.getLightSky();
+    res.setHeader('Content-Type', 'image/png');
+    res.send(sky);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
+});
+
+router.get('/dark-sky', async (req: Request, res: Response) => {
+  try {
+    const sky = await assetService.getDarkSky();
+    res.setHeader('Content-Type', 'image/png');
+    res.send(sky);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
+});
+
+router.get('/cloudy-sky', async (req: Request, res: Response) => {
+  try {
+    const sky = await assetService.getCloudySky();
     res.setHeader('Content-Type', 'image/png');
     res.send(sky);
   } catch (error) {

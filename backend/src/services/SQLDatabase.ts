@@ -28,22 +28,23 @@ export class SQLDatabase implements IDatabase {
       )
     `;
 
-    const existing = await this.sql`SELECT COUNT(*) FROM assets`;
-    if (Number(existing[0].count) === 0) {
-      const fsDatabase = new FileSystemDatabase();
+    const fsDatabase = new FileSystemDatabase();
 
-      const mushroom: Buffer = await fsDatabase.getAsset('mushroom');
-      const mysteryBlock: Buffer = await fsDatabase.getAsset('mystery-block');
+    const mushroom: Buffer = await fsDatabase.getAsset('mushroom');
+    const mysteryBlock: Buffer = await fsDatabase.getAsset('mystery-block');
+    const clouds: Buffer = await fsDatabase.getAsset('clouds');
 
-      const mushroomCompressed: string = Compressor.compress(mushroom);
-      const monsterCompressed: string = Compressor.compress(mysteryBlock);
-      await this.sql`
+    const mushroomCompressed: string = Compressor.compress(mushroom);
+    const monsterCompressed: string = Compressor.compress(mysteryBlock);
+    const cloudsCompressed: string = Compressor.compress(clouds);
+
+    await this.sql`
         INSERT INTO assets (name, data, content_type) VALUES
         ('mushroom', ${Buffer.from(mushroomCompressed, 'base64')}, 'image/png'),
-        ('mystery-block', ${Buffer.from(monsterCompressed, 'base64')}, 'image/png')
+        ('mystery-block', ${Buffer.from(monsterCompressed, 'base64')}, 'image/png'),
+        ('clouds', ${Buffer.from(cloudsCompressed, 'base64')}, 'image/png')
         ON CONFLICT (name) DO NOTHING
       `;
-    }
   }
 
   private async connect() {
@@ -51,7 +52,7 @@ export class SQLDatabase implements IDatabase {
   }
 
   async getAsset(fileName: string): Promise<Buffer> {
-    //await this.connect();
+    await this.connect();
     const result = await this.sql`SELECT * FROM assets WHERE name = ${fileName} LIMIT 1`;
 
     if (!result[0]) throw new Error(`Asset not found: ${fileName}`);

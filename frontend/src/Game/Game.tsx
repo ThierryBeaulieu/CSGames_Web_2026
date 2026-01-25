@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Sky } from './Sky';
+import { DarkSky } from './DarkSky';
 import { DEFAULT_HEIGHT, DEFAULT_WIDTH, GRAVITY, GROUND_Y } from './Constants';
 import { Player } from './Player';
 import { MysteryBlock } from './MysteryBlock';
@@ -9,6 +9,9 @@ import { Ground } from './Ground';
 import { Trees } from './Trees';
 import { Bottles } from './Bottles';
 import { Camera } from './Camera';
+import { LightSky } from './LightSky';
+import { CloudySky } from './CloudySky';
+import { Clouds } from './Clouds';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -21,7 +24,12 @@ const Game: React.FC = () => {
 
   const camera = useRef(Camera.getInstance());
 
-  const sky = useRef(new Sky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const darkSky = useRef(new DarkSky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const lightSky = useRef(new LightSky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const cloudySky = useRef(new CloudySky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+
+  const clouds = useRef(new Clouds(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+
   const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT));
   const trees = useRef(new Trees(DEFAULT_WIDTH, DEFAULT_HEIGHT));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
@@ -57,7 +65,12 @@ const Game: React.FC = () => {
 
       monster.current.detectCollisionFromPlayer(player.current);
 
-      sky.current.render(ctx);
+      darkSky.current.render(ctx);
+      lightSky.current.render(ctx);
+      cloudySky.current.render(ctx);
+
+      clouds.current.render(ctx);
+
       ground.current.render(ctx);
       trees.current.render(ctx);
       mushroom.current.render(ctx);

@@ -26,8 +26,16 @@ class AssetService {
   }
 
   // Background
-  async getSky(): Promise<Buffer> {
-    return await this.database['FileSystem'].getAsset('sky');
+  async getLightSky(): Promise<Buffer> {
+    return await this.database['FileSystem'].getAsset('light_sky');
+  }
+
+  async getDarkSky(): Promise<Buffer> {
+    return await this.database['FileSystem'].getAsset('dark_sky');
+  }
+
+  async getCloudySky(): Promise<Buffer> {
+    return await this.database['FileSystem'].getAsset('cloudy_sky');
   }
 
   async getGround(): Promise<Buffer> {
@@ -38,17 +46,21 @@ class AssetService {
     return await this.database['FileSystem'].getAsset('trees');
   }
 
-  // Scenery
   async getBottles(): Promise<Buffer> {
     return await this.database['FileSystem'].getAsset('bottles');
   }
 
+  // Scenery
   async getMysteryBlock(): Promise<Buffer> {
     return await this.database['PostgreSQL'].getAsset('mystery-block');
   }
 
   async getMushroom(): Promise<Buffer> {
     return await this.database['PostgreSQL'].getAsset('mushroom');
+  }
+
+  async getClouds(): Promise<Buffer> {
+    return await this.database['PostgreSQL'].getAsset('clouds');
   }
 }
 

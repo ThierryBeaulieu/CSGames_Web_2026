@@ -27,4 +27,14 @@ router.get('/mushroom', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/clouds', async (req: Request, res: Response) => {
+  try {
+    const mushroom = await assetService.getClouds();
+    res.setHeader('Content-Type', 'image/png');
+    res.send(mushroom);
+  } catch (error) {
+    res.status(HTTP_STATUS.SERVER_ERROR).json(error);
+  }
+});
+
 export default router;

@@ -7,8 +7,11 @@ import {
   MONSTER_SPRITE_URL,
   MUSHROOM_SPRITE_URL,
   MYSTERY_BLOCK_SPRITE_URL,
-  SKY_SPRITE_URL,
+  DARK_SKY_SPRITE_URL,
+  LIGHT_SKY_SPRITE_URL,
+  CLOUDY_SKY_SPRITE_URL,
   TREES_SPRITE_URL,
+  CLOUDS_SPRITE_URL,
 } from './Game/Constants';
 
 type AssetCardProps = {
@@ -47,7 +50,10 @@ function AssetsLoaded() {
         <AssetCard name='ground' alt='ground not loaded' imgSrc={GROUND_SPRITE_URL} />
         <AssetCard name='trees' alt='trees not loaded' imgSrc={TREES_SPRITE_URL} />
         <AssetCard name='bottles' alt='bottles not loaded' imgSrc={BOTTLES_SPRITE_URL} />
-        <AssetCard name='sky' alt='sky not loaded' imgSrc={SKY_SPRITE_URL} />
+        <AssetCard name='clouds' alt='clouds not loaded' imgSrc={CLOUDS_SPRITE_URL} />
+        <AssetCard name='dark sky' alt='dark sky not loaded' imgSrc={DARK_SKY_SPRITE_URL} />
+        <AssetCard name='light sky' alt='light sky not loaded' imgSrc={LIGHT_SKY_SPRITE_URL} />
+        <AssetCard name='cloudy sky' alt='cloudy sky not loaded' imgSrc={CLOUDY_SKY_SPRITE_URL} />
         <AssetCard
           name='mystery-block'
           alt='mystery-block not loaded'

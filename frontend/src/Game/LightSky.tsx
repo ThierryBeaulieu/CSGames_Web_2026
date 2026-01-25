@@ -1,8 +1,8 @@
 import { Camera } from './Camera';
-import { SKY_SPRITE_URL } from './Constants';
+import { LIGHT_SKY_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
-export class Sky implements GameAsset {
+export class LightSky implements GameAsset {
   sprite: HTMLImageElement;
 
   width: number;
@@ -16,10 +16,10 @@ export class Sky implements GameAsset {
     this.width = width;
     this.height = height;
 
-    this.pos = { x: 0, y: 0 };
+    this.pos = { x: 0, y: -60 };
 
     this.sprite = new Image();
-    this.sprite.src = SKY_SPRITE_URL;
+    this.sprite.src = LIGHT_SKY_SPRITE_URL;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;
