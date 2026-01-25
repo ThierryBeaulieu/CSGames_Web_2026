@@ -1,11 +1,10 @@
 import { CollisionDetector } from './CollisionDetector';
 import { MONSTER_SPRITE_URL } from './Constants';
-import type { GameAsset } from './GameAsset';
+import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Monster implements GameAsset {
   sprite: HTMLImageElement;
-  x: number;
-  y: number;
+  pos: Coordinates;
   width: number = 40;
   height: number = 40;
 
@@ -13,8 +12,7 @@ export class Monster implements GameAsset {
   isAlive: boolean = true;
 
   constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
+    this.pos = { x: x, y: y };
 
     this.sprite = new Image();
     this.sprite.src = MONSTER_SPRITE_URL;
@@ -32,16 +30,16 @@ export class Monster implements GameAsset {
   render(ctx: CanvasRenderingContext2D): void {
     if (!this.isAlive) return;
 
-    this.x += this.speed;
+    this.pos.x += this.speed;
 
-    if (this.x <= 0 || this.x + this.width >= ctx.canvas.width) {
+    if (this.pos.x <= 0 || this.pos.x + this.width >= ctx.canvas.width) {
       this.speed = -this.speed;
     }
     try {
-      ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
     } catch {
       ctx.fillStyle = 'brown';
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
     }
   }
 }

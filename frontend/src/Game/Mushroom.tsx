@@ -1,20 +1,18 @@
 import { CollisionDetector } from './CollisionDetector';
 import { MUSHROOM_SPRITE_URL } from './Constants';
-import type { GameAsset } from './GameAsset';
+import type { Coordinates, GameAsset } from './GameAsset';
 import type { MysteryBlock } from './MysteryBlock';
 
 export class Mushroom implements GameAsset {
   sprite: HTMLImageElement;
-  x: number;
-  y: number;
+  pos: Coordinates;
   width: number = 40;
   height: number = 40;
 
   isVisible: boolean = false;
 
   constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
+    this.pos = { x: x, y: y };
 
     this.sprite = new Image();
     this.sprite.src = MUSHROOM_SPRITE_URL;
@@ -49,11 +47,11 @@ export class Mushroom implements GameAsset {
     if (!this.isVisible) return;
 
     try {
-      ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch {
       ctx.fillStyle = 'orange';
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
     }
   }
 }

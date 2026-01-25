@@ -1,21 +1,22 @@
 import { SKY_SPRITE_URL } from './Constants';
-import type { GameAsset } from './GameAsset';
+import type { Coordinates, GameAsset } from './GameAsset';
+import { Player } from './Player';
 
 export class Sky implements GameAsset {
   sprite: HTMLImageElement;
-  x: number = 0;
-  y: number = 0;
+
   width: number;
   height: number;
 
-  groundY: number;
+  pos: Coordinates;
 
-  constructor(width: number, height: number, groundY: number) {
-    this.groundY = groundY;
+  constructor(width: number, height: number) {
     this.sprite = new Image();
 
     this.width = width;
     this.height = height;
+
+    this.pos = { x: 0, y: 0 };
 
     this.sprite = new Image();
     this.sprite.src = SKY_SPRITE_URL;
@@ -33,7 +34,9 @@ export class Sky implements GameAsset {
 
   render(ctx: CanvasRenderingContext2D): void {
     try {
-      ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
+      const player = Player.getInstance();
+
+      ctx.drawImage(this.sprite, -player.pos.x, 0, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       ctx.fillStyle = '#5c94fc';

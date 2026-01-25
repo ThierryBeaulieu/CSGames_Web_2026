@@ -1,10 +1,11 @@
 import { BOTTLES_SPRITE_URL } from './Constants';
-import type { GameAsset } from './GameAsset';
+import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Bottles implements GameAsset {
   sprite: HTMLImageElement;
-  x: number = 0;
-  y: number = 0;
+
+  pos: Coordinates;
+
   width: number;
   height: number;
 
@@ -13,6 +14,8 @@ export class Bottles implements GameAsset {
   constructor(width: number, height: number, groundY: number) {
     this.groundY = groundY;
     this.sprite = new Image();
+
+    this.pos = { x: 0, y: 0 };
 
     this.width = width;
     this.height = height;

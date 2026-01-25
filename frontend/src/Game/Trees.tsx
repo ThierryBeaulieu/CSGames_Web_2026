@@ -1,18 +1,18 @@
 import { TREES_SPRITE_URL } from './Constants';
-import type { GameAsset } from './GameAsset';
+import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Trees implements GameAsset {
   sprite: HTMLImageElement;
-  x: number = 0;
-  y: number = 0;
+
+  pos: Coordinates;
+
   width: number;
   height: number;
 
-  groundY: number;
-
-  constructor(width: number, height: number, groundY: number) {
-    this.groundY = groundY;
+  constructor(width: number, height: number) {
     this.sprite = new Image();
+
+    this.pos = { x: 0, y: 0 };
 
     this.width = width;
     this.height = height;

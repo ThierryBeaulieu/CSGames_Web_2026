@@ -1,7 +1,11 @@
-export interface GameAsset {
-  sprite: HTMLImageElement;
+export interface Coordinates {
   x: number;
   y: number;
+}
+
+export interface GameAsset {
+  sprite: HTMLImageElement;
+  pos: Coordinates;
   width: number;
   height: number;
 

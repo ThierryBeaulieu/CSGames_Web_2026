@@ -1,18 +1,17 @@
 import { MYSTERY_BLOCK_SPRITE_URL } from './Constants';
-import type { GameAsset } from './GameAsset';
+import type { Coordinates, GameAsset } from './GameAsset';
 
 export class MysteryBlock implements GameAsset {
   sprite: HTMLImageElement;
-  x: number;
-  y: number;
+
+  pos: Coordinates;
   width: number = 40;
   height: number = 40;
 
   isHit: boolean = false;
 
   constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
+    this.pos = { x: x, y: y };
 
     this.sprite = new Image();
     this.sprite.src = MYSTERY_BLOCK_SPRITE_URL;
@@ -25,10 +24,10 @@ export class MysteryBlock implements GameAsset {
 
   render(ctx: CanvasRenderingContext2D): void {
     try {
-      ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
     } catch {
       ctx.fillStyle = 'gold';
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
     }
   }
 }

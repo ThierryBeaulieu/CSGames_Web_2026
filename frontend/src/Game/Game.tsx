@@ -16,10 +16,11 @@ const Game: React.FC = () => {
   /*
    * All game assets are declared here
    */
-  const player = useRef(new Player(GRAVITY, GROUND_Y));
-  const sky = useRef(new Sky(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
-  const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
-  const trees = useRef(new Trees(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
+  const player = useRef(Player.getInstance(GRAVITY));
+
+  const sky = useRef(new Sky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const trees = useRef(new Trees(DEFAULT_WIDTH, DEFAULT_HEIGHT));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
