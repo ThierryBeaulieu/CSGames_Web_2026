@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import { CLOUDY_SKY_SPRITE_URL } from './Constants';
+import cloudySkyAsset from '../assets/cloudy_sky.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class CloudySky implements GameAsset {
@@ -19,7 +19,7 @@ export class CloudySky implements GameAsset {
     this.pos = { x: 0, y: 0 };
 
     this.sprite = new Image();
-    this.sprite.src = CLOUDY_SKY_SPRITE_URL;
+    this.sprite.src = cloudySkyAsset;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;

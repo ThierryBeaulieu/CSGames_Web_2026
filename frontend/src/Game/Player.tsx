@@ -1,5 +1,6 @@
 import { Camera } from './Camera';
-import { GROUND_Y, MAIN_CHARACTER_SPRITE_URL } from './Constants';
+import mainCharacterImg from '../assets/main-character.png';
+import { GROUND_Y } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Player implements GameAsset {
@@ -25,7 +26,7 @@ export class Player implements GameAsset {
     this.pos = { x: 50, y: 0 };
 
     this.sprite = new Image();
-    this.sprite.src = MAIN_CHARACTER_SPRITE_URL;
+    this.sprite.src = mainCharacterImg;
   }
 
   static getInstance(gravity: number = 0.8): Player {

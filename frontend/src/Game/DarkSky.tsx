@@ -1,5 +1,6 @@
 import { Camera } from './Camera';
-import { DARK_SKY_SPRITE_URL } from './Constants';
+import darkSkyAsset from '../assets/dark_sky.png';
+
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class DarkSky implements GameAsset {
@@ -19,7 +20,7 @@ export class DarkSky implements GameAsset {
     this.pos = { x: 0, y: 0 };
 
     this.sprite = new Image();
-    this.sprite.src = DARK_SKY_SPRITE_URL;
+    this.sprite.src = darkSkyAsset;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;

@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import { CLOUDS_SPRITE_URL } from './Constants';
+import cloudsAsset from '../assets/clouds.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Clouds implements GameAsset {
@@ -19,7 +19,7 @@ export class Clouds implements GameAsset {
     this.pos = { x: 0, y: 0 };
 
     this.sprite = new Image();
-    this.sprite.src = CLOUDS_SPRITE_URL;
+    this.sprite.src = cloudsAsset;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;

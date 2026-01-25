@@ -1,5 +1,6 @@
 import { Camera } from './Camera';
-import { MYSTERY_BLOCK_SPRITE_URL } from './Constants';
+
+import mysteryBlockAsset from '../assets/mystery-block.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class MysteryBlock implements GameAsset {
@@ -15,7 +16,7 @@ export class MysteryBlock implements GameAsset {
     this.pos = { x: x, y: y };
 
     this.sprite = new Image();
-    this.sprite.src = MYSTERY_BLOCK_SPRITE_URL;
+    this.sprite.src = mysteryBlockAsset;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

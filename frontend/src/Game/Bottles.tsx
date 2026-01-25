@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import { BOTTLES_SPRITE_URL } from './Constants';
+import bottlesAsset from '../assets/bottles.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Bottles implements GameAsset {
@@ -22,7 +22,7 @@ export class Bottles implements GameAsset {
     this.height = height;
 
     this.sprite = new Image();
-    this.sprite.src = BOTTLES_SPRITE_URL;
+    this.sprite.src = bottlesAsset;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;

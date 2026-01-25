@@ -1,6 +1,6 @@
 import { Camera } from './Camera';
 import { CollisionDetector } from './CollisionDetector';
-import { MONSTER_SPRITE_URL } from './Constants';
+import monsterAsset from '../assets/monster.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Monster implements GameAsset {
@@ -16,7 +16,7 @@ export class Monster implements GameAsset {
     this.pos = { x: x, y: y };
 
     this.sprite = new Image();
-    this.sprite.src = MONSTER_SPRITE_URL;
+    this.sprite.src = monsterAsset;
   }
 
   handleUserInput(): void {}

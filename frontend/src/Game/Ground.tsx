@@ -1,5 +1,6 @@
 import { Camera } from './Camera';
-import { GROUND_Y, GROUND_SPRITE_URL } from './Constants';
+import { GROUND_Y } from './Constants';
+import groundAsset from '../assets/ground.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Ground implements GameAsset {
@@ -17,7 +18,7 @@ export class Ground implements GameAsset {
     this.pos = { x: 0, y: 0 };
 
     this.sprite = new Image();
-    this.sprite.src = GROUND_SPRITE_URL;
+    this.sprite.src = groundAsset;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;

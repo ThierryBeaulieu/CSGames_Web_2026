@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import { TREES_SPRITE_URL } from './Constants';
+import treesAsset from '../assets/trees.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Trees implements GameAsset {
@@ -19,7 +19,7 @@ export class Trees implements GameAsset {
     this.height = height;
 
     this.sprite = new Image();
-    this.sprite.src = TREES_SPRITE_URL;
+    this.sprite.src = treesAsset;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;

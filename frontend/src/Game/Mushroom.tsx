@@ -1,6 +1,6 @@
 import { Camera } from './Camera';
 import { CollisionDetector } from './CollisionDetector';
-import { MUSHROOM_SPRITE_URL } from './Constants';
+import mushroomAsset from '../assets/mushroom.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 import type { MysteryBlock } from './MysteryBlock';
 
@@ -16,7 +16,7 @@ export class Mushroom implements GameAsset {
     this.pos = { x: x, y: y };
 
     this.sprite = new Image();
-    this.sprite.src = MUSHROOM_SPRITE_URL;
+    this.sprite.src = mushroomAsset;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
