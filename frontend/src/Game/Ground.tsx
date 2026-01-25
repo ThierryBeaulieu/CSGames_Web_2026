@@ -1,6 +1,5 @@
 import { GROUND_Y, GROUND_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
-import { Player } from './Player';
 
 export class Ground implements GameAsset {
   sprite: HTMLImageElement;
@@ -32,9 +31,7 @@ export class Ground implements GameAsset {
 
   render(ctx: CanvasRenderingContext2D): void {
     try {
-      const player = Player.getInstance();
-
-      ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
+      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       // Ground

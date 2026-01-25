@@ -36,7 +36,7 @@ export class Bottles implements GameAsset {
 
   render(ctx: CanvasRenderingContext2D): void {
     try {
-      ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
+      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       /* empty */

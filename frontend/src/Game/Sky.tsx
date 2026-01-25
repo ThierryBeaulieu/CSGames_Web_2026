@@ -1,6 +1,5 @@
 import { SKY_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
-import { Player } from './Player';
 
 export class Sky implements GameAsset {
   sprite: HTMLImageElement;
@@ -34,9 +33,7 @@ export class Sky implements GameAsset {
 
   render(ctx: CanvasRenderingContext2D): void {
     try {
-      const player = Player.getInstance();
-
-      ctx.drawImage(this.sprite, -player.pos.x, 0, this.width, this.height);
+      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       ctx.fillStyle = '#5c94fc';
