@@ -76,7 +76,7 @@ const Game: React.FC = () => {
       clouds.current.render(ctx);
       cloudySky.current.render(ctx);
 
-      treesConfig.current.trees.forEach((tree) => {
+      treesConfig.current.gameTrees.forEach((tree) => {
         tree.render(ctx);
       });
 

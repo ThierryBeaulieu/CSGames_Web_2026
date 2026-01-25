@@ -36,7 +36,7 @@ const AssetEditor: React.FC = () => {
       lightSky.current.render(ctx);
       cloudySky.current.render(ctx);
 
-      treesConfig.current.trees.forEach((tree) => {
+      treesConfig.current.editorTrees.forEach((tree) => {
         tree.render(ctx);
       });
 
