@@ -11,6 +11,12 @@ function NavBar() {
               Page de jeu
             </Link>
           </li>
+
+          <li>
+            <Link to='/management' className='nav-link'>
+              Management
+            </Link>
+          </li>
           <li>
             <Link to='/assets' className='nav-link'>
               Assets

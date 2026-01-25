@@ -1,4 +1,4 @@
-import { DEFAULT_WIDTH, MAP_WIDTH} from './Constants';
+import { CANVAS_WIDTH, MAP_WIDTH } from './Constants';
 import { Player } from './Player';
 
 export class Camera {
@@ -17,18 +17,18 @@ export class Camera {
   }
 
   follow(player: Player) {
-    const leftMargin = DEFAULT_WIDTH * 0.3;
-    const rightMargin = DEFAULT_WIDTH * 0.3;
+    const leftMargin = CANVAS_WIDTH * 0.3;
+    const rightMargin = CANVAS_WIDTH * 0.3;
 
     const playerScreenX = player.pos.x - this.x;
 
-    if (playerScreenX > DEFAULT_WIDTH - rightMargin) {
-      this.x = player.pos.x - (DEFAULT_WIDTH - rightMargin);
+    if (playerScreenX > CANVAS_WIDTH - rightMargin) {
+      this.x = player.pos.x - (CANVAS_WIDTH - rightMargin);
     } else if (playerScreenX < leftMargin) {
       this.x = player.pos.x - leftMargin;
     }
 
-    const maxX = MAP_WIDTH - DEFAULT_WIDTH;
+    const maxX = MAP_WIDTH - CANVAS_WIDTH;
     this.x = Math.max(0, Math.min(this.x, maxX));
   }
 

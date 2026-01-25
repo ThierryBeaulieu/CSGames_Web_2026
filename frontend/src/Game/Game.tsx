@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { DarkSky } from './DarkSky';
-import { DEFAULT_HEIGHT, DEFAULT_WIDTH, GRAVITY, GROUND_Y } from './Constants';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, GRAVITY, GROUND_Y } from './Constants';
 import { Player } from './Player';
 import { MysteryBlock } from './MysteryBlock';
 import { Mushroom } from './Mushroom';
@@ -9,6 +8,7 @@ import { Ground } from './Ground';
 import { Trees } from './Trees';
 import { Bottles } from './Bottles';
 import { Camera } from './Camera';
+import { DarkSky } from './DarkSky';
 import { LightSky } from './LightSky';
 import { CloudySky } from './CloudySky';
 import { Clouds } from './Clouds';
@@ -25,19 +25,19 @@ const Game: React.FC = () => {
 
   const camera = useRef(Camera.getInstance());
 
-  const darkSky = useRef(new DarkSky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
-  const lightSky = useRef(new LightSky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
-  const cloudySky = useRef(new CloudySky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const darkSky = useRef(new DarkSky(CANVAS_WIDTH, CANVAS_HEIGHT));
+  const lightSky = useRef(new LightSky(CANVAS_WIDTH, CANVAS_HEIGHT));
+  const cloudySky = useRef(new CloudySky(CANVAS_WIDTH, CANVAS_HEIGHT));
 
-  const clouds = useRef(new Clouds(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const clouds = useRef(new Clouds(CANVAS_WIDTH, CANVAS_HEIGHT));
 
-  const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT));
-  const trees = useRef(new Trees(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+  const ground = useRef(new Ground(CANVAS_WIDTH, CANVAS_HEIGHT));
+  const trees = useRef(new Trees(CANVAS_WIDTH, CANVAS_HEIGHT));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
   const surpriseBlock = useRef(new SurpriseBlock(600, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
-  const bottles = useRef(new Bottles(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
+  const bottles = useRef(new Bottles(CANVAS_WIDTH, CANVAS_HEIGHT, GROUND_Y));
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -96,8 +96,8 @@ const Game: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      width={DEFAULT_WIDTH}
-      height={DEFAULT_HEIGHT}
+      width={CANVAS_WIDTH}
+      height={CANVAS_HEIGHT}
       style={{ border: '1px solid black' }}
     />
   );
