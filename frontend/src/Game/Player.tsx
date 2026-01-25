@@ -1,3 +1,4 @@
+import { Camera } from './Camera';
 import { GROUND_Y, MAIN_CHARACTER_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
@@ -67,14 +68,17 @@ export class Player implements GameAsset {
   }
 
   render(ctx: CanvasRenderingContext2D): void {
+    const camera = Camera.getInstance();
+    const screenX = camera.worldToScreenX(this.pos.x);
+
     try {
       ctx.save();
 
       if (this.direction === 'left') {
         ctx.scale(-1, 1);
-        ctx.drawImage(this.sprite, -this.pos.x - this.width, this.pos.y, this.width, this.height);
+        ctx.drawImage(this.sprite, -screenX - this.width, this.pos.y, this.width, this.height);
       } else {
-        ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
+        ctx.drawImage(this.sprite, screenX, this.pos.y, this.width, this.height);
       }
 
       ctx.restore();

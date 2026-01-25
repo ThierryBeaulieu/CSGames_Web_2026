@@ -1,3 +1,4 @@
+import { Camera } from './Camera';
 import { TREES_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
@@ -32,8 +33,16 @@ export class Trees implements GameAsset {
   }
 
   render(ctx: CanvasRenderingContext2D): void {
+    const camera = Camera.getInstance();
+
     try {
-      ctx.drawImage(this.sprite, 0, 0, this.width, this.height);
+      ctx.drawImage(
+        this.sprite,
+        camera.worldToScreenX(this.pos.x),
+        this.pos.y,
+        this.width,
+        this.height,
+      );
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       /* empty */

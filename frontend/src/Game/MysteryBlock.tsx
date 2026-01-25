@@ -1,3 +1,4 @@
+import { Camera } from './Camera';
 import { MYSTERY_BLOCK_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
@@ -23,8 +24,16 @@ export class MysteryBlock implements GameAsset {
   }
 
   render(ctx: CanvasRenderingContext2D): void {
+    const camera = Camera.getInstance();
+
     try {
-      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
+      ctx.drawImage(
+        this.sprite,
+        camera.worldToScreenX(this.pos.x),
+        this.pos.y,
+        this.width,
+        this.height,
+      );
     } catch {
       ctx.fillStyle = 'gold';
       ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);

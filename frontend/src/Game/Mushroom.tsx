@@ -1,3 +1,4 @@
+import { Camera } from './Camera';
 import { CollisionDetector } from './CollisionDetector';
 import { MUSHROOM_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
@@ -46,8 +47,16 @@ export class Mushroom implements GameAsset {
   render(ctx: CanvasRenderingContext2D): void {
     if (!this.isVisible) return;
 
+    const camera = Camera.getInstance();
+
     try {
-      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
+      ctx.drawImage(
+        this.sprite,
+        camera.worldToScreenX(this.pos.x),
+        this.pos.y,
+        this.width,
+        this.height,
+      );
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch {
       ctx.fillStyle = 'orange';

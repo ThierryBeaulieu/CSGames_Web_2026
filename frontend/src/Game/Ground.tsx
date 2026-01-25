@@ -1,3 +1,4 @@
+import { Camera } from './Camera';
 import { GROUND_Y, GROUND_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
@@ -31,10 +32,16 @@ export class Ground implements GameAsset {
 
   render(ctx: CanvasRenderingContext2D): void {
     try {
-      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      // Ground
+      const camera = Camera.getInstance();
+
+      ctx.drawImage(
+        this.sprite,
+        camera.worldToScreenX(this.pos.x),
+        this.pos.y,
+        this.width,
+        this.height,
+      );
+    } catch {
       ctx.fillStyle = '#cf510c';
       ctx.fillRect(0, GROUND_Y, this.width, this.height - GROUND_Y);
     }

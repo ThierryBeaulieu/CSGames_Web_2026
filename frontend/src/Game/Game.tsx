@@ -8,6 +8,7 @@ import { Monster } from './Monster';
 import { Ground } from './Ground';
 import { Trees } from './Trees';
 import { Bottles } from './Bottles';
+import { Camera } from './Camera';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -17,6 +18,8 @@ const Game: React.FC = () => {
    * All game assets are declared here
    */
   const player = useRef(Player.getInstance(GRAVITY));
+
+  const camera = useRef(Camera.getInstance());
 
   const sky = useRef(new Sky(DEFAULT_WIDTH, DEFAULT_HEIGHT));
   const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT));
@@ -44,6 +47,8 @@ const Game: React.FC = () => {
 
     const gameLoop = () => {
       player.current.handleUserInput(keys);
+
+      camera.current.follow(player.current);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 

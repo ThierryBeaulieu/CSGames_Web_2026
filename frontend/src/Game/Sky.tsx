@@ -1,3 +1,4 @@
+import { Camera } from './Camera';
 import { SKY_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
@@ -32,8 +33,10 @@ export class Sky implements GameAsset {
   }
 
   render(ctx: CanvasRenderingContext2D): void {
+    const camera = Camera.getInstance();
+
     try {
-      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
+      ctx.drawImage(this.sprite, -camera.x * 0.2, this.pos.y, this.width, this.height);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       ctx.fillStyle = '#5c94fc';

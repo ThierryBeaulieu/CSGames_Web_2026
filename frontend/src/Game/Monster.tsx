@@ -1,3 +1,4 @@
+import { Camera } from './Camera';
 import { CollisionDetector } from './CollisionDetector';
 import { MONSTER_SPRITE_URL } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
@@ -30,13 +31,21 @@ export class Monster implements GameAsset {
   render(ctx: CanvasRenderingContext2D): void {
     if (!this.isAlive) return;
 
+    const camera = Camera.getInstance();
+
     this.pos.x += this.speed;
 
     if (this.pos.x <= 0 || this.pos.x + this.width >= ctx.canvas.width) {
       this.speed = -this.speed;
     }
     try {
-      ctx.drawImage(this.sprite, this.pos.x, this.pos.y, this.width, this.height);
+      ctx.drawImage(
+        this.sprite,
+        camera.worldToScreenX(this.pos.x),
+        this.pos.y,
+        this.width,
+        this.height,
+      );
     } catch {
       ctx.fillStyle = 'brown';
       ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
