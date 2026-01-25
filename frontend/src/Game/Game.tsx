@@ -5,7 +5,6 @@ import { MysteryBlock } from './MysteryBlock';
 import { Mushroom } from './Mushroom';
 import { Monster } from './Monster';
 import { Ground } from './Ground';
-import { Trees } from './Trees';
 import { Bottles } from './Bottles';
 import { Camera } from './Camera';
 import { DarkSky } from './DarkSky';
@@ -13,6 +12,7 @@ import { LightSky } from './LightSky';
 import { CloudySky } from './CloudySky';
 import { Clouds } from './Clouds';
 import { SurpriseBlock } from './SurpriseBlock';
+import { TreesConfig } from '../AssetManager/TreesConfig';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -32,12 +32,13 @@ const Game: React.FC = () => {
   const clouds = useRef(new Clouds(CANVAS_WIDTH, CANVAS_HEIGHT));
 
   const ground = useRef(new Ground(CANVAS_WIDTH, CANVAS_HEIGHT));
-  const trees = useRef(new Trees(CANVAS_WIDTH, CANVAS_HEIGHT));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
   const surpriseBlock = useRef(new SurpriseBlock(600, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
   const bottles = useRef(new Bottles(CANVAS_WIDTH, CANVAS_HEIGHT, GROUND_Y));
+
+  const treesConfig = useRef(TreesConfig.getInstance());
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -71,10 +72,14 @@ const Game: React.FC = () => {
       lightSky.current.render(ctx);
       cloudySky.current.render(ctx);
 
-      clouds.current.render(ctx);
-
       ground.current.render(ctx);
-      trees.current.render(ctx);
+      clouds.current.render(ctx);
+      cloudySky.current.render(ctx);
+
+      treesConfig.current.trees.forEach((tree) => {
+        tree.render(ctx);
+      });
+
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);
       surpriseBlock.current.render(ctx);

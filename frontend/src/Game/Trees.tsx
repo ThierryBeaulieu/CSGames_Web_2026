@@ -1,6 +1,10 @@
 import { Camera } from './Camera';
-import treesAsset from '../assets/scenery/trees/trees.png';
+import mediumPalm from '../assets/scenery/trees/medium-palm.png';
+import highPalm from '../assets/scenery/trees/high-palm.png';
+import largeTree from '../assets/scenery/trees/large-tree.png';
+
 import type { Coordinates, GameAsset } from './GameAsset';
+import { GROUND_Y } from './Constants';
 
 export class Trees implements GameAsset {
   sprite: HTMLImageElement;
@@ -10,16 +14,19 @@ export class Trees implements GameAsset {
   width: number;
   height: number;
 
-  constructor(width: number, height: number) {
+  groundY: number;
+
+  constructor(width: number, height: number, x: number, y: number, groundY: number, asset: string) {
+    this.groundY = groundY;
     this.sprite = new Image();
 
-    this.pos = { x: 0, y: 0 };
+    this.pos = { x: x, y: y };
 
     this.width = width;
     this.height = height;
 
     this.sprite = new Image();
-    this.sprite.src = treesAsset;
+    this.sprite.src = asset;
 
     this.sprite.onload = () => {
       this.width = this.sprite!.naturalWidth;
@@ -47,5 +54,29 @@ export class Trees implements GameAsset {
     } catch (error) {
       /* empty */
     }
+  }
+}
+
+export class LargeTree extends Trees {
+  constructor(x: number, y: number) {
+    const width = 58;
+    const height = 175;
+    super(width, height, x, y, GROUND_Y, largeTree);
+  }
+}
+
+export class HighPalm extends Trees {
+  constructor(x: number, y: number) {
+    const width = 96;
+    const height = 239;
+    super(width, height, x, y, GROUND_Y, highPalm);
+  }
+}
+
+export class MediumPalm extends Trees {
+  constructor(x: number, y: number) {
+    const width = 96;
+    const height = 188;
+    super(width, height, x, y, GROUND_Y, mediumPalm);
   }
 }

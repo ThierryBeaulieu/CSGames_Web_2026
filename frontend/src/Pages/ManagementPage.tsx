@@ -1,9 +1,9 @@
-import Management from '../Management/Management';
+import AssetEditor from '../AssetManager/AssetEditor';
 
 function ManagementPage() {
   return (
     <div>
-      <Management></Management>
+      <AssetEditor></AssetEditor>
     </div>
   );
 }

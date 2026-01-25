@@ -4,14 +4,17 @@ import { EditorGround } from './EditorGround';
 import { EditorDarkSky } from './EditorDarkSky';
 import { EditorLightSky } from './EditorLightSky';
 import { EditorCloudySky } from './EditorCloudySky';
+import { TreesConfig } from './TreesConfig';
 
-const Management: React.FC = () => {
+const AssetEditor: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const keys: React.RefObject<Record<string, boolean>> = useRef<Record<string, boolean>>({});
   const ground = useRef(new EditorGround(MAP_WIDTH, MAP_HEIGHT));
   const darkSky = useRef(new EditorDarkSky(MAP_WIDTH, MAP_HEIGHT));
   const lightSky = useRef(new EditorLightSky(MAP_WIDTH, MAP_HEIGHT));
   const cloudySky = useRef(new EditorCloudySky(MAP_WIDTH, MAP_HEIGHT));
+
+  const treesConfig = useRef(TreesConfig.getInstance());
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -32,6 +35,10 @@ const Management: React.FC = () => {
       darkSky.current.render(ctx);
       lightSky.current.render(ctx);
       cloudySky.current.render(ctx);
+
+      treesConfig.current.trees.forEach((tree) => {
+        tree.render(ctx);
+      });
 
       ground.current.render(ctx);
 
@@ -56,4 +63,4 @@ const Management: React.FC = () => {
   );
 };
 
-export default Management;
+export default AssetEditor;

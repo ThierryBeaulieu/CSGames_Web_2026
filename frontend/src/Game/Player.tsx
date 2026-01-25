@@ -4,7 +4,6 @@ import { GROUND_Y } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Player implements GameAsset {
-  // 👇 singleton instance
   private static instance: Player | null = null;
 
   sprite: HTMLImageElement;
