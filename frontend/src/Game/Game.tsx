@@ -12,6 +12,7 @@ import { Camera } from './Camera';
 import { LightSky } from './LightSky';
 import { CloudySky } from './CloudySky';
 import { Clouds } from './Clouds';
+import { SurpriseBlock } from './SurpriseBlock';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -33,6 +34,7 @@ const Game: React.FC = () => {
   const ground = useRef(new Ground(DEFAULT_WIDTH, DEFAULT_HEIGHT));
   const trees = useRef(new Trees(DEFAULT_WIDTH, DEFAULT_HEIGHT));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
+  const surpriseBlock = useRef(new SurpriseBlock(600, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
   const bottles = useRef(new Bottles(DEFAULT_WIDTH, DEFAULT_HEIGHT, GROUND_Y));
@@ -75,6 +77,7 @@ const Game: React.FC = () => {
       trees.current.render(ctx);
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);
+      surpriseBlock.current.render(ctx);
       player.current.render(ctx);
       monster.current.render(ctx);
       bottles.current.render(ctx);
