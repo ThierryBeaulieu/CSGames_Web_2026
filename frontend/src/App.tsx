@@ -1,13 +1,25 @@
+import { Route, Routes } from 'react-router-dom';
+import NavBar from './Components/NavBar';
 import './App.css';
-import AssetsLoaded from './AssetsLoaded';
-import Game from './Game/Game';
+import GamePage from './Pages/GamePage';
+import AssetsPage from './Pages/AssetsPage';
+import AssetPage from './Pages/AssetPage';
 
 function App() {
+  const routes = [
+    { path: '*', element: <GamePage /> },
+    { path: '/assets', element: <AssetsPage /> },
+    { path: '/assets/:id', element: <AssetPage /> },
+  ];
   return (
-    <>
-      <AssetsLoaded />
-      <Game />
-    </>
+    <div>
+      <NavBar />
+      <Routes>
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element} />
+        ))}
+      </Routes>
+    </div>
   );
 }
 
