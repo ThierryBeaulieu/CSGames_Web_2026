@@ -12,7 +12,7 @@ import {
   CLOUDY_SKY_SPRITE_URL,
   TREES_SPRITE_URL,
   CLOUDS_SPRITE_URL,
-} from './Game/Constants';
+} from '../Game/Constants';
 
 type AssetCardProps = {
   name: string;

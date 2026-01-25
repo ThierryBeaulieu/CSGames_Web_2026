@@ -1,5 +1,11 @@
+import AssetsLoaded from '../Components/AssetsLoaded';
+
 function AssetsPage() {
-  return <div>assetpage</div>;
+  return (
+    <div>
+      <AssetsLoaded />
+    </div>
+  );
 }
 
 export default AssetsPage;

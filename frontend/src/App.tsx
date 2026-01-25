@@ -1,9 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
 import NavBar from './Components/NavBar';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import GamePage from './Pages/GamePage';
 import AssetsPage from './Pages/AssetsPage';
 import AssetPage from './Pages/AssetPage';
+import './App.css';
 
 function App() {
   const routes = [
@@ -11,14 +11,17 @@ function App() {
     { path: '/assets', element: <AssetsPage /> },
     { path: '/assets/:id', element: <AssetPage /> },
   ];
+
   return (
-    <div>
+    <div className="app-container">
       <NavBar />
-      <Routes>
-        {routes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element} />
-        ))}
-      </Routes>
+      <div className="main-content">
+        <Routes>
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </div>
     </div>
   );
 }
