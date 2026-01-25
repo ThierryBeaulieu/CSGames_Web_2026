@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import cloudySkyAsset from '../assets/cloudy_sky.png';
+import cloudySkyAsset from '../assets/background/cloudy_sky.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class CloudySky implements GameAsset {

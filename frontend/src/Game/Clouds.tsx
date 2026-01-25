@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import cloudsAsset from '../assets/clouds.png';
+import cloudsAsset from '../assets/scenery/clouds/clouds.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Clouds implements GameAsset {

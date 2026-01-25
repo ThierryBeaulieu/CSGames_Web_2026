@@ -1,4 +1,4 @@
-import cloudySkyAsset from '../assets/cloudy_sky.png';
+import cloudySkyAsset from '../assets/background/cloudy_sky.png';
 import type { Coordinates, GameAsset } from '../Game/GameAsset';
 
 export class EditorCloudySky implements GameAsset {

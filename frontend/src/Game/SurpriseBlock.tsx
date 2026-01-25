@@ -1,6 +1,6 @@
 import { Camera } from './Camera';
 
-import surpriseBlock from '../assets/surprise-block.png';
+import surpriseBlock from '../assets/scenery/special/surprise-block.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class SurpriseBlock implements GameAsset {

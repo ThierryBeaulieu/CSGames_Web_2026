@@ -1,4 +1,4 @@
-import lightSkyAsset from '../assets/light_sky.png';
+import lightSkyAsset from '../assets/background/light_sky.png';
 import type { Coordinates, GameAsset } from '../Game/GameAsset';
 
 export class EditorLightSky implements GameAsset {

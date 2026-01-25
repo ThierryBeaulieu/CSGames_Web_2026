@@ -1,6 +1,6 @@
 import { Camera } from './Camera';
 import { CollisionDetector } from './CollisionDetector';
-import mushroomAsset from '../assets/mushroom.png';
+import mushroomAsset from '../assets/scenery/mushrooms/mushroom.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 import type { MysteryBlock } from './MysteryBlock';
 

@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import treesAsset from '../assets/trees.png';
+import treesAsset from '../assets/scenery/trees/trees.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Trees implements GameAsset {

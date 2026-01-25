@@ -1,6 +1,6 @@
 import { Camera } from './Camera';
 import { GROUND_Y } from './Constants';
-import groundAsset from '../assets/ground.png';
+import groundAsset from '../assets/background/ground.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Ground implements GameAsset {

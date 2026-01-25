@@ -1,6 +1,6 @@
 import { Camera } from './Camera';
 
-import mysteryBlockAsset from '../assets/mystery-block.png';
+import mysteryBlockAsset from '../assets/scenery/special/mystery-block.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class MysteryBlock implements GameAsset {

@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import bottlesAsset from '../assets/bottles.png';
+import bottlesAsset from '../assets/scenery/bottles/bottles.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Bottles implements GameAsset {

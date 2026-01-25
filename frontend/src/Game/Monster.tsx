@@ -1,6 +1,6 @@
 import { Camera } from './Camera';
 import { CollisionDetector } from './CollisionDetector';
-import monsterAsset from '../assets/monster.png';
+import monsterAsset from '../assets/characters/monster.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class Monster implements GameAsset {

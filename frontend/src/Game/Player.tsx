@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import mainCharacterImg from '../assets/main-character.png';
+import mainCharacterImg from '../assets/characters/main-character.png';
 import { GROUND_Y } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 

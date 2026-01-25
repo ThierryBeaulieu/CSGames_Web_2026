@@ -1,5 +1,5 @@
 import { GROUND_Y } from '../Game/Constants';
-import groundAsset from '../assets/ground.png';
+import groundAsset from '../assets/background/ground.png';
 import type { Coordinates, GameAsset } from '../Game/GameAsset';
 
 export class EditorGround implements GameAsset {

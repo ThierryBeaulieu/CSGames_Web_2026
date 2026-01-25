@@ -1,5 +1,5 @@
 import { Camera } from './Camera';
-import lightSkyAsset from '../assets/light_sky.png';
+import lightSkyAsset from '../assets/background/light_sky.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
 export class LightSky implements GameAsset {
@@ -16,7 +16,7 @@ export class LightSky implements GameAsset {
     this.width = width;
     this.height = height;
 
-    this.pos = { x: 0, y: -60 };
+    this.pos = { x: 0, y: 0 };
 
     this.sprite = new Image();
     this.sprite.src = lightSkyAsset;

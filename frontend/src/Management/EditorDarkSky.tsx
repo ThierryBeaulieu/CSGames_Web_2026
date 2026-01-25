@@ -1,4 +1,4 @@
-import darkSkyAsset from '../assets/dark_sky.png';
+import darkSkyAsset from '../assets/background/dark_sky.png';
 import type { Coordinates, GameAsset } from '../Game/GameAsset';
 
 export class EditorDarkSky implements GameAsset {
