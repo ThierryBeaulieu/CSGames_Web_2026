@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 import { useState } from 'react';
 import AssetEditor from '../AssetManager/AssetEditor';
 import { HighPalm, LargeTree, MediumPalm, type Trees } from '../Game/Trees';
@@ -66,12 +67,11 @@ function GameEditorPage() {
   };
 
   const randomizePropsPosition = () => {
-    const random = [50, 44, 21, 28, 180, 50, 44, 21, 28, 180];
-
     for (let i = 0; i < 10; i++) {
-      groundPropsConfig.groundProps[i].pos.x +=
-        (groundPropsConfig.groundProps[i].pos.x % 100) - random[i];
+      const value = Math.floor(Math.random() * 1200) + 1;
+      groundPropsConfig.groundProps[i].pos.x = value;
     }
+
     forceUpdate((n) => n + 1);
   };
 
