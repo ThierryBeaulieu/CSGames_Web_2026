@@ -3,8 +3,12 @@ import AssetEditor from '../AssetManager/AssetEditor';
 import { HighPalm, LargeTree, MediumPalm, type Trees } from '../Game/Trees';
 import { TreesConfig } from '../AssetManager/TreesConfig';
 import { Modal } from '../Components/Modal';
-import './GameEditorPage.css';
 import { GROUND_Y } from '../Game/Constants';
+import './GameEditorPage.css';
+
+import mediumPalm from '../assets/scenery/trees/medium-palm.png';
+import highPalm from '../assets/scenery/trees/high-palm.png';
+import largeTree from '../assets/scenery/trees/large-tree.png';
 
 function GameEditorPage() {
   const treesConfig = TreesConfig.getInstance();
@@ -49,6 +53,16 @@ function GameEditorPage() {
     forceUpdate((n) => n + 1);
   };
 
+  const getTreeType = (tree: Trees) => {
+    if (tree instanceof LargeTree) {
+      return largeTree;
+    } else if (tree instanceof MediumPalm) {
+      return mediumPalm;
+    } else if (tree instanceof HighPalm) {
+      return highPalm;
+    }
+  };
+
   return (
     <div>
       <AssetEditor />
@@ -63,11 +77,18 @@ function GameEditorPage() {
       </Modal>
 
       {treesConfig.gameTrees.map((tree: Trees, index: number) => (
-        <div key={index}>
-          <div id={index.toString()}>{`x: ${tree.pos.x}, y: ${tree.pos.y}`}</div>
-          <button onClick={() => moveTreeLeft(index)}>Move Left</button>
-          <button onClick={() => moveTreeRight(index)}>Move Right</button>
-          <button onClick={() => deleteTree(index)}>Delete Tree</button>
+        <div className='trees-layout' key={index}>
+          <img className='tree-img' src={getTreeType(tree)} />
+          <div className='tree-item' id={index.toString()}>{`x: ${tree.pos.x}`}</div>
+          <button className='tree-item' onClick={() => moveTreeLeft(index)}>
+            Move Left
+          </button>
+          <button className='tree-item' onClick={() => moveTreeRight(index)}>
+            Move Right
+          </button>
+          <button className='tree-item' onClick={() => deleteTree(index)}>
+            Delete Tree
+          </button>
         </div>
       ))}
       <button onClick={() => setModalOpen(!isModalOpen)}>AddTree</button>

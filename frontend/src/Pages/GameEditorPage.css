@@ -12,3 +12,34 @@
     align-items: center;
     margin-top: 20px;
 }
+
+.tree-img {
+    width: 20px;
+}
+
+.tree-wrapper {
+    width: min-content;
+    padding:20px;
+    padding-bottom: 10px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: red;
+}
+
+.trees-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    flex-direction: row;
+}
+
+.tree-item {
+    padding-left: 20px;
+    padding-right: 20px;
+}
