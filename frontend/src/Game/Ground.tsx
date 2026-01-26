@@ -9,6 +9,8 @@ export class Ground implements GameAsset {
   width: number;
   height: number;
 
+  useCamera: boolean = true;
+
   constructor(width: number, height: number) {
     this.sprite = new Image();
 
@@ -37,7 +39,7 @@ export class Ground implements GameAsset {
 
       ctx.drawImage(
         this.sprite,
-        camera.worldToScreenX(this.pos.x),
+        this.useCamera ? camera.worldToScreenX(this.pos.x) : this.pos.x,
         this.pos.y,
         this.width,
         this.height,

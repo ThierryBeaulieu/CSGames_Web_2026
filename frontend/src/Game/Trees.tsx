@@ -16,6 +16,8 @@ export class Trees implements GameAsset {
 
   groundY: number;
 
+  useCamera: boolean = true;
+
   constructor(width: number, height: number, x: number, y: number, groundY: number, asset: string) {
     this.groundY = groundY;
     this.sprite = new Image();
@@ -24,6 +26,8 @@ export class Trees implements GameAsset {
 
     this.width = width;
     this.height = height;
+
+    this.useCamera = true;
 
     this.sprite = new Image();
     this.sprite.src = asset;
@@ -45,7 +49,7 @@ export class Trees implements GameAsset {
     try {
       ctx.drawImage(
         this.sprite,
-        camera.worldToScreenX(this.pos.x),
+        this.useCamera ? camera.worldToScreenX(this.pos.x) : this.pos.x,
         this.pos.y,
         this.width,
         this.height,
