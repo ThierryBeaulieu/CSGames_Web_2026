@@ -9,9 +9,11 @@ import './GameEditorPage.css';
 import mediumPalm from '../assets/scenery/trees/medium-palm.png';
 import highPalm from '../assets/scenery/trees/high-palm.png';
 import largeTree from '../assets/scenery/trees/large-tree.png';
+import { GroundPropsConfig } from '../AssetManager/GroundPropsConfig';
 
 function GameEditorPage() {
   const treesConfig = TreesConfig.getInstance();
+  const groundPropsConfig = GroundPropsConfig.getInstance();
 
   // Local React state just for re-rendering the UI
   const [, forceUpdate] = useState(0);
@@ -63,9 +65,24 @@ function GameEditorPage() {
     }
   };
 
+  const randomizePropsPosition = () => {
+    const random = [50, 44, 21, 28, 180, 50, 44, 21, 28, 180];
+
+    for (let i = 0; i < 10; i++) {
+      groundPropsConfig.groundProps[i].pos.x +=
+        (groundPropsConfig.groundProps[i].pos.x % 100) - random[i];
+    }
+    forceUpdate((n) => n + 1);
+  };
+
   return (
     <div>
       <AssetEditor />
+
+      <div>
+        <button onClick={() => randomizePropsPosition()}>Randomize Ground Props Position</button>
+        <button onClick={() => setModalOpen(!isModalOpen)}>AddTree</button>
+      </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} title='Choose a tree'>
         <h2>Select the tree</h2>
@@ -91,7 +108,6 @@ function GameEditorPage() {
           </button>
         </div>
       ))}
-      <button onClick={() => setModalOpen(!isModalOpen)}>AddTree</button>
     </div>
   );
 }

@@ -5,7 +5,6 @@ import { MysteryBlock } from './MysteryBlock';
 import { Mushroom } from './Mushroom';
 import { Monster } from './Monster';
 import { Ground } from './Ground';
-import { Bottles } from './Bottles';
 import { Camera } from './Camera';
 import { DarkSky } from './DarkSky';
 import { LightSky } from './LightSky';
@@ -13,6 +12,7 @@ import { CloudySky } from './CloudySky';
 import { Clouds } from './Clouds';
 import { SurpriseBlock } from './SurpriseBlock';
 import { TreesConfig } from '../AssetManager/TreesConfig';
+import { GroundPropsConfig } from '../AssetManager/GroundPropsConfig';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -36,9 +36,9 @@ const Game: React.FC = () => {
   const surpriseBlock = useRef(new SurpriseBlock(600, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
-  const bottles = useRef(new Bottles(CANVAS_WIDTH, CANVAS_HEIGHT, GROUND_Y));
 
   const treesConfig = useRef(TreesConfig.getInstance());
+  const groundPropsConfig = useRef(GroundPropsConfig.getInstance());
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -85,7 +85,10 @@ const Game: React.FC = () => {
       surpriseBlock.current.render(ctx);
       player.current.render(ctx);
       monster.current.render(ctx);
-      bottles.current.render(ctx);
+
+      groundPropsConfig.current.groundProps.forEach((props) => {
+        props.render(ctx);
+      });
 
       requestAnimationFrame(gameLoop);
     };

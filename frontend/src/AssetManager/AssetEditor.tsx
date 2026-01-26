@@ -5,6 +5,7 @@ import { Ground } from '../Game/Ground';
 import { DarkSky } from '../Game/DarkSky';
 import { LightSky } from '../Game/LightSky';
 import { CloudySky } from '../Game/CloudySky';
+import { GroundPropsConfig } from './GroundPropsConfig';
 
 const AssetEditor: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,6 +16,7 @@ const AssetEditor: React.FC = () => {
   const cloudySky = useRef(new CloudySky(MAP_WIDTH, MAP_HEIGHT));
 
   const treesConfig = useRef(TreesConfig.getInstance());
+  const groundPropsConfig = useRef(GroundPropsConfig.getInstance());
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -51,6 +53,12 @@ const AssetEditor: React.FC = () => {
         tree.useCamera = false;
         tree.render(ctx);
         tree.useCamera = true;
+      });
+
+      groundPropsConfig.current.groundProps.forEach((prop) => {
+        prop.useCamera = false;
+        prop.render(ctx);
+        prop.useCamera = true;
       });
 
       requestAnimationFrame(gameLoop);
