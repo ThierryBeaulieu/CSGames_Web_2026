@@ -26,8 +26,8 @@ function GameEditorPage() {
       {treesConfig.gameTrees.map((tree: Trees, index: number) => (
         <div key={index}>
           <div id={index.toString()}>{`x: ${tree.pos.x}, y: ${tree.pos.y}`}</div>
-          <button onClick={() => moveTreeRight(index)}>Move Right</button>
           <button onClick={() => moveTreeLeft(index)}>Move Left</button>
+          <button onClick={() => moveTreeRight(index)}>Move Right</button>
         </div>
       ))}
     </div>
