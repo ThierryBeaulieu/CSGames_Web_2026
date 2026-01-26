@@ -4,12 +4,12 @@ import GamePage from './Pages/GamePage';
 import AssetsPage from './Pages/AssetsPage';
 import AssetPage from './Pages/AssetPage';
 import './App.css';
-import ManagementPage from './Pages/ManagementPage';
+import GameEditorPage from './Pages/GameEditorPage';
 
 function App() {
   const routes = [
     { path: '*', element: <GamePage /> },
-    { path: '/management', element: <ManagementPage /> },
+    { path: '/management', element: <GameEditorPage /> },
     { path: '/assets', element: <AssetsPage /> },
     { path: '/assets/:id', element: <AssetPage /> },
   ];
