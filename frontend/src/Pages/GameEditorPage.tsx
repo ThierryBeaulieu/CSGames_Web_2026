@@ -4,7 +4,7 @@ import AssetEditor from '../AssetManager/AssetEditor';
 import { HighPalm, LargeTree, MediumPalm, type Trees } from '../Game/Trees';
 import { TreesConfig } from '../AssetManager/TreesConfig';
 import { Modal } from '../Components/Modal';
-import { GROUND_Y } from '../Game/Constants';
+import { GROUND_Y, MAP_WIDTH } from '../Game/Constants';
 import './GameEditorPage.css';
 
 import mediumPalm from '../assets/scenery/trees/medium-palm.png';
@@ -68,7 +68,7 @@ function GameEditorPage() {
 
   const randomizePropsPosition = () => {
     for (let i = 0; i < 10; i++) {
-      const value = Math.floor(Math.random() * 1200) + 1;
+      const value = Math.floor(Math.random() * MAP_WIDTH);
       groundPropsConfig.groundProps[i].pos.x = value;
     }
 
