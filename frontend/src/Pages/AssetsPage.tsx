@@ -1,5 +1,10 @@
 function AssetsPage() {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Choose your player</h1>
+      
+    </div>
+  );
 }
 
 export default AssetsPage;
