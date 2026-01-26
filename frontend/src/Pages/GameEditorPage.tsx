@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import AssetEditor from '../AssetManager/AssetEditor';
-import type { Trees } from '../Game/Trees';
+import { HighPalm, LargeTree, MediumPalm, type Trees } from '../Game/Trees';
 import { TreesConfig } from '../AssetManager/TreesConfig';
+import { Modal } from '../Components/Modal';
+import './GameEditorPage.css';
+import { GROUND_Y } from '../Game/Constants';
 
 function GameEditorPage() {
   const treesConfig = TreesConfig.getInstance();
 
   // Local React state just for re-rendering the UI
   const [, forceUpdate] = useState(0);
+  const [random] = useState([100, 200, 1200, 500, 150, 250, 680, 50, 180, 700, 750, 800]);
+  const [randomIndex, setRandomIndex] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const moveTreeRight = (index: number) => {
     treesConfig.gameTrees[index].pos.x += 10;
@@ -24,9 +30,37 @@ function GameEditorPage() {
     forceUpdate((n) => n + 1);
   };
 
+  const addTree = (name: string) => {
+    // Safe random position between 100 and 1200
+    const randomX = random[randomIndex];
+
+    if (name === 'Large Tree') {
+      treesConfig.gameTrees.push(new LargeTree(randomX, GROUND_Y - 175));
+    } else if (name == 'Medium Palm') {
+      treesConfig.gameTrees.push(new MediumPalm(randomX, GROUND_Y - 188));
+    } else if (name == 'High Palm') {
+      treesConfig.gameTrees.push(new HighPalm(randomX, GROUND_Y - 240));
+    }
+
+    const newIndex = randomIndex + 1 >= random.length ? 0 : randomIndex + 1;
+    setRandomIndex(newIndex);
+
+    setModalOpen(!isModalOpen);
+    forceUpdate((n) => n + 1);
+  };
+
   return (
     <div>
       <AssetEditor />
+
+      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} title='Choose a tree'>
+        <h2>Select the tree</h2>
+        <div className='buttons-layout'>
+          <button onClick={() => addTree('Large Tree')}>🌳 Large Tree</button>
+          <button onClick={() => addTree('Medium Palm')}>🏝️ Medium Palm</button>
+          <button onClick={() => addTree('High Palm')}>🌴 High Palm</button>
+        </div>
+      </Modal>
 
       {treesConfig.gameTrees.map((tree: Trees, index: number) => (
         <div key={index}>
@@ -36,6 +70,7 @@ function GameEditorPage() {
           <button onClick={() => deleteTree(index)}>Delete Tree</button>
         </div>
       ))}
+      <button onClick={() => setModalOpen(!isModalOpen)}>AddTree</button>
     </div>
   );
 }
