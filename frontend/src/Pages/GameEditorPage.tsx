@@ -19,6 +19,11 @@ function GameEditorPage() {
     forceUpdate((n) => n + 1);
   };
 
+  const deleteTree = (index: number) => {
+    treesConfig.gameTrees.splice(index, 1);
+    forceUpdate((n) => n + 1);
+  };
+
   return (
     <div>
       <AssetEditor />
@@ -28,6 +33,7 @@ function GameEditorPage() {
           <div id={index.toString()}>{`x: ${tree.pos.x}, y: ${tree.pos.y}`}</div>
           <button onClick={() => moveTreeLeft(index)}>Move Left</button>
           <button onClick={() => moveTreeRight(index)}>Move Right</button>
+          <button onClick={() => deleteTree(index)}>Delete Tree</button>
         </div>
       ))}
     </div>
