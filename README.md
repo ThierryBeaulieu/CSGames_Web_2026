@@ -51,6 +51,9 @@ Cette page est destinée à la création d'un éditeur de jeu. Cette page a surt
 
 En ce qui attrait à la gestion des arbres, plusieurs fonctionnalités vous sont demandés. Par exemple, il devrait être possible de visualiser l'ensemble des arbres présent à l'intérieur de l'éditeur, mais aussi à l'extérieur de celui-ci. Une list d'arbre devrait vous permettre de pouvoir incrémenter ou décrémenter la position de chaque arbre. Une fois la modification effectué, elle devrait apparaître dans la page de jeu. Une fonctionnalités supplémentaire est qu'il pourrait être possible d'incrémenter le nombre d'arbre et de le diminuer. Il devrait être possible à l'utilisateur à partir d'un modal de choisir l'arbre souhaité. Chaque arbre devrait apparaître à un endroit distinct de manière aléatoire.
 
+<div style="display:flex; justify-content:center; align-items:center; width: 100%">
+  <img src="Documentation/tree-handling.gif"/>
+</div>
 ![Tree handling in game editor](Documentation/tree-handling.gif)
 
 En ce qui attrait à la gestion des items placés sur le sol, il devrait être possible à un utilisateur de pouvoir appuyer sur un bouton `Randomize` pour placer les différentes items à des endroits aléatoires sur le canvas.
