@@ -34,6 +34,12 @@ To add a new item to the game, you are free to choose any approach you prefer. H
 
 Inside the grading grid, a detailed table is provided listing all the elements you can add: cloudy sky, pale blue sky, dark blue sky, clouds, trees, monsters, bushes, bottles, flowers, etc. Below is an example of the game once several elements have been added.
 
+Example of the interface :
+
+![Game full of features](Documentation/game.png)
+
+Example of the game in action :
+
 ![Game full of features](Documentation/demo.gif)
 
 As shown in the grading grid, several functionalities are also required. These functionalities will influence the behavior of the character, the world, or even the website in various ways. It is up to you to choose which functionalities you find most relevant given the time available.
@@ -43,6 +49,13 @@ As shown in the grading grid, several functionalities are also required. These f
 This page is intended for creating a game editor. Its main purpose is to allow you to quickly and efficiently modify the elements present on the game page. Two major features are required: tree management and management of elements placed on the ground (bottles, flowers, and bushes).
 
 Regarding tree management, several functionalities are required. For example, it should be possible to visualize all trees present within the editor as well as outside of it. A tree list should allow you to increment or decrement the position of each tree. Once a modification is made, it should immediately appear on the game page. An additional feature is the ability to increase or decrease the number of trees. The user should be able to select the desired tree from a modal. Each tree should appear at a distinct, randomly chosen location.
+
+Example of the interface :
+
+![Game full of features](Documentation/game-editor.png)
+
+
+Example of the tree management :
 
 ![Tree handling in game editor](Documentation/tree-handling.gif)
 

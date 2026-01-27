@@ -42,6 +42,13 @@ Pour ajouter un nouvel item au jeu, vous êtes libre de choisir la manière qui 
 ![Game full of features](Documentation/demo.gif)
 
 
+Exemple de l'interface
+
+![Game full of features](Documentation/game.png)
+
+
+
+
 Comme vous pouvez le voir dans la grille de correction, plusieurs fonctionnalités sont aussi demandés. Ces fonctionnalités vont influencer la comportement du personnages, du monde ou même du site web de plusieurs manières. C'est à votre guise de choisir les fonctionnalités que vous trouvez pertinentes dans le temps donné.
 
 
@@ -51,9 +58,12 @@ Cette page est destinée à la création d'un éditeur de jeu. Cette page a surt
 
 En ce qui attrait à la gestion des arbres, plusieurs fonctionnalités vous sont demandés. Par exemple, il devrait être possible de visualiser l'ensemble des arbres présent à l'intérieur de l'éditeur, mais aussi à l'extérieur de celui-ci. Une list d'arbre devrait vous permettre de pouvoir incrémenter ou décrémenter la position de chaque arbre. Une fois la modification effectué, elle devrait apparaître dans la page de jeu. Une fonctionnalités supplémentaire est qu'il pourrait être possible d'incrémenter le nombre d'arbre et de le diminuer. Il devrait être possible à l'utilisateur à partir d'un modal de choisir l'arbre souhaité. Chaque arbre devrait apparaître à un endroit distinct de manière aléatoire.
 
-<div style="display:flex; justify-content:center; align-items:center; width: 100%">
-  <img src="Documentation/tree-handling.gif"/>
-</div>
+Exemple d'interface
+
+![Tree handling in game editor](Documentation/game-editor.png)
+
+Exemple où on bouge les arbress
+
 ![Tree handling in game editor](Documentation/tree-handling.gif)
 
 En ce qui attrait à la gestion des items placés sur le sol, il devrait être possible à un utilisateur de pouvoir appuyer sur un bouton `Randomize` pour placer les différentes items à des endroits aléatoires sur le canvas.
