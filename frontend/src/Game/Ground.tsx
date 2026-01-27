@@ -39,7 +39,7 @@ export class Ground implements GameAsset {
 
       ctx.drawImage(
         this.sprite,
-        this.useCamera ? camera.worldToScreenX(this.pos.x) : this.pos.x,
+        camera.worldToScreenX(this.pos.x),
         this.pos.y,
         this.width,
         this.height,

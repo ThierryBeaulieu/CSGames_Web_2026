@@ -3,10 +3,6 @@ const path = require('path');
 const express = require('express');
 import { Request, Response, NextFunction } from 'express';
 
-import characterRoutes from './routes/characterRoute';
-import backgroundRoutes from './routes/backgroundRoute';
-import sceneryRoutes from './routes/sceneryRoute';
-
 const app = express();
 const PORT = 5020;
 const SIZE_LIMIT = '10mb';
@@ -27,10 +23,6 @@ app.use(express.json({ limit: SIZE_LIMIT }));
 
 // Serve static files
 app.use(express.static(PUBLIC_PATH));
-
-app.use('/api/character', characterRoutes);
-app.use('/api/background', backgroundRoutes);
-app.use('/api/scenery', sceneryRoutes);
 
 // Start server
 app.listen(PORT, () => {

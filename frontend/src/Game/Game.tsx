@@ -1,18 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { CANVAS_HEIGHT, CANVAS_WIDTH, GRAVITY, GROUND_Y } from './Constants';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, GRAVITY } from './Constants';
 import { Player } from './Player';
-import { MysteryBlock } from './MysteryBlock';
-import { Mushroom } from './Mushroom';
-import { Monster } from './Monster';
 import { Ground } from './Ground';
 import { Camera } from './Camera';
 import { DarkSky } from './DarkSky';
-import { LightSky } from './LightSky';
-import { CloudySky } from './CloudySky';
-import { Clouds } from './Clouds';
-import { SurpriseBlock } from './SurpriseBlock';
-import { TreesConfig } from '../AssetManager/TreesConfig';
-import { GroundPropsConfig } from '../AssetManager/GroundPropsConfig';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -26,19 +17,7 @@ const Game: React.FC = () => {
   const camera = useRef(Camera.getInstance());
 
   const darkSky = useRef(new DarkSky(CANVAS_WIDTH, CANVAS_HEIGHT));
-  const lightSky = useRef(new LightSky(CANVAS_WIDTH, CANVAS_HEIGHT));
-  const cloudySky = useRef(new CloudySky(CANVAS_WIDTH, CANVAS_HEIGHT));
-
-  const clouds = useRef(new Clouds(CANVAS_WIDTH, CANVAS_HEIGHT));
-
   const ground = useRef(new Ground(CANVAS_WIDTH, CANVAS_HEIGHT));
-  const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
-  const surpriseBlock = useRef(new SurpriseBlock(600, GROUND_Y - 120));
-  const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
-  const monster = useRef(new Monster(700, GROUND_Y - 40));
-
-  const treesConfig = useRef(TreesConfig.getInstance());
-  const groundPropsConfig = useRef(GroundPropsConfig.getInstance());
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -63,32 +42,9 @@ const Game: React.FC = () => {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      mushroom.current.spawnMushroom(mysteryBlock.current, player.current);
-      mushroom.current.detectCollisionFromPlayer(player.current);
-
-      monster.current.detectCollisionFromPlayer(player.current);
-
       darkSky.current.render(ctx);
-      lightSky.current.render(ctx);
-      cloudySky.current.render(ctx);
-
       ground.current.render(ctx);
-      clouds.current.render(ctx);
-      cloudySky.current.render(ctx);
-
-      treesConfig.current.gameTrees.forEach((tree) => {
-        tree.render(ctx);
-      });
-
-      mushroom.current.render(ctx);
-      mysteryBlock.current.render(ctx);
-      surpriseBlock.current.render(ctx);
       player.current.render(ctx);
-      monster.current.render(ctx);
-
-      groundPropsConfig.current.groundProps.forEach((props) => {
-        props.render(ctx);
-      });
 
       requestAnimationFrame(gameLoop);
     };

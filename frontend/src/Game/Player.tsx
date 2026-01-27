@@ -72,12 +72,7 @@ export class Player implements GameAsset {
     try {
       ctx.save();
 
-      if (this.direction === 'left') {
-        ctx.scale(-1, 1);
-        ctx.drawImage(this.sprite, -screenX - this.width, this.pos.y, this.width, this.height);
-      } else {
-        ctx.drawImage(this.sprite, screenX, this.pos.y, this.width, this.height);
-      }
+      ctx.drawImage(this.sprite, screenX, this.pos.y, this.width, this.height);
 
       ctx.restore();
     } catch {

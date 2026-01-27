@@ -11,8 +11,6 @@ export class DarkSky implements GameAsset {
 
   pos: Coordinates;
 
-  useCamera: boolean = true;
-
   constructor(width: number, height: number) {
     this.sprite = new Image();
 
@@ -41,7 +39,7 @@ export class DarkSky implements GameAsset {
     try {
       ctx.drawImage(
         this.sprite,
-        this.useCamera ? -camera.x * 0.2 : this.pos.x,
+        camera.worldToScreenX(this.pos.x),
         this.pos.y,
         this.width,
         this.height,
