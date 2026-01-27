@@ -1,12 +1,15 @@
 # Bienvenue à la compétition Web des CS Games 2025!
 
+The english version is available [here](./README_EN.md).
+
+
 ## Mise en contexte
 
 Pour cette épreuve, vous devrez tenter d'implémenter le maximum de requis présent dans la grille de correction `Correction CSGames.xlxs`.
 
 Le but de cette épreuve est de concevoir un site web permettant de créer et d'éditer un jeu 2D à l'intérieur de votre navigateur web. Voici un exemple du jeu résultant.
 
-![Démonstration du jeu à produire](Documentation/enemy.gif)
+![Démonstration du jeu à produire](Documentation/demo.gif)
 
 Pour cette épreuve, il est à votre guise de choisir les requis que vous souhaitez implémenter. Les requis sont divisés en fonctions des pages de l'application.
 
@@ -18,7 +21,7 @@ Il est aussi à noter que pour aider la correction, vous êtes encouragés à co
 
 Pour naviger à travers la page, on vous demander d'implémenter une barre de navigation, la barre de navigation doit être une bande sur le côté gauche de l'application. Pour obtenir des points supplémentaires, rendez la barre de navigation rétractable.
 
-![Barre de navigation](Documentation/enemy.gif)
+![Barre de navigation](Documentation/navigation-bar.gif)
 
 
 ## Page de jeu (Game Page)
@@ -31,15 +34,12 @@ Pour vous donner une meilleure idée de la boucle de jeu. Pour vous donnez une r
 
 Comme vous pouvez voir, à partir du modèle de base, très peu d'éléments sont présent dans le jeu.
 
-
-![Starting point for the game](Documentation/enemy.gif)
-
 Pour ajouter un nouvel item au jeu, vous êtes libre de choisir la manière qui vous intéresse. Un exemple de base vous est toutefois fournit pour vous aider à commencer le défi.
 
 À l'intérieur de la liste de correction, une grille détaillée vous est fourni de l'ensemble des éléments que vous pouvez ajouter : ciel nuageux, ciel bleu pâle, ciel bleu foncé, nuages, arbres, monstres, buissons, bouteilles, fleurs, etc. Voici un exemple du jeu une fois que plusieurs éléments y sont ajoutés.
 
 
-![Game full of features](Documentation/enemy.gif)
+![Game full of features](Documentation/demo.gif)
 
 
 Comme vous pouvez le voir dans la grille de correction, plusieurs fonctionnalités sont aussi demandés. Ces fonctionnalités vont influencer la comportement du personnages, du monde ou même du site web de plusieurs manières. C'est à votre guise de choisir les fonctionnalités que vous trouvez pertinentes dans le temps donné.
@@ -51,11 +51,11 @@ Cette page est destinée à la création d'un éditeur de jeu. Cette page a surt
 
 En ce qui attrait à la gestion des arbres, plusieurs fonctionnalités vous sont demandés. Par exemple, il devrait être possible de visualiser l'ensemble des arbres présent à l'intérieur de l'éditeur, mais aussi à l'extérieur de celui-ci. Une list d'arbre devrait vous permettre de pouvoir incrémenter ou décrémenter la position de chaque arbre. Une fois la modification effectué, elle devrait apparaître dans la page de jeu. Une fonctionnalités supplémentaire est qu'il pourrait être possible d'incrémenter le nombre d'arbre et de le diminuer. Il devrait être possible à l'utilisateur à partir d'un modal de choisir l'arbre souhaité. Chaque arbre devrait apparaître à un endroit distinct de manière aléatoire.
 
-![Tree handling in game editor](Documentation/enemy.gif)
+![Tree handling in game editor](Documentation/tree-handling.gif)
 
 En ce qui attrait à la gestion des items placés sur le sol, il devrait être possible à un utilisateur de pouvoir appuyer sur un bouton `Randomize` pour placer les différentes items à des endroits aléatoires sur le canvas.
 
-![Random item placement](Documentation/enemy.gif)
+![Random item placement](Documentation/randomizing.gif)
 
 Vous pouvez render le tout persistant à partir du serveur.
 
@@ -64,17 +64,12 @@ Vous pouvez render le tout persistant à partir du serveur.
 
 Sur cette page, vous devez permettre aux utilisateurs de choisir le personnage que vous souhaitez. Vous avez le choix entre les trois personnages suivants :
 
-Le chevalier :
+Le chevalier : ![Knight](frontend/src/assets/characters/main-character.png)
 
-![Knight](frontend/src/assets/characters/main-character.png)
+La tête de poisson : ![Fish guy](frontend/src/assets/characters/main-character-fish.png)
 
-La tête de poisson :
+Le chevalier avec lunettes : ![Cool character](frontend/src/assets/characters/cool-character.png)
 
-![Fish guy](frontend/src/assets/characters/main-character-fish.png)
-
-Le chevalier avec lunettes :
-
-![Cool character](frontend/src/assets/characters/cool-character.png)
 
 Vous pouvez render le tout persistant à partir du serveur.
 
