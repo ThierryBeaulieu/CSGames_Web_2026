@@ -8,18 +8,18 @@ function NavBar() {
         <ul>
           <li>
             <Link to='/' className='nav-link'>
-              Page de jeu
+              Game Page
             </Link>
           </li>
 
           <li>
             <Link to='/management' className='nav-link'>
-              Management
+              Game Editor
             </Link>
           </li>
           <li>
             <Link to='/assets' className='nav-link'>
-              Assets
+              Character Editor
             </Link>
           </li>
         </ul>
