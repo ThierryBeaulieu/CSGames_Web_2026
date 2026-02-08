@@ -1,8 +1,8 @@
 import NavBar from './Components/NavBar';
 import { Routes, Route } from 'react-router-dom';
 import GamePage from './Pages/GamePage';
-import AssetsPage from './Pages/AssetsPage';
-import AssetPage from './Pages/AssetPage';
+import AssetsPage from './Pages/EasterEggPage';
+import AssetPage from './Pages/CharacterEditorPage';
 import './App.css';
 import GameEditorPage from './Pages/GameEditorPage';
 

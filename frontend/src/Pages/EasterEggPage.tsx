@@ -1,4 +1,4 @@
-function AssetsPage() {
+function EasterEggPage() {
   return (
     <div>
       <h1>Choose your player</h1>
@@ -7,4 +7,4 @@ function AssetsPage() {
   );
 }
 
-export default AssetsPage;
+export default EasterEggPage;
