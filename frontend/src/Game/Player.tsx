@@ -69,20 +69,15 @@ export class Player implements GameAsset {
     const camera = Camera.getInstance();
     const screenX = camera.worldToScreenX(this.pos.x);
 
-    try {
-      ctx.save();
+    ctx.save();
 
-      if (this.direction === 'left') {
-        ctx.scale(-1, 1);
-        ctx.drawImage(this.sprite, -screenX - this.width, this.pos.y, this.width, this.height);
-      } else {
-        ctx.drawImage(this.sprite, screenX, this.pos.y, this.width, this.height);
-      }
-
-      ctx.restore();
-    } catch {
-      ctx.fillStyle = 'red';
-      ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
+    if (this.direction === 'left') {
+      ctx.scale(-1, 1);
+      ctx.drawImage(this.sprite, -screenX - this.width, this.pos.y, this.width, this.height);
+    } else {
+      ctx.drawImage(this.sprite, screenX, this.pos.y, this.width, this.height);
     }
+
+    ctx.restore();
   }
 }

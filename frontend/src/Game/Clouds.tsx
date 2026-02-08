@@ -35,12 +35,6 @@ export class Clouds implements GameAsset {
   render(ctx: CanvasRenderingContext2D): void {
     const camera = Camera.getInstance();
 
-    try {
-      ctx.drawImage(this.sprite, -camera.x * 0.3, this.pos.y, this.width, this.height);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      ctx.fillStyle = '#5c94fc';
-      ctx.fillRect(0, 0, this.width, this.height);
-    }
+    ctx.drawImage(this.sprite, -camera.x * 0.3, this.pos.y, this.width, this.height);
   }
 }

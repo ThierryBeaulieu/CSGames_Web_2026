@@ -140,19 +140,4 @@ describe("Mushroom", () => {
       40
     );
   });
-
-  test("render falls back to fillRect if drawImage throws", () => {
-    const mushroom = new Mushroom(10, 20);
-    mushroom.isVisible = true;
-    const ctx = createMockCtx();
-
-    ctx.drawImage = vi.fn(() => {
-      throw new Error("draw failed");
-    });
-
-    mushroom.render(ctx);
-
-    expect(ctx.fillStyle).toBe("orange");
-    expect(ctx.fillRect).toHaveBeenCalledWith(10, 20, 40, 40);
-  });
 });

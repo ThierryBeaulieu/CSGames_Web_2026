@@ -77,18 +77,4 @@ describe("Clouds", () => {
       150
     );
   });
-
-  test("falls back to background fill when drawImage throws", () => {
-    const clouds = new Clouds(300, 150);
-    const ctx = createMockCtx();
-
-    ctx.drawImage = vi.fn(() => {
-      throw new Error("draw failed");
-    });
-
-    clouds.render(ctx);
-
-    expect(ctx.fillStyle).toBe("#5c94fc");
-    expect(ctx.fillRect).toHaveBeenCalledWith(0, 0, 300, 150);
-  });
 });

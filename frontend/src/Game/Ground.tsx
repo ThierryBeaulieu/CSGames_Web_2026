@@ -34,19 +34,14 @@ export class Ground implements GameAsset {
   }
 
   render(ctx: CanvasRenderingContext2D): void {
-    try {
-      const camera = Camera.getInstance();
+    const camera = Camera.getInstance();
 
-      ctx.drawImage(
-        this.sprite,
-        this.useCamera ? camera.worldToScreenX(this.pos.x) : this.pos.x,
-        this.pos.y,
-        this.width,
-        this.height,
-      );
-    } catch {
-      ctx.fillStyle = '#cf510c';
-      ctx.fillRect(0, GROUND_Y, this.width, this.height - GROUND_Y);
-    }
+    ctx.drawImage(
+      this.sprite,
+      this.useCamera ? camera.worldToScreenX(this.pos.x) : this.pos.x,
+      this.pos.y,
+      this.width,
+      this.height,
+    );
   }
 }

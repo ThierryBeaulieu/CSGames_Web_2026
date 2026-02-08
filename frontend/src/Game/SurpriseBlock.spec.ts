@@ -68,18 +68,4 @@ describe("SurpriseBlock", () => {
       40
     );
   });
-
-  test("falls back to fillRect if drawImage throws", () => {
-    const block = new SurpriseBlock(10, 20);
-    const ctx = createMockCtx();
-
-    ctx.drawImage = vi.fn(() => {
-      throw new Error("draw failed");
-    });
-
-    block.render(ctx);
-
-    expect(ctx.fillStyle).toBe("gold");
-    expect(ctx.fillRect).toHaveBeenCalledWith(10, 20, 40, 40);
-  });
 });

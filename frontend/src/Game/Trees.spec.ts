@@ -76,16 +76,6 @@ describe("Trees base class", () => {
     );
   });
 
-  test("falls back gracefully if drawImage throws", () => {
-    const tree = new Trees(50, 100, 10, 20, 200, "asset.png");
-    const ctx = createMockCtx();
-    ctx.drawImage = vi.fn(() => { throw new Error("fail"); });
-
-    tree.render(ctx);
-
-    // Should not throw; no other fallback for Trees
-    expect(ctx.drawImage).toHaveBeenCalled();
-  });
 });
 
 describe("Trees subclasses", () => {

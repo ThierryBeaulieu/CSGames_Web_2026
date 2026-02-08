@@ -94,18 +94,4 @@ describe("CloudySky", () => {
       150
     );
   });
-
-  test("falls back to background fill when drawImage throws", () => {
-    const sky = new CloudySky(300, 150);
-    const ctx = createMockCtx();
-
-    ctx.drawImage = vi.fn(() => {
-      throw new Error("draw failed");
-    });
-
-    sky.render(ctx);
-
-    expect(ctx.fillStyle).toBe("#5c94fc");
-    expect(ctx.fillRect).toHaveBeenCalledWith(0, 0, 300, 150);
-  });
 });

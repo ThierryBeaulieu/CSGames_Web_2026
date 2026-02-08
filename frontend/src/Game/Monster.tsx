@@ -35,17 +35,13 @@ export class Monster implements GameAsset {
     if (this.pos.x <= 0 || this.pos.x + this.width >= ctx.canvas.width) {
       this.speed = -this.speed;
     }
-    try {
-      ctx.drawImage(
-        this.sprite,
-        camera.worldToScreenX(this.pos.x),
-        this.pos.y,
-        this.width,
-        this.height,
-      );
-    } catch {
-      ctx.fillStyle = 'brown';
-      ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
-    }
+    
+    ctx.drawImage(
+      this.sprite,
+      camera.worldToScreenX(this.pos.x),
+      this.pos.y,
+      this.width,
+      this.height,
+    );
   }
 }

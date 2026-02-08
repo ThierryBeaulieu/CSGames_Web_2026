@@ -46,18 +46,13 @@ export class Trees implements GameAsset {
   render(ctx: CanvasRenderingContext2D): void {
     const camera = Camera.getInstance();
 
-    try {
-      ctx.drawImage(
-        this.sprite,
-        this.useCamera ? camera.worldToScreenX(this.pos.x) : this.pos.x,
-        this.pos.y,
-        this.width,
-        this.height,
-      );
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      /* empty */
-    }
+    ctx.drawImage(
+      this.sprite,
+      this.useCamera ? camera.worldToScreenX(this.pos.x) : this.pos.x,
+      this.pos.y,
+      this.width,
+      this.height,
+    );
   }
 }
 

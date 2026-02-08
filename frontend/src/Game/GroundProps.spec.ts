@@ -100,17 +100,6 @@ describe("GroundProps base class", () => {
       20
     );
   });
-
-  test("does not throw when drawImage throws (fallback empty)", () => {
-    const prop = new GroundProps(10, 20, 0, 0, 50, "dummy.png");
-    const ctx = createMockCtx();
-
-    ctx.drawImage = vi.fn(() => {
-      throw new Error("draw failed");
-    });
-
-    expect(() => prop.render(ctx)).not.toThrow();
-  });
 });
 
 /* -------------------------------------------------

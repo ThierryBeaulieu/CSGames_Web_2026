@@ -49,18 +49,12 @@ export class Mushroom implements GameAsset {
 
     const camera = Camera.getInstance();
 
-    try {
-      ctx.drawImage(
-        this.sprite,
-        camera.worldToScreenX(this.pos.x),
-        this.pos.y,
-        this.width,
-        this.height,
-      );
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch {
-      ctx.fillStyle = 'orange';
-      ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
-    }
+    ctx.drawImage(
+      this.sprite,
+      camera.worldToScreenX(this.pos.x),
+      this.pos.y,
+      this.width,
+      this.height,
+    );
   }
 }

@@ -100,18 +100,4 @@ describe("Ground", () => {
       150
     );
   });
-
-  test("falls back to fillRect when drawImage throws", () => {
-    const ground = new Ground(300, 150);
-    const ctx = createMockCtx();
-
-    ctx.drawImage = vi.fn(() => {
-      throw new Error("draw failed");
-    });
-
-    ground.render(ctx);
-
-    expect(ctx.fillStyle).toBe("#cf510c");
-    expect(ctx.fillRect).toHaveBeenCalledWith(0, 50, 300, 100); // height - GROUND_Y = 150 - 50
-  });
 });
