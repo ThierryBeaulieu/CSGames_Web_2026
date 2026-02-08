@@ -5,6 +5,7 @@ import './App.css';
 import GameEditorPage from './Pages/GameEditorPage';
 import EasterEggPage from './Pages/EasterEggPage';
 import CharacterEditorPage from './Pages/CharacterEditorPage';
+import { useState } from 'react';
 
 function App() {
   const routes = [
@@ -13,10 +14,12 @@ function App() {
     { path: '/character-editor', element: <CharacterEditorPage /> },
     { path: '/easter-egg', element: <EasterEggPage /> }
   ];
+  
+  const [isEasterEggVisible, setIsEasterEggVisible] = useState(true);
 
   return (
     <div className='app-container'>
-      <NavBar />
+       <NavBar easterEggVisible={isEasterEggVisible} />
       <div className='main-content'>
         <Routes>
           {routes.map((route, index) => (
