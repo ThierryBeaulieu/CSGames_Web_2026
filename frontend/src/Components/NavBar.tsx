@@ -13,13 +13,18 @@ function NavBar() {
           </li>
 
           <li>
-            <Link to='/management' className='nav-link'>
+            <Link to='/game-editor' className='nav-link'>
               Game Editor
             </Link>
           </li>
           <li>
-            <Link to='/assets' className='nav-link'>
+            <Link to='/character-editor' className='nav-link'>
               Character Editor
+            </Link>
+          </li>
+          <li>
+            <Link to='/easter-egg' className='nav-link'>
+              Easter Egg
             </Link>
           </li>
         </ul>

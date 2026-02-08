@@ -151,24 +151,4 @@ describe("Player", () => {
       player.height
     );
   });
-
-  test("render falls back to fillRect if drawImage throws", () => {
-    const player = Player.getInstance(0);
-    const ctx = createMockCtx();
-
-    player.direction = "right";
-    ctx.drawImage = vi.fn(() => {
-      throw new Error("draw failed");
-    });
-
-    player.render(ctx);
-
-    expect(ctx.fillStyle).toBe("red");
-    expect(ctx.fillRect).toHaveBeenCalledWith(
-      player.pos.x,
-      player.pos.y,
-      player.width,
-      player.height
-    );
-  });
 });

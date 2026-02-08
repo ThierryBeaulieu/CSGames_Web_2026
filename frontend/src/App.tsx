@@ -1,17 +1,17 @@
 import NavBar from './Components/NavBar';
 import { Routes, Route } from 'react-router-dom';
 import GamePage from './Pages/GamePage';
-import AssetsPage from './Pages/EasterEggPage';
-import AssetPage from './Pages/CharacterEditorPage';
 import './App.css';
 import GameEditorPage from './Pages/GameEditorPage';
+import EasterEggPage from './Pages/EasterEggPage';
+import CharacterEditorPage from './Pages/CharacterEditorPage';
 
 function App() {
   const routes = [
     { path: '*', element: <GamePage /> },
-    { path: '/management', element: <GameEditorPage /> },
-    { path: '/assets', element: <AssetsPage /> },
-    { path: '/assets/:id', element: <AssetPage /> },
+    { path: '/game-editor', element: <GameEditorPage /> },
+    { path: '/character-editor', element: <CharacterEditorPage /> },
+    { path: '/easter-egg', element: <EasterEggPage /> }
   ];
 
   return (

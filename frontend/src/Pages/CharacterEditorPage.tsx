@@ -1,5 +1,5 @@
 function CharacterEditorPage() {
-  return <div>CharacterEditorPage</div>;
+  return <h1>Character Editor Page</h1>;
 }
 
 export default CharacterEditorPage;
