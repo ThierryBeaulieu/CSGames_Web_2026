@@ -16,10 +16,11 @@ function App() {
   ];
   
   const [isEasterEggVisible, setIsEasterEggVisible] = useState(true);
+  const [areEmojiesVisible, setAreEmojiesVisible] = useState(true);
 
   return (
     <div className='app-container'>
-       <NavBar easterEggVisible={isEasterEggVisible} />
+       <NavBar easterEggVisible={isEasterEggVisible} emojisEnabled={areEmojiesVisible} />
       <div className='main-content'>
         <Routes>
           {routes.map((route, index) => (

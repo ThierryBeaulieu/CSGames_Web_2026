@@ -1,23 +1,34 @@
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 
-function NavBar({ easterEggVisible }) {
+function NavBar({ easterEggVisible, emojisEnabled }) {
+  // Helper function to add emoji if enabled
+  const withEmoji = (text, emoji) => (emojisEnabled ? `${emoji} ${text}` : text);
+
   return (
     <header>
       <nav>
         <ul>
           <li>
-            <Link to='/' className='nav-link'>Game Page</Link>
+            <Link to='/' className='nav-link'>
+              {withEmoji('Game Page', '🌟')}
+            </Link>
           </li>
           <li>
-            <Link to='/game-editor' className='nav-link'>Game Editor</Link>
+            <Link to='/game-editor' className='nav-link'>
+              {withEmoji('Game Editor', '🦄')}
+            </Link>
           </li>
           <li>
-            <Link to='/character-editor' className='nav-link'>Character Editor</Link>
+            <Link to='/character-editor' className='nav-link'>
+              {withEmoji('Character Editor', '🔥')}
+            </Link>
           </li>
           {easterEggVisible && (
             <li>
-              <Link to='/easter-egg' className='nav-link'>Easter Egg</Link>
+              <Link to='/easter-egg' className='nav-link'>
+                {withEmoji('Easter Egg', '🐣')}
+              </Link>
             </li>
           )}
         </ul>
