@@ -1,4 +1,4 @@
-import { Camera } from './Camera';
+import { Camera } from '../Game/Camera';
 import { CollisionDetector } from './CollisionDetector';
 import monsterAsset from '../assets/characters/monster.png';
 import type { Coordinates, GameAsset } from './GameAsset';
