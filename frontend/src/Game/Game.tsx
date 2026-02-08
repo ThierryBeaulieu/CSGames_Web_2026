@@ -82,9 +82,11 @@ const Game: React.FC = () => {
 
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);
+      mysteryBlock.current.detectCollisionFromPlayer(player.current);
+
       surpriseBlock.current.render(ctx);
       surpriseBlock.current.detectCollisionFromPlayer(player.current);
-      
+
       player.current.render(ctx);
       monster.current.render(ctx);
 

@@ -2,9 +2,12 @@ import { Camera } from './Camera';
 
 import mysteryBlockAsset from '../assets/scenery/special/mystery-block.png';
 import type { Coordinates, GameAsset } from './GameAsset';
+import soundAsset from '../assets/sounds/power_up.wav';
+import { CollisionDetector } from './CollisionDetector';
 
 export class MysteryBlock implements GameAsset {
   sprite: HTMLImageElement;
+  sound: HTMLAudioElement;
 
   pos: Coordinates;
   width: number = 40;
@@ -17,11 +20,20 @@ export class MysteryBlock implements GameAsset {
 
     this.sprite = new Image();
     this.sprite.src = mysteryBlockAsset;
+    this.sound = new Audio(soundAsset);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleUserInput(keys: React.RefObject<Record<string, boolean>>): void {
     return;
+  }
+
+  detectCollisionFromPlayer(player: GameAsset) {
+    const collision = CollisionDetector.collisionDetected(player, this);
+    if (collision) {
+      this.sound.currentTime = 0;
+      this.sound.play();
+    }
   }
 
   render(ctx: CanvasRenderingContext2D): void {

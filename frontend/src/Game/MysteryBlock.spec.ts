@@ -1,5 +1,4 @@
 import { describe, test, expect, beforeAll, beforeEach, vi } from "vitest";
-import { MysteryBlock } from "./MysteryBlock";
 
 /* -------------------------------------------------
    Mocks
@@ -14,15 +13,23 @@ vi.mock("./Camera", () => ({
   },
 }));
 
+// Mock Audio globally before importing MysteryBlock
+const playMock = vi.fn();
+(globalThis as any).Audio = class {
+  currentTime = 0;
+  play = playMock;
+};
+
 // Mock Image for JSDOM
-beforeAll(() => {
-  (globalThis as any).Image = class {
-    src = "";
-    naturalWidth = 40;
-    naturalHeight = 40;
-    onload: ((ev: Event) => void) | null = null;
-  };
-});
+(globalThis as any).Image = class {
+  src = "";
+  naturalWidth = 40;
+  naturalHeight = 40;
+  onload: ((ev: Event) => void) | null = null;
+};
+
+// Now import MysteryBlock after mocks
+import { MysteryBlock } from "./MysteryBlock";
 
 /* -------------------------------------------------
    Helpers
@@ -67,5 +74,20 @@ describe("MysteryBlock", () => {
       40,
       40
     );
+  });
+
+  test("plays sound when collision is detected", () => {
+    const block = new MysteryBlock(10, 20);
+
+    const player = {
+      pos: { x: 10, y: 20 },
+      width: 40,
+      height: 40,
+    };
+
+    block.detectCollisionFromPlayer(player as any);
+
+    expect(playMock).toHaveBeenCalled();
+    expect(block.sound.currentTime).toBe(0);
   });
 });
