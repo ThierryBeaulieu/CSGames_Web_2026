@@ -104,6 +104,7 @@ The following sections detail the required implementations, but the evaluation g
 ![character](frontend/src/assets/characters/monster.png)
 
 4. The third time the player “eats” a mushroom, a ghost trail of the character must appear. The most recent trails must be opaque, while the oldest trails must be transparent. **(4 points)**
+![Barre de navigation complète](Documentation/MysteryCube/ghost-character-rainbow.png)
 
 5. The ghost trail of the character must be rainbow-colored. You may not use tools like Photoshop to help you; you must code a function that modifies the color of the provided PNG. **(5 points)**
 
