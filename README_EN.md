@@ -33,7 +33,7 @@ The following sections detail the required implementations, but the evaluation g
 
 2. Place the navigation bar on the left side of the screen. **(3 points)**
 
-![Barre de navigation initiale](Documentation/NavBar/navigation-bar-initPNG.PNG)
+![Barre de navigation initiale](Documentation/NavBar/navigation-bar-initPNG.png)
 
 
 3. Make the navigation bar collapsible. The user must be able to adjust the width of the navigation bar using the cursor. When the navigation bar becomes too small, an emoji must replace the text. For example, when the bar is expanded, it should display Game Page and Easter Egg. When the bar is collapsed, it should display 🌟 and 🐣. **(5 points)**
@@ -125,13 +125,13 @@ The following sections detail the required implementations, but the evaluation g
 
 3. When the player is in front of the sign with a cloud symbol and presses the space bar, the canvas colors must be inverted for the duration of the thunder sound effect. **(3 points)**
 
-![rain](Documentation/Clouds/color-inversion.PNG)
+![rain](Documentation/Clouds/color-inversion.png)
 
 4. When the thunder sound occurs, the application theme must switch from a light theme to a dark theme. The dark theme must be persistent. **(4 points)**
 
 5. Once the canvas colors return to normal, the clouds must start raining. The raindrops must have different sizes to give an illusion of depth. When the droplets hit the ground, they must produce splashes. **(5 points)**
 
-![rain](Documentation/Clouds/rain.PNG)
+![rain](Documentation/Clouds/rain.png)
 
 ## Ground Objects
 
@@ -139,7 +139,7 @@ The following sections detail the required implementations, but the evaluation g
 
 2. A “Random” button must be present. When the user clicks this button, the elements must be given new random positions on the ground. **(2 points)**
 
-![rain](Documentation/Tree/tree-add-tree.PNG)
+![rain](Documentation/Tree/tree-add-tree.png)
 
 3. The position of the objects must be persistent, meaning that if the page is refreshed, the objects must remain in the same positions (object persistence). **(3 points)**
 
@@ -147,7 +147,7 @@ The following sections detail the required implementations, but the evaluation g
 
 5. When the user repositions an object, if it is released in the air, the object must be affected by gravity and fall back to the ground. If the object is placed below the ground, it must reappear at its initial position. A ghost image of the object must remain at the initial position until the object can be placed at a new valid position. **(5 points)**
 
-![rain](Documentation/Ground/ghost-version-of-items-moving.PNG)
+![rain](Documentation/Ground/ghost-version-of-items-moving.png)
 
 ### Easter Egg
 
@@ -157,7 +157,7 @@ The following sections detail the required implementations, but the evaluation g
 
 3. Create a meme related to the retro theme. **(10 points)**
 
-![rain](Documentation/meme-character.PNG)
+![rain](Documentation/meme-character.png)
 
 ### User Experience (UI/UX)
 

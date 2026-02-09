@@ -33,7 +33,7 @@ Les sections suivantes feront le détail des implémentations, mais la grille d'
 
 2. Placer la barre de navigation sur le côté gauche de l’écran. **(3 points)**
 
-![Barre de navigation initiale](Documentation/NavBar/navigation-bar-initPNG.PNG)
+![Barre de navigation initiale](Documentation/NavBar/navigation-bar-initPNG.png)
 
 
 3. Faire en sorte que la barre de navigation puisse être rétractable. L’utilisateur doit pouvoir ajuster la largeur de la barre de navigation à l’aide de son curseur. Lorsque la barre de navigation devient trop petite, un emoji doit remplacer le texte. Par exemple, lorsque la barre est en expansion, on devrait y voir Game Page et Easter Egg. Lorsque la barre est contractée, on devrait y voir 🌟 et 🐣. **(5 points)**
@@ -112,7 +112,7 @@ Les sections suivantes feront le détail des implémentations, mais la grille d'
 
 ![Barre de navigation complète](Documentation/MysteryCube/ghost-character-rainbow.png)
 
-5. La trace fantôme du personnage doit être de couleur arc-en-ciel. Vous ne pouvez pas utiliser d’outils comme Photoshop pour vous aider ; vous devez coder une fonction permettant de modifier la couleur du PNG fourni. **(5 points)**
+5. La trace fantôme du personnage doit être de couleur arc-en-ciel. Vous ne pouvez pas utiliser d’outils comme Photoshop pour vous aider ; vous devez coder une fonction permettant de modifier la couleur du png fourni. **(5 points)**
 
 ![Barre de navigation complète](Documentation/MysteryCube/ghost-character.png)
 
@@ -130,13 +130,13 @@ Les sections suivantes feront le détail des implémentations, mais la grille d'
 3. Lorsque le joueur est en face de la pancarte avec un symbole de nuage et qu’il appuie sur la barre d’espace, les couleurs du canvas doivent être inversées pendant la durée de l’effet sonore du tonnerre. **(3 point)**
 
 
-![rain](Documentation/Clouds/color-inversion.PNG)
+![rain](Documentation/Clouds/color-inversion.png)
 
 4. Lorsque le son de tonnerre survient, le thème de l’application doit passer d’un thème clair à un thème foncé. Le thème sombre de l’application doit être persistant. **(4 point)**
 
 5. Une fois que les couleurs du canvas sont redevenues normales, les nuages doivent commencer à pleuvoir. Les gouttelettes doivent être de différentes grandeurs et tailles afin de donner une illusion de profondeur. Lorsque les gouttelettes entrent en contact avec le sol, elles doivent produire des éclaboussures. **(5 point)**
 
-![rain](Documentation/Clouds/rain.PNG)
+![rain](Documentation/Clouds/rain.png)
 
 
 ## Objets sur le sol
@@ -144,7 +144,7 @@ Les sections suivantes feront le détail des implémentations, mais la grille d'
 
 2. Un bouton « Random » doit être présent. Lorsque l’utilisateur appuie sur ce bouton, les éléments doivent obtenir une nouvelle position aléatoire sur le sol. **(2 points)**
 
-![rain](Documentation/Tree/tree-add-tree.PNG)
+![rain](Documentation/Tree/tree-add-tree.png)
 
 
 3. La position des objets doit être persistante, c’est-à-dire que si l’on rafraîchit la page, les objets doivent rester aux mêmes endroits (persistance des objets). **(3 points)**
@@ -153,7 +153,7 @@ Les sections suivantes feront le détail des implémentations, mais la grille d'
 
 5. Lorsque l’utilisateur repositionne un objet, si celui-ci est relâché dans les airs, l’objet doit être soumis à la gravité et retomber sur le sol. Si l’objet est placé sous le sol, il doit réapparaître à sa position initiale. Une image fantôme de l’objet doit rester présente à la position initiale jusqu’à ce que l’objet puisse être positionné à une nouvelle position valide. **(5 points)**
 
-![rain](Documentation/Ground/ghost-version-of-items-moving.PNG)
+![rain](Documentation/Ground/ghost-version-of-items-moving.png)
 
 
 ### Easter Egg
@@ -164,7 +164,7 @@ Les sections suivantes feront le détail des implémentations, mais la grille d'
 
 3. Créer un meme en lien avec le thème rétro. **(10 points)**
 
-![rain](Documentation/meme-character.PNG)
+![rain](Documentation/meme-character.png)
 
 
 ### Expérience Utilisateur (UI/UX)
