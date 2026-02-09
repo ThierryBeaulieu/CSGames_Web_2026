@@ -12,7 +12,7 @@ Pour cette épreuve, vous devrez implémenter un jeu en 2D. Pour se faire, les s
 **ATTENTION** : Si vous n'implémentez pas les requis en ordre chronologique, seul les points les plus bas vous seront données. Par exemple, si vous implémentez les requis 1, 3, 5. C'est uniquement les points du requis 1 que vous gagnerez. 
 
 ## Commande pour exécuter le jeu
-Pour exécuter le jeu, vous devrez utiliser la commande suivante : 
+Pour exécuter le jeu, vous devrez utiliser la commande suivante dans le dossier frontend: 
 ```npm run dev```
 
 L'application devrait s'afficher à l'écran.

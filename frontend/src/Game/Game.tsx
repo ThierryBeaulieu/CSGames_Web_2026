@@ -34,7 +34,7 @@ const Game: React.FC = () => {
   const ground = useRef(new Ground(CANVAS_WIDTH, CANVAS_HEIGHT));
   const mysteryBlock = useRef(new MysteryBlock(300, GROUND_Y - 120));
   const surpriseBlock = useRef(new SurpriseBlock(600, GROUND_Y - 120));
-  const mushroom = useRef(new Mushroom(600, GROUND_Y - 40));
+  const mushroom = useRef(new Mushroom(300, GROUND_Y - 160));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
 
   const treesConfig = useRef(TreesConfig.getInstance());
@@ -84,12 +84,7 @@ const Game: React.FC = () => {
       mysteryBlock.current.render(ctx);
       mysteryBlock.current.detectCollisionFromPlayer(player.current);
 
-      surpriseBlock.current.render(ctx);
-      surpriseBlock.current.detectCollisionFromPlayer(player.current);
-
       player.current.render(ctx);
-      monster.current.render(ctx);
-
       groundPropsConfig.current.groundProps.forEach((props) => {
         props.render(ctx);
       });
