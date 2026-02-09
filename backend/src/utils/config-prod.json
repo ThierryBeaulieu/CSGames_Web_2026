@@ -1,8 +1,0 @@
-{
-  "DeployedInProd": true,
-  "MongoDB": {
-    "username": "thierryabeaulieu_db_user",
-    "password": "ejTFDunSpdsBfKcm"
-  },
-  "PostgreSQL": "postgresql://neondb_owner:npg_zapkGfuW3Kl5@ep-aged-leaf-a83kpe44-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require"
-}

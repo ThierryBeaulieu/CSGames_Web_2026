@@ -1,8 +1,0 @@
-{
-  "DeployedInProd": false,
-  "MongoDB": {
-    "username": "CSGame_user",
-    "password": "ePvyS7QXpnDuYC8v"
-  },
-  "PostgreSQL": "postgresql://neondb_owner:npg_zapkGfuW3Kl5@ep-aged-leaf-a83kpe44-pooler.eastus2.azure.neon.tech/neondb?sslmode=verify-full&channel_binding=require"
-}
