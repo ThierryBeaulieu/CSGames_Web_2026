@@ -1,5 +1,4 @@
 import { Camera } from './Camera';
-import { GROUND_Y } from './Constants';
 import groundAsset from '../assets/background/ground.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 
