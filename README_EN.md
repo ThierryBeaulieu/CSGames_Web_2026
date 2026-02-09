@@ -82,7 +82,7 @@ The following sections detail the required implementations, but the evaluation g
 
 4. When the player comes into contact with the mystery cube [ ? ], the cube must block the character. The character must not be able to pass through the cube. **(4 points)**
 
-5. The mystery cube must have an animation (GIF). **(5 points)**
+5.  **(5 points)**
 
 ## Mushroom
 
