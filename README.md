@@ -19,7 +19,7 @@ L'application devrait s'afficher à l'écran.
 
 ## Grille d'évaluation
 
-Les sections suivantes feront le détail des implémentations, mais la grille d'évaluation vous est aussi fournit il s'agit du fichier `Correction CSGames.xlsx`.
+Les sections suivantes feront le détail des implémentations, mais la grille d'évaluation vous est aussi fournit il s'agit du fichier `Correction CSGames - French.pdf`.
 
 ## Sections à compléter
 
