@@ -5,78 +5,101 @@ The english version is available [here](./README_EN.md).
 
 ## Mise en contexte
 
-Pour cette épreuve, vous devrez tenter d'implémenter le maximum de requis présent dans la grille de correction `Correction CSGames.xlxs`.
-
-Le but de cette épreuve est de concevoir un site web permettant de créer et d'éditer un jeu 2D à l'intérieur de votre navigateur web. Voici un exemple du jeu résultant.
-
 ![Démonstration du jeu à produire](Documentation/demo.gif)
 
-Pour cette épreuve, il est à votre guise de choisir les requis que vous souhaitez implémenter. Les requis sont divisés en fonctions des pages de l'application.
+Pour cette épreuve, vous devrez implémenter un jeu en 2D. Pour se faire, les sections suivantes présenteront le détail de ce qui est attendu. Chaque sections comporent des requis et les points qui y sont associés. Pour chaque section, vous devrez implémenter de manière **chronologique** les différents requis.
 
-Les sections suivantes vous donnera un détails de nos attentes envers chaque requis. Il est à noter que la correction se fera exclusivement à partir de la grille de correction `Correction CSGames.xlxs`.
+**ATTENTION** : Si vous n'implémentez pas les requis en ordre chronologique, seul les points les plus bas vous seront données. Par exemple, si vous implémentez les requis 1, 3, 5. C'est uniquement les points du requis 1 que vous gagnerez. 
 
-Il est aussi à noter que pour aider la correction, vous êtes encouragés à cocher les requis que vous avez compléter dans le fichier Excel.
+## Commande pour exécuter le jeu
+Pour exécuter le jeu, vous devrez utiliser la commande suivante : 
+```npm run dev```
 
-## Barre de navigation
+L'application devrait s'afficher à l'écran.
 
-Pour naviger à travers la page, on vous demander d'implémenter une barre de navigation, la barre de navigation doit être une bande sur le côté gauche de l'application. Pour obtenir des points supplémentaires, rendez la barre de navigation rétractable.
+## Grille d'évaluation
 
-![Barre de navigation](Documentation/navigation-bar.gif)
+Les sections suivantes feront le détail des implémentations, mais la grille d'évaluation vous est aussi fournit il s'agit du fichier `Correction CSGames.xlsx`.
 
+## Sections à compléter
 
-## Page de jeu (Game Page)
+### Barre de navigation
 
-Comme vous pouvez le voir à partir de la page de base, on vous donne la page de jeu avec une boucle de jeu déjà complété. Vous devriez à partir du fichier `Game/Game.tsx` avoir un exemple de la manière que le rendu est produit.
+1. Créer une barre de navigation permettant aux utilisateurs d’avoir accès aux pages suivantes : Game Page et Easter Egg. À noter que la page « Easter Egg » doit initialement être cachée dans la barre de navigation. **(1 point)**
 
-Pour vous donner une meilleure idée de la boucle de jeu. Pour vous donnez une représentation plus concrète, il s'agit d'une boucle infini. À chaque image par seconde, on prend les entrés utilisateurs, on les traite et puis on crée un rendu de chaque item un par un. L'ordre dans lequel le rendu est fait influence dans ce monde 2D quels sont les images qui sont en avant plan d'en arrière plan.
+2. Placer la barre de navigation sur le côté gauche de l’écran. **(3 points)**
 
-![Rendering layers](Documentation/projection.png)
+3. Faire en sorte que la barre de navigation puisse être rétractable. L’utilisateur doit pouvoir ajuster la largeur de la barre de navigation à l’aide de son curseur. Lorsque la barre de navigation devient trop petite, un emoji doit remplacer le texte. Par exemple, lorsque la barre est en expansion, on devrait y voir Game Page et Easter Egg. Lorsque la barre est contractée, on devrait y voir 🌟 et 🐣. **(5 points)**
 
-Comme vous pouvez voir, à partir du modèle de base, très peu d'éléments sont présent dans le jeu.
+## Game Page
 
-Pour ajouter un nouvel item au jeu, vous êtes libre de choisir la manière qui vous intéresse. Un exemple de base vous est toutefois fournit pour vous aider à commencer le défi.
+## Arbres
 
-À l'intérieur de la liste de correction, une grille détaillée vous est fourni de l'ensemble des éléments que vous pouvez ajouter : ciel nuageux, ciel bleu pâle, ciel bleu foncé, nuages, arbres, monstres, buissons, bouteilles, fleurs, etc. Voici un exemple du jeu une fois que plusieurs éléments y sont ajoutés.
+1. Ajouter un arbre de chaque type : 🌳 🌴 🏝️ **(1 point)**
 
+2. Lorsque l’utilisateur appuie sur la barre d’espace, le tronc du palmier doit réduire de taille jusqu’à disparaître complètement. Une trace du coup doit également être présente. **(2 points)**
 
-![Game full of features](Documentation/demo.gif)
+3. Une liste des arbres doit être présente sous le canvas. Cette liste doit itérer à travers l’ensemble des arbres présents dans le canvas. On doit pouvoir y voir la position en X de chaque arbre ainsi que son illustration. Lorsqu’un arbre disparaît à l’étape précédente, il ne doit plus être affiché dans la liste. **(3 points)**
 
+4. Un bouton « Add Tree » et un bouton « Delete Tree » doivent être présents pour permettre à un utilisateur d’ajouter et de supprimer un arbre. Lorsqu’un utilisateur clique sur le bouton « Add Tree », une fenêtre modale doit apparaître afin de lui permettre de choisir le type d’arbre souhaité. L’arbre doit apparaître à une position aléatoire. Lorsque l’utilisateur clique sur le bouton « Delete Tree », l’arbre doit être retiré de la liste. **(4 points)**
 
-Comme vous pouvez le voir dans la grille de correction, plusieurs fonctionnalités sont aussi demandés. Ces fonctionnalités vont influencer la comportement du personnages, du monde ou même du site web de plusieurs manières. C'est à votre guise de choisir les fonctionnalités que vous trouvez pertinentes dans le temps donné.
+5. Lorsque l’utilisateur clique avec sa souris sur un arbre, il doit être possible de redimensionner sa taille. Une boîte avec des nœuds doit apparaître autour de l’arbre, permettant à l’utilisateur d’augmenter ou de diminuer la hauteur et la largeur de celui-ci. **(5 points)**
 
+## Cube Mystère
+1. Ajouter un cube mystère [ ? ] **(1 point)**
 
-## Engin de jeu (Game Editor)
+2. Lorsque le joueur entre en contact avec le cube mystère [ ? ], un effet sonore doit être exécuté. **(2 points)**
 
-Cette page est destinée à la création d'un éditeur de jeu. Cette page a surtout pour but de vous permettre de modifier rapidement et efficacement les éléments présents sur la page de jeu. Deux fonctionnalités majeurs sont présentes : la gestion des arbres, la gestion des éléments présents sur le sol (bouteilles, fleurs et buisson).
+3. Lorsque le joueur entre en contact avec le cube mystère [ ? ], un champignon rouge doit apparaître sur le cube. **(3 points)**
 
-En ce qui attrait à la gestion des arbres, plusieurs fonctionnalités vous sont demandés. Par exemple, il devrait être possible de visualiser l'ensemble des arbres présent à l'intérieur de l'éditeur, mais aussi à l'extérieur de celui-ci. Une list d'arbre devrait vous permettre de pouvoir incrémenter ou décrémenter la position de chaque arbre. Une fois la modification effectué, elle devrait apparaître dans la page de jeu. Une fonctionnalités supplémentaire est qu'il pourrait être possible d'incrémenter le nombre d'arbre et de le diminuer. Il devrait être possible à l'utilisateur à partir d'un modal de choisir l'arbre souhaité. Chaque arbre devrait apparaître à un endroit distinct de manière aléatoire.
+4. Lorsque le joueur entre en contact avec le cube mystère [ ? ], le cube doit bloquer le personnage. Il ne doit pas être possible pour le personnage de passer à travers le cube. **(4 points)**
 
-![Tree handling in game editor](Documentation/tree-handling.gif)
-
-En ce qui attrait à la gestion des items placés sur le sol, il devrait être possible à un utilisateur de pouvoir appuyer sur un bouton `Randomize` pour placer les différentes items à des endroits aléatoires sur le canvas.
-
-![Random item placement](Documentation/randomizing.gif)
-
-Vous pouvez render le tout persistant à partir du serveur.
-
-
-## Gestion du personnage (Game Editor)
-
-Sur cette page, vous devez permettre aux utilisateurs de choisir le personnage que vous souhaitez. Vous avez le choix entre les trois personnages suivants :
-
-Le chevalier : ![Knight](frontend/src/assets/characters/main-character.png)
-
-La tête de poisson : ![Fish guy](frontend/src/assets/characters/main-character-fish.png)
-
-Le chevalier avec lunettes : ![Cool character](frontend/src/assets/characters/cool-character.png)
+5. Le cube mystère doit avoir une animation (gif) **(5 points)**
 
 
-Vous pouvez render le tout persistant à partir du serveur.
+## Champignon
 
-## Easter Egg
+1. Lorsque le joueur entre en contact avec un champignon, le champignon 🍄 doit disparaître et un effet sonore doit être exécuté. **(1 point)**
 
-Sur cette page, vous devez simplement permettre aux correcteurs qui ont travaillés très très fort pour créer cette compétition de rire un peu grâce à un meme!
+2. La première fois que le joueur « mange » un champignon (le fait disparaître), l’onglet 🐣 Easter Egg, initialement caché dans la barre de navigation, doit apparaître. À noter qu’un emoji doit également apparaître à côté de chaque nom de page dans la barre de navigation : 🌟 Game Page, 🦄 Game Editor, 🔥 Character Editor, 🐣 Easter Egg. **(2 points)**
 
+3. La deuxième fois que le joueur « mange » un champignon (le fait disparaître), une fenêtre modale doit apparaître et permettre à l’utilisateur de choisir l’un des trois personnages disponibles : le chevalier, le bol de poisson ou le chevalier avec des lunettes. Le choix du personnage doit être persistant. Lorsqu’on rafraîchit la page, le choix du personnage doit être conservé. **(3 points)**
 
+4. La troisième fois que le joueur « mange » un champignon (le fait disparaître), une trace fantôme du personnage doit être présente. Les traces les plus récentes doivent être opaques, tandis que les traces les plus anciennes doivent être transparentes. **(4 points)**
 
+5. La trace fantôme du personnage doit être de couleur arc-en-ciel. Vous ne pouvez pas utiliser d’outils comme Photoshop pour vous aider ; vous devez coder une fonction permettant de modifier la couleur du PNG fourni. **(5 points)**
 
+## Nuages
+
+1. Ajouter l'ensemble de nuages ☁️ ☁️ ☁️. **(1 point)**
+
+2. Lorsque le joueur est en face de la pancarte avec un symbole de nuage et que celui-ci appuie sur la barre d'espace, un effet sonore de tonnere doit être produit. Un éclaire doit aussi appraître à chaque nuage. **(2 point)**
+
+3. Lorsque le joueur est en face de la pancarte avec un symbole de nuage et qu’il appuie sur la barre d’espace, les couleurs du canvas doivent être inversées pendant la durée de l’effet sonore du tonnerre. **(3 point)**
+
+4. Lorsque le son de tonnerre survient, le thème de l’application doit passer d’un thème clair à un thème foncé. Le thème sombre de l’application doit être persistant. **(4 point)**
+
+5. Une fois que les couleurs du canvas sont redevenues normales, les nuages doivent commencer à pleuvoir. Les gouttelettes doivent être de différentes grandeurs et tailles afin de donner une illusion de profondeur. Lorsque les gouttelettes entrent en contact avec le sol, elles doivent produire des éclaboussures. **(5 point)**
+
+## Objets sur le sol
+1. Ajouter un objet destiné au sol de chaque type (bouteilles, buissons, fleurs) (au moins un de chaque). **(1 point)**
+
+2. Un bouton « Random » doit être présent. Lorsque l’utilisateur appuie sur ce bouton, les éléments doivent obtenir une nouvelle position aléatoire sur le sol. **(2 points)**
+
+3. La position des objets doit être persistante, c’est-à-dire que si l’on rafraîchit la page, les objets doivent rester aux mêmes endroits (persistance des objets). **(3 points)**
+
+4. Lorsqu’un utilisateur clique sur un objet (bouteille, buisson ou fleur) présent sur le sol, il doit être possible de le déplacer par glisser-déposer (drag and drop). Autrement dit, lorsqu’un objet est sélectionné à l’aide du bouton gauche de la souris, il doit être possible de modifier sa position jusqu’à ce que le bouton de la souris soit relâché. **(4 points)**
+
+5. Lorsque l’utilisateur repositionne un objet, si celui-ci est relâché dans les airs, l’objet doit être soumis à la gravité et retomber sur le sol. Si l’objet est placé sous le sol, il doit réapparaître à sa position initiale. Une image fantôme de l’objet doit rester présente à la position initiale jusqu’à ce que l’objet puisse être positionné à une nouvelle position valide. **(5 points)**
+
+### Easter Egg
+
+1. Créer la page Easter Egg. **(1 point)**
+
+2. Afficher le nom de votre université, le nom de chaque personne ayant réalisé le défi ainsi que le nom de votre équipe. **(5 points)**
+
+3. Créer un meme en lien avec le thème rétro. **(10 points)**
+
+### Expérience Utilisateur (UI/UX)
+
+1. Qualité de l'expérience utilisateur et de l'interface graphique **(10 points)**
