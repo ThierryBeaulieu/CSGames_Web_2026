@@ -14,16 +14,6 @@ function NavBar({ easterEggVisible, emojisEnabled }) {
               {withEmoji('Game Page', '🌟')}
             </Link>
           </li>
-          <li>
-            <Link to='/game-editor' className='nav-link'>
-              {withEmoji('Game Editor', '🦄')}
-            </Link>
-          </li>
-          <li>
-            <Link to='/character-editor' className='nav-link'>
-              {withEmoji('Character Editor', '🔥')}
-            </Link>
-          </li>
           {easterEggVisible && (
             <li>
               <Link to='/easter-egg' className='nav-link'>

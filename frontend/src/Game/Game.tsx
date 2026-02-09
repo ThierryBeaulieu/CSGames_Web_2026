@@ -72,13 +72,15 @@ const Game: React.FC = () => {
       lightSky.current.render(ctx);
       cloudySky.current.render(ctx);
 
+      treesConfig.current.gameTrees.forEach((tree) => {
+        tree.render(ctx);
+      });
+
       ground.current.render(ctx);
       clouds.current.render(ctx);
       cloudySky.current.render(ctx);
 
-      treesConfig.current.gameTrees.forEach((tree) => {
-        tree.render(ctx);
-      });
+
 
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);

@@ -97,12 +97,6 @@ function GameEditorPage() {
         <div className='trees-layout' key={index}>
           <img className='tree-img' src={getTreeType(tree)} />
           <div className='tree-item' id={index.toString()}>{`x: ${tree.pos.x}`}</div>
-          <button className='tree-item' onClick={() => moveTreeLeft(index)}>
-            Move Left
-          </button>
-          <button className='tree-item' onClick={() => moveTreeRight(index)}>
-            Move Right
-          </button>
           <button className='tree-item' onClick={() => deleteTree(index)}>
             Delete Tree
           </button>
