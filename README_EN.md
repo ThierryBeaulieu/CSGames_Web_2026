@@ -1,69 +1,159 @@
-### Welcome to the CS Games 2025 Web Competition!
+# Welcome to the CS Games 2025 Web Competition!
+
 ## Context
-
-For this challenge, you must try to implement as many of the requirements as possible listed in the grading grid `Correction CSGames.xlsx`.
-
-The goal of this challenge is to design a website that allows users to create and edit a 2D game directly in their web browser. Below is an example of the resulting game.
 
 ![Démonstration du jeu à produire](Documentation/demo.gif)
 
-For this challenge, you are free to choose which requirements you wish to implement. The requirements are divided according to the different pages of the application.
+For this challenge, you must implement a 2D game. The following sections describe in detail what is expected. Each section contains requirements and the points associated with them. For each section, you must implement the requirements in **chronological order**.
 
-The following sections provide detailed explanations of our expectations for each requirement. Please note that grading will be done exclusively based on the grading grid `Correction CSGames.xlsx`.
+**WARNING**: If you do not implement the requirements in chronological order, only the points for the lowest completed requirement will be awarded. For example, if you implement requirements 1, 3, and 5, you will only receive the points for requirement 1.
 
-It is also worth noting that, to facilitate grading, you are encouraged to check off the requirements you have completed directly in the Excel file.
+## Command to Run the Game
 
-## Navigation Bar
+To run the game, use the following command in the frontend folder:
 
-To navigate through the application, you are required to implement a navigation bar. The navigation bar must be displayed as a panel on the left side of the application. For additional points, make the navigation bar collapsible.
+```npm run dev```
 
-![Barre de navigation](Documentation/navigation-bar.gif)
+
+The application should then appear on the screen.
+
+## Evaluation Grid
+
+The following sections detail the required implementations, but the evaluation grid is also provided in the file `Correction CSGames - English.pdf`.
+
+## Sections to Complete
+
+### Navigation Bar
+
+1. Create a navigation bar that allows users to access the following pages: Game Page and Easter Egg. Note that the “Easter Egg” page must initially be hidden in the navigation bar. **(1 point)**
+
+2. Place the navigation bar on the left side of the screen. **(3 points)**
+
+![Barre de navigation initiale](Documentation/NavBar/navigation-bar-initPNG.PNG)
+
+
+3. Make the navigation bar collapsible. The user must be able to adjust the width of the navigation bar using the cursor. When the navigation bar becomes too small, an emoji must replace the text. For example, when the bar is expanded, it should display Game Page and Easter Egg. When the bar is collapsed, it should display 🌟 and 🐣. **(5 points)**
+
+![Barre de navigation complète](Documentation/NavBar/navigation-bar-complete.png)
+
 
 ## Game Page
+## Trees
 
-As you can see from the base project, the game page is provided with a fully implemented game loop. From the file `Game/Game.tsx`, you will find an example of how rendering is handled.
+1. Add one tree of each type: 🌳 🌴 🏝️ **(1 point)**
 
-To give you a better understanding of the game loop, you can think of it as an infinite loop. At each frame per second, user inputs are captured, processed, and then each item is rendered one by one. The order in which rendering occurs determines, in this 2D world, which images appear in the foreground and which appear in the background.
+![Arbres de toutes sortes](Documentation/Tree/trees-of-everykind.png)
+
+2. When the user presses the space bar, the palm tree trunk must gradually shrink until it completely disappears. A trace of the hit must also be visible. **(2 points)**
+
+![starting to cut](Documentation/Tree/trees-hitting-the-tree.png)
+
+![continue to cut](Documentation/Tree/tree-being-cut.png)
+
+![almost done](Documentation/Tree/tree-almost-cut.png)
+
+![tree is cut](Documentation/Tree/tree-is-cut.png)
 
 
-![Rendering layers](Documentation/projection.png)
+3. A list of trees must be displayed below the canvas. This list must iterate through all trees present on the canvas. The X position of each tree as well as its illustration must be visible. When a tree disappears in the previous step, it must no longer appear in the list. **(3 points)**
 
-As you can see, in the base model, very few elements are present in the game.
+![list of trees](Documentation/Tree/delete-tree.png)
 
-To add a new item to the game, you are free to choose any approach you prefer. However, a basic example is provided to help you get started with the challenge.
 
-Inside the grading grid, a detailed table is provided listing all the elements you can add: cloudy sky, pale blue sky, dark blue sky, clouds, trees, monsters, bushes, bottles, flowers, etc. Below is an example of the game once several elements have been added.
+4. An “Add Tree” button and a “Delete Tree” button must be present to allow users to add and remove a tree. When the user clicks the “Add Tree” button, a modal window must appear, allowing them to choose the desired tree type. The tree must appear at a random position. When the user clicks the “Delete Tree” button, the tree must be removed from the list. **(4 points)**
 
-![Game full of features](Documentation/demo.gif)
+![list of trees](Documentation/Tree/tree-add-tree.png)
 
-As shown in the grading grid, several functionalities are also required. These functionalities will influence the behavior of the character, the world, or even the website in various ways. It is up to you to choose which functionalities you find most relevant given the time available.
+![list of trees](Documentation/Tree/modal-select-tree.png)
 
-## Game Editor
 
-This page is intended for creating a game editor. Its main purpose is to allow you to quickly and efficiently modify the elements present on the game page. Two major features are required: tree management and management of elements placed on the ground (bottles, flowers, and bushes).
+5. When the user clicks on a tree with the mouse, it must be possible to resize it. A bounding box with handles must appear around the tree, allowing the user to increase or decrease its height and width. **(5 points)**
 
-Regarding tree management, several functionalities are required. For example, it should be possible to visualize all trees present within the editor as well as outside of it. A tree list should allow you to increment or decrement the position of each tree. Once a modification is made, it should immediately appear on the game page. An additional feature is the ability to increase or decrease the number of trees. The user should be able to select the desired tree from a modal. Each tree should appear at a distinct, randomly chosen location.
+![dimensions of tree](Documentation/Tree/tree-dimensions.png)
 
-![Tree handling in game editor](Documentation/tree-handling.gif)
+## Mystery Cube
+1. Add a mystery cube [ ? ] **(1 point)**
 
-Regarding the management of items placed on the ground, the user should be able to click a Randomize button to place the different items at random positions on the canvas.
+2. When the player comes into contact with the mystery cube [ ? ], a sound effect must be played. **(2 points)**
 
-![Random item placement](Documentation/randomizing.gif)
+3. When the player comes into contact with the mystery cube [ ? ], a red mushroom must appear on top of the cube. **(3 points)**
 
-You may persist the rendering using the server.
+![mystery cube](Documentation/MysteryCube/mystery-cube.png)
 
-## Character Management (Game Editor)
+4. When the player comes into contact with the mystery cube [ ? ], the cube must block the character. The character must not be able to pass through the cube. **(4 points)**
 
-On this page, you must allow users to choose which character they want to use. You may choose from the following three characters:
+5. The mystery cube must have an animation (GIF). **(5 points)**
 
-The knight: ![Knight](frontend/src/assets/characters/main-character.png)
+## Mushroom
 
-The fish head character: ![Fish guy](frontend/src/assets/characters/main-character-fish.png)
+1. When the player comes into contact with a mushroom, the mushroom 🍄 must disappear and a sound effect must be played. **(1 point)**
 
-The knight with glasses: ![Cool character](frontend/src/assets/characters/cool-character.png)
+2. The first time the player “eats” a mushroom (makes it disappear), the 🐣 Easter Egg tab, initially hidden in the navigation bar, must appear. Note that an emoji must also appear next to each page name in the navigation bar: 🌟 Game Page & 🐣 Easter Egg. **(2 points)**
 
-You may persist the rendering using the server.
+![Barre de navigation complète](Documentation/NavBar/navigation-bar-complete.png)
 
-## Easter Egg
 
-On this page, you simply need to allow the graders—who worked very, very hard to create this competition—to have a little laugh thanks to a meme! 😄
+3. The second time the player “eats” a mushroom, a modal window must appear and allow the user to choose one of three available characters: the knight, the fish bowl, or the knight with glasses. The character choice must be persistent. When the page is refreshed, the selected character must be preserved. **(3 points)**
+
+![character](frontend/src/assets/characters/cool-character.png)
+
+![character](frontend/src/assets/characters/main-character-fish.png)
+
+![character](frontend/src/assets/characters/main-character.png)
+
+![character](frontend/src/assets/characters/monster.png)
+
+4. The third time the player “eats” a mushroom, a ghost trail of the character must appear. The most recent trails must be opaque, while the oldest trails must be transparent. **(4 points)**
+
+5. The ghost trail of the character must be rainbow-colored. You may not use tools like Photoshop to help you; you must code a function that modifies the color of the provided PNG. **(5 points)**
+
+![Barre de navigation complète](Documentation/MysteryCube/ghost-character.png)
+
+
+## Clouds
+
+1. Add all clouds ☁️ ☁️ ☁️ **(1 point)**
+
+2. When the player is in front of the sign with a cloud symbol and presses the space bar, a thunder sound effect must be played. A lightning bolt must also appear on the second cloud. **(2 points)**
+
+![rain](Documentation/Clouds/lightning.png)
+
+3. When the player is in front of the sign with a cloud symbol and presses the space bar, the canvas colors must be inverted for the duration of the thunder sound effect. **(3 points)**
+
+![rain](Documentation/Clouds/color-inversion.PNG)
+
+4. When the thunder sound occurs, the application theme must switch from a light theme to a dark theme. The dark theme must be persistent. **(4 points)**
+
+5. Once the canvas colors return to normal, the clouds must start raining. The raindrops must have different sizes to give an illusion of depth. When the droplets hit the ground, they must produce splashes. **(5 points)**
+
+![rain](Documentation/Clouds/rain.PNG)
+
+## Ground Objects
+
+1. Add one ground object of each type (bottles, bushes, flowers) (at least one of each). **(1 point)**
+
+2. A “Random” button must be present. When the user clicks this button, the elements must be given new random positions on the ground. **(2 points)**
+
+![rain](Documentation/Tree/tree-add-tree.PNG)
+
+3. The position of the objects must be persistent, meaning that if the page is refreshed, the objects must remain in the same positions (object persistence). **(3 points)**
+
+4. When a user clicks on a ground object (bottle, bush, or flower), it must be possible to move it via drag and drop. In other words, when an object is selected using the left mouse button, its position must be adjustable until the mouse button is released. **(4 points)**
+
+5. When the user repositions an object, if it is released in the air, the object must be affected by gravity and fall back to the ground. If the object is placed below the ground, it must reappear at its initial position. A ghost image of the object must remain at the initial position until the object can be placed at a new valid position. **(5 points)**
+
+![rain](Documentation/Ground/ghost-version-of-items-moving.PNG)
+
+### Easter Egg
+
+1. Create the Easter Egg page. **(1 point)**
+
+2. Display the name of your university, the name of each person who completed the challenge, and the name of your team. **(5 points)**
+
+3. Create a meme related to the retro theme. **(10 points)**
+
+![rain](Documentation/meme-character.PNG)
+
+### User Experience (UI/UX)
+
+Quality of the user experience and graphical interface **(10 points)**
