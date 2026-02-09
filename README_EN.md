@@ -8,6 +8,10 @@ For this challenge, you must implement a 2D game. The following sections describ
 
 **WARNING**: If you do not implement the requirements in chronological order, only the points for the lowest completed requirement will be awarded. For example, if you implement requirements 1, 3, and 5, you will only receive the points for requirement 1.
 
+## Limits
+
+You can't use LLMs, but you have the right to use internt. You are not allowed to download new npm packages. You can use `react-router-dom` to help you create pages and navigate through them.
+
 ## Command to Run the Game
 
 To run the game, use the following command in the frontend folder:

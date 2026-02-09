@@ -9,7 +9,11 @@ The english version is available [here](./README_EN.md).
 
 Pour cette épreuve, vous devrez implémenter un jeu en 2D. Pour se faire, les sections suivantes présenteront le détail de ce qui est attendu. Chaque sections comporent des requis et les points qui y sont associés. Pour chaque section, vous devrez implémenter de manière **chronologique** les différents requis.
 
-**ATTENTION** : Si vous n'implémentez pas les requis en ordre chronologique, seul les points les plus bas vous seront données. Par exemple, si vous implémentez les requis 1, 3, 5. C'est uniquement les points du requis 1 que vous gagnerez. 
+**ATTENTION** : Si vous n'implémentez pas les requis en ordre chronologique, seul les points les plus bas vous seront données. Par exemple, si vous implémentez les requis 1, 3, 5. C'est uniquement les points du requis 1 que vous gagnerez.
+
+## Limites
+
+Vous n'avez pas droit au LLMs, mais vous pouvez faire des recherches sur internet. Vous n'avez pas droit à télécharger des packages npms. Vous pouvez utiliser `react-router-dom` pour vous aider avec la navigation.
 
 ## Commande pour exécuter le jeu
 Pour exécuter le jeu, vous devrez utiliser la commande suivante dans le dossier frontend: 
