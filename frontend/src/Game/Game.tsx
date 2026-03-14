@@ -85,18 +85,18 @@ const Game: React.FC = () => {
 
       ground.current.render(ctx);
       clouds.current.render(ctx);
-      cloudBoard.current.render(ctx);
       cloudySky.current.render(ctx);
-
+      
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);
       mysteryBlock.current.detectCollisionFromPlayer(player.current);
-
+      
       player.current.render(ctx);
       groundPropsConfig.current.groundProps.forEach((props) => {
         props.render(ctx);
       });
-
+      
+      cloudBoard.current.render(ctx);
       requestAnimationFrame(gameLoop);
     };
 

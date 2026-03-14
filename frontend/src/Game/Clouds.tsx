@@ -1,6 +1,7 @@
 import { Camera } from './Camera';
 import cloudsAsset from '../assets/scenery/clouds/clouds.png';
 import type { Coordinates, GameAsset } from './GameAsset';
+import { GROUND_Y } from './Constants';
 
 interface RainDrop {
   x: number;
@@ -80,6 +81,7 @@ export class Clouds implements GameAsset {
     ctx.save();
 
     for (const drop of this.rainDrops) {
+      if (drop.y > GROUND_Y) continue;
       ctx.beginPath();
       ctx.strokeStyle = `rgba(174, 214, 241, ${drop.opacity})`;
       ctx.lineWidth = drop.width;
