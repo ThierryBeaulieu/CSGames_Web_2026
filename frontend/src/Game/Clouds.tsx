@@ -79,6 +79,7 @@ export class Clouds implements GameAsset {
 
   private renderRain(ctx: CanvasRenderingContext2D): void {
     ctx.save();
+    const camera = Camera.getInstance();
 
     for (const drop of this.rainDrops) {
       if (drop.y > GROUND_Y) continue;
@@ -88,8 +89,11 @@ export class Clouds implements GameAsset {
 
       // Slight diagonal angle (wind effect)
       const angle = 0.0;
-      ctx.moveTo(drop.x, drop.y);
-      ctx.lineTo(drop.x + Math.sin(angle) * drop.length, drop.y + Math.cos(angle) * drop.length);
+      ctx.moveTo(drop.x - camera.x * 0.3, drop.y);
+      ctx.lineTo(
+        drop.x - camera.x * 0.3 + Math.sin(angle) * drop.length,
+        drop.y + Math.cos(angle) * drop.length,
+      );
       ctx.stroke();
     }
 
