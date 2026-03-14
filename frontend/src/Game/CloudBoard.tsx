@@ -11,6 +11,7 @@ export class CloudBoard implements GameAsset {
   height: number = 49;
 
   isVisible: boolean = true;
+  isRaining: boolean = false;
 
   constructor(x: number, y: number) {
     this.pos = { x: x, y: y };
@@ -27,8 +28,9 @@ export class CloudBoard implements GameAsset {
   detectCollisionFromPlayer(item: GameAsset) {
     const collision = CollisionDetector.collisionDetected(item, this);
     const player = item as Player;
-    if (collision) {
+    if (collision && player.isHitting) {
       player.hitHandled = true;
+      this.isRaining = true;
     }
   }
 
