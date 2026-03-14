@@ -24,6 +24,7 @@ export class Player implements GameAsset {
   gravity: number;
   isBigger: boolean = false;
   isHitting: boolean = false;
+  isHoldingHitting: boolean = false;
   isUsing: boolean = false;
 
   private constructor(gravity: number) {
@@ -67,8 +68,12 @@ export class Player implements GameAsset {
       this.pos.x += 3;
       this.direction = 'right';
     }
-
-    this.isHitting = keys.current?.[' '];
+    if (keys.current?.[' ']) {
+      this.isHoldingHitting = this.isHitting;
+      this.isHitting = true;
+    } else {
+      this.isHitting = false;
+    }
 
     // Gravity
     this.vy += this.gravity;

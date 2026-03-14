@@ -68,6 +68,10 @@ const Game: React.FC = () => {
 
       monster.current.detectCollisionFromPlayer(player.current);
 
+      treesConfig.current.gameTrees.forEach((tree) => {
+        tree.detectCollisionFromPlayer(player.current);
+      });
+
       darkSky.current.render(ctx);
       lightSky.current.render(ctx);
       cloudySky.current.render(ctx);
@@ -79,8 +83,6 @@ const Game: React.FC = () => {
       ground.current.render(ctx);
       clouds.current.render(ctx);
       cloudySky.current.render(ctx);
-
-
 
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);

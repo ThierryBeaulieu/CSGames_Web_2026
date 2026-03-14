@@ -5,6 +5,8 @@ import largeTree from '../assets/scenery/trees/large-tree.png';
 
 import type { Coordinates, GameAsset } from './GameAsset';
 import { GROUND_Y } from './Constants';
+import { CollisionDetector } from './CollisionDetector';
+import type { Player } from './Player';
 
 export class Trees implements GameAsset {
   sprite: HTMLImageElement;
@@ -43,6 +45,14 @@ export class Trees implements GameAsset {
     return;
   }
 
+  detectCollisionFromPlayer(item: GameAsset) {
+    const collision = CollisionDetector.collisionDetected(item, this);
+    const player = item as Player;
+    if (collision && player.isHitting && !player.isHoldingHitting) {
+      this.pos.y += 50;
+    }
+  }
+
   render(ctx: CanvasRenderingContext2D): void {
     const camera = Camera.getInstance();
 
@@ -62,6 +72,7 @@ export class LargeTree extends Trees {
     const height = 175;
     super(width, height, x, y, GROUND_Y, largeTree);
   }
+  detectCollisionFromPlayer(item: GameAsset) {}
 }
 
 export class HighPalm extends Trees {
