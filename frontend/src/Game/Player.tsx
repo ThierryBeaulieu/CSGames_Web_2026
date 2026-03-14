@@ -13,6 +13,7 @@ export class Player implements GameAsset {
 
   hittingWidth: number = 102;
   hittingHeight: number = 51;
+  hitHandled: boolean = false;
 
   width: number = 40;
   height: number = 50;
@@ -100,7 +101,7 @@ export class Player implements GameAsset {
     if (this.direction === 'left') {
       ctx.scale(-1, 1);
       ctx.drawImage(this.sprite, -screenX - this.width, this.pos.y, this.width, this.height);
-      if (this.isHitting) {
+      if (this.isHitting && !this.hitHandled) {
         ctx.drawImage(
           this.hittingSprite,
           -screenX - this.hittingWidth + 40,
@@ -112,7 +113,7 @@ export class Player implements GameAsset {
     } else {
       ctx.drawImage(this.sprite, screenX, this.pos.y, this.width, this.height);
 
-      if (this.isHitting) {
+      if (this.isHitting && !this.hitHandled) {
         ctx.drawImage(
           this.hittingSprite,
           screenX - 10,

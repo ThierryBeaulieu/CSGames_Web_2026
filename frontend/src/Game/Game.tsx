@@ -13,6 +13,7 @@ import { Clouds } from './Clouds';
 import { SurpriseBlock } from './SurpriseBlock';
 import { TreesConfig } from '../AssetManager/TreesConfig';
 import { GroundPropsConfig } from '../AssetManager/GroundPropsConfig';
+import { CloudBoard } from './CloudBoard';
 
 const Game: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -36,6 +37,7 @@ const Game: React.FC = () => {
   const surpriseBlock = useRef(new SurpriseBlock(600, GROUND_Y - 120));
   const mushroom = useRef(new Mushroom(300, GROUND_Y - 160));
   const monster = useRef(new Monster(700, GROUND_Y - 40));
+  const cloudBoard = useRef(new CloudBoard(485, GROUND_Y - 48));
 
   const treesConfig = useRef(TreesConfig.getInstance());
   const groundPropsConfig = useRef(GroundPropsConfig.getInstance());
@@ -65,8 +67,8 @@ const Game: React.FC = () => {
 
       mushroom.current.spawnMushroom(mysteryBlock.current, player.current);
       mushroom.current.detectCollisionFromPlayer(player.current);
-
       monster.current.detectCollisionFromPlayer(player.current);
+      cloudBoard.current.detectCollisionFromPlayer(player.current);
 
       treesConfig.current.gameTrees.forEach((tree) => {
         tree.detectCollisionFromPlayer(player.current);
@@ -83,6 +85,7 @@ const Game: React.FC = () => {
       ground.current.render(ctx);
       clouds.current.render(ctx);
       cloudySky.current.render(ctx);
+      cloudBoard.current.render(ctx);
 
       mushroom.current.render(ctx);
       mysteryBlock.current.render(ctx);

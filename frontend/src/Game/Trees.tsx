@@ -48,7 +48,7 @@ export class Trees implements GameAsset {
   detectCollisionFromPlayer(item: GameAsset) {
     const collision = CollisionDetector.collisionDetected(item, this);
     const player = item as Player;
-    if (collision && player.isHitting && !player.isHoldingHitting) {
+    if (collision && player.isHitting && !player.isHoldingHitting && !player.hitHandled) {
       this.pos.y += 50;
     }
   }
