@@ -4,6 +4,7 @@ import mysteryBlockAsset from '../assets/scenery/special/mystery-block.png';
 import type { Coordinates, GameAsset } from './GameAsset';
 import soundAsset from '../assets/sounds/power_up.wav';
 import { CollisionDetector } from './CollisionDetector';
+import type { Player } from './Player';
 
 export class MysteryBlock implements GameAsset {
   sprite: HTMLImageElement;
@@ -28,9 +29,11 @@ export class MysteryBlock implements GameAsset {
     return;
   }
 
-  detectCollisionFromPlayer(player: GameAsset) {
-    const collision = CollisionDetector.collisionDetected(player, this);
+  detectCollisionFromPlayer(item: GameAsset) {
+    const collision = CollisionDetector.collisionDetected(item, this);
+    const player = item as Player;
     if (collision) {
+      player.vy = 0;
       this.sound.currentTime = 0;
       this.sound.play();
     }
