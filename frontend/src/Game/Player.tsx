@@ -1,5 +1,6 @@
 import { Camera } from './Camera';
 import mainCharacterImg from '../assets/characters/main-character.png';
+import slashImg from '../assets/characters/slash.png';
 import { GROUND_Y } from './Constants';
 import type { Coordinates, GameAsset } from './GameAsset';
 
@@ -7,7 +8,11 @@ export class Player implements GameAsset {
   private static instance: Player | null = null;
 
   sprite: HTMLImageElement;
+  hittingSprite: HTMLImageElement;
   pos: Coordinates;
+
+  hittingWidth: number = 102;
+  hittingHeight: number = 51;
 
   width: number = 40;
   height: number = 50;
@@ -18,6 +23,8 @@ export class Player implements GameAsset {
 
   gravity: number;
   isBigger: boolean = false;
+  isHitting: boolean = false;
+  isUsing: boolean = false;
 
   private constructor(gravity: number) {
     this.gravity = gravity;
@@ -26,6 +33,9 @@ export class Player implements GameAsset {
 
     this.sprite = new Image();
     this.sprite.src = mainCharacterImg;
+
+    this.hittingSprite = new Image();
+    this.hittingSprite.src = slashImg;
   }
 
   static getInstance(gravity: number = 0.8): Player {
@@ -53,6 +63,13 @@ export class Player implements GameAsset {
       this.onGround = false;
     }
 
+    if (keys.current?.['ArrowRight']) {
+      this.pos.x += 3;
+      this.direction = 'right';
+    }
+
+    this.isHitting = keys.current?.[' '];
+
     // Gravity
     this.vy += this.gravity;
     this.pos.y += this.vy;
@@ -69,13 +86,36 @@ export class Player implements GameAsset {
     const camera = Camera.getInstance();
     const screenX = camera.worldToScreenX(this.pos.x);
 
+    if (this.isHitting) {
+      console.log('is hitting');
+    }
+
     ctx.save();
 
     if (this.direction === 'left') {
       ctx.scale(-1, 1);
       ctx.drawImage(this.sprite, -screenX - this.width, this.pos.y, this.width, this.height);
+      if (this.isHitting) {
+        ctx.drawImage(
+          this.hittingSprite,
+          -screenX - this.hittingWidth + 40,
+          this.pos.y,
+          this.hittingWidth,
+          this.hittingHeight,
+        );
+      }
     } else {
       ctx.drawImage(this.sprite, screenX, this.pos.y, this.width, this.height);
+
+      if (this.isHitting) {
+        ctx.drawImage(
+          this.hittingSprite,
+          screenX - 10,
+          this.pos.y,
+          this.hittingWidth,
+          this.hittingHeight,
+        );
+      }
     }
 
     ctx.restore();
